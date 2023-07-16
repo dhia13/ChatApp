@@ -1,35 +1,34 @@
-const { User } = require("../models/User");
-const sendMail = require("../utils/mailer.js");
+const { User } = require('../models/User');
+const sendMail = require('../utils/mailer.js');
 const { CLIENT_URL } = process.env;
-const { generateToken, verifyToken } = require("../utils/Jwt.js");
-const jwt = require("jsonwebtoken");
+const { generateToken, verifyToken } = require('../utils/jwt');
+const jwt = require('jsonwebtoken');
 
 const authCtrl = {
   register: async (req, res) => {
     try {
-      const { email, password, username, birthday, gender, name } =
-        req.body;
+      const { email, password, username, birthday, gender, name } = req.body;
       //   Check if email exists
       const user_email = await User.findOne({ email });
       if (user_email)
         return res
           .status(409)
-          .json({ msg: "Email Already Taken", success: false });
+          .json({ msg: 'Email Already Taken', success: false });
       // email Validation
       const validate = validateEmail(email);
       if (!validate)
-        return res.status(409).json({ msg: "Email Invalid", success: false });
+        return res.status(409).json({ msg: 'Email Invalid', success: false });
       // Check if name exists
       const user_name = await User.findOne({ username });
       if (user_name)
         return res
           .status(409)
-          .json({ msg: "Name Already Registered", success: false });
+          .json({ msg: 'Name Already Registered', success: false });
       // check password Strenght
       if (password.length < 6)
         return res
           .status(422)
-          .json({ msg: "password too weak", success: false });
+          .json({ msg: 'password too weak', success: false });
       // New User
       const newUser = new User({
         name,
@@ -50,21 +49,21 @@ const authCtrl = {
         confirmedEmail: newUser.confirmedEmail,
         username: newUser.username,
         gender: newUser.gender,
-        img:newUser.img,
-        birthday:newUser.birthday
-      }
-      res.cookie("accessToken", generateToken(userData.id, "access"), {
+        img: newUser.img,
+        birthday: newUser.birthday,
+      };
+      res.cookie('accessToken', generateToken(userData.id, 'access'), {
         httpOnly: true,
         secure: true,
       });
-      res.cookie("refreshToken", generateToken(userData.id, "refresh"), {
+      res.cookie('refreshToken', generateToken(userData.id, 'refresh'), {
         httpOnly: true,
         sercure: true,
       });
       res.status(202).json({
-        msg: "Register Success! Please activate your email to start.",
+        msg: 'Register Success! Please activate your email to start.',
         success: true,
-        data: userData
+        data: userData,
       });
     } catch (err) {
       return res.status(500).json({ msg: err.message, success: false });
@@ -77,8 +76,8 @@ const authCtrl = {
       if (user_email)
         return res
           .status(409)
-          .json({ msg: "Email Already Taken", success: false });
-      res.status(200).json({ msg: "email available", success: true });
+          .json({ msg: 'Email Already Taken', success: false });
+      res.status(200).json({ msg: 'email available', success: true });
     } catch (err) {
       return res.status(500).json({ msg: err.message, success: false });
     }
@@ -90,8 +89,8 @@ const authCtrl = {
       if (user_username)
         return res
           .status(409)
-          .json({ msg: "username already taken", success: false });
-      res.status(200).json({ msg: "username available", success: true });
+          .json({ msg: 'username already taken', success: false });
+      res.status(200).json({ msg: 'username available', success: true });
     } catch (error) {
       return res.status(500).json({ msg: err.message, success: false });
     }
@@ -99,16 +98,16 @@ const authCtrl = {
   activateEmail: async (req, res) => {
     try {
       const { activation_token } = req.body;
-      const id = jwt.verify(activation_token, "email");
+      const id = jwt.verify(activation_token, 'email');
       if (id) {
         await User.findByIdAndUpdate(
           id,
           { verifiedEmail: true },
           { new: true }
         );
-        res.json({ msg: "Email verified", success: true });
+        res.json({ msg: 'Email verified', success: true });
       } else {
-        res.json({ msg: "verification token expired", success: false });
+        res.json({ msg: 'verification token expired', success: false });
       }
     } catch (err) {
       return res.status(500).json({ msg: err.message, success: false });
@@ -119,15 +118,15 @@ const authCtrl = {
       const { email, password } = req.body;
       const user = await User.findOne({ email });
       if (!user) {
-        res.status(401).json({ success: false, msg: "wrong credentials" });
+        res.status(401).json({ success: false, msg: 'wrong credentials' });
       } else if (!(await user.matchPassword(password))) {
-        res.status(401).json({ success: false, msg: "wrong credentials" });
+        res.status(401).json({ success: false, msg: 'wrong credentials' });
       } else if (user && (await user.matchPassword(password))) {
-        res.cookie("accessToken", generateToken(user.id, "access"), {
+        res.cookie('accessToken', generateToken(user.id, 'access'), {
           httpOnly: true,
           secure: true,
         });
-        res.cookie("refreshToken", generateToken(user.id, "refresh"), {
+        res.cookie('refreshToken', generateToken(user.id, 'refresh'), {
           httpOnly: true,
           sercure: true,
         });
@@ -139,8 +138,8 @@ const authCtrl = {
             confirmedEmail: user.confirmedEmail,
             username: user.username,
             gender: user.gender,
-            img:user.img,
-            birthday:user.birthday
+            img: user.img,
+            birthday: user.birthday,
           },
           success: true,
         });
@@ -202,41 +201,45 @@ const authCtrl = {
   },
   checkAccess: async (req, res) => {
     // Read access token from cookie
-    const refreshToken = req.cookies.refreshToken;  
+    const refreshToken = req.cookies.refreshToken;
     // // Verify token
     try {
-      jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, decoded) => {
-        if (err) {
-          // Token verification failed
-          res.clearCookie('accessToken'); // Clear the accessToken cookie
-          res.clearCookie('refreshToken'); // Clear the accessToken cookie
-          res.status(401).json({ message: 'Unauthorized' });
-        } else {
-          // Token is valid
-          res.cookie("accessToken", generateToken(decoded.id, "access"), {
-            httpOnly: true,
-            secure: true,
-          });
-          res.status(200).json({ message: 'Authorized' });
+      jwt.verify(
+        refreshToken,
+        process.env.REFRESH_TOKEN_SECRET,
+        (err, decoded) => {
+          if (err) {
+            // Token verification failed
+            res.clearCookie('accessToken'); // Clear the accessToken cookie
+            res.clearCookie('refreshToken'); // Clear the accessToken cookie
+            res.status(401).json({ message: 'Unauthorized' });
+          } else {
+            // Token is valid
+            res.cookie('accessToken', generateToken(decoded.id, 'access'), {
+              httpOnly: true,
+              secure: true,
+            });
+            res.status(200).json({ message: 'Authorized' });
+          }
         }
-      });
+      );
     } catch (error) {
-      res.status(500).json({message:'server error'})
+      res.status(500).json({ message: 'server error' });
     }
   },
   google: async (req, res) => {
     token = req.header;
   },
   logout: async (req, res) => {
-    console.log('logout')
+    console.log('logout');
     try {
       // Clear the access token cookie
-      res.clearCookie("accessToken", { httpOnly: true, secure: true });
-  
+      res.clearCookie('accessToken', { httpOnly: true, secure: true });
+
       // Clear the refresh token cookie
-      res.clearCookie("refreshToken", { httpOnly: true, secure: true });
-      res.clearCookie("accessToken", { httpOnly: true, secure: true });
-      res.status(200).json({ success: true, msg: "Logged out successfully" });
+      res.clearCookie('refreshToken', { httpOnly: true, secure: true });
+      res.clearCookie('accessToken', { httpOnly: true, secure: true });
+      res.status(200).json({ success: true, msg: 'Logged out successfully' });
     } catch (error) {
       res.status(500).json({ success: false, msg: error.message });
     }
@@ -244,22 +247,22 @@ const authCtrl = {
   refreshToken: async (req, res) => {
     const refreshToken = req.cookies.refreshToken;
     if (!refreshToken) {
-      return res.status(401).json({ error: "Unauthorized" });
+      return res.status(401).json({ error: 'Unauthorized' });
     }
     try {
       // Verify the access token
-      const decoded = verifyToken(refreshToken, "refresh");
+      const decoded = verifyToken(refreshToken, 'refresh');
       // Attach the decoded user information to the request object
       req.user = decoded;
       // Proceed to the next middleware or route handler
-      res.cookie("accessToken", generateToken(decoded, "access"), {
+      res.cookie('accessToken', generateToken(decoded, 'access'), {
         httpOnly: true,
         sercure: true,
       });
-      res.status(200).json({ msg: "token refreshed" });
+      res.status(200).json({ msg: 'token refreshed' });
     } catch (error) {
       // If the access token is invalid or expired, return an error
-      return res.status(401).json({ error: "Invalid token" });
+      return res.status(401).json({ error: 'Invalid token' });
     }
   },
 };

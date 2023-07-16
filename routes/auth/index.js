@@ -1,26 +1,26 @@
-const router = require("express").Router();
-const AuthCtrl = require("../../controllers/AuthController");
-const checkToken = require("../../utils/Authentication");
+const router = require('express').Router();
+const AuthCtrl = require('../../controllers/AuthController');
+const checkToken = require('../../utils/Authentication.js');
 //register
-router.post("/register", AuthCtrl.register);
+router.post('/register', AuthCtrl.register);
 // register check if email is available
-router.post("/checkEmailAvailability", AuthCtrl.checkEmailAvailability);
+router.post('/checkEmailAvailability', AuthCtrl.checkEmailAvailability);
 // register check if username is available
-router.post("/checkUsernameAvailability", AuthCtrl.checkUsernameAvailability);
+router.post('/checkUsernameAvailability', AuthCtrl.checkUsernameAvailability);
 //activate account verify email
-router.post("/activation", AuthCtrl.activateEmail);
+router.post('/activation', AuthCtrl.activateEmail);
 //login
-router.post("/login", AuthCtrl.login);
+router.post('/login', AuthCtrl.login);
 //request change password
-router.post("/requestPasswordChange", AuthCtrl.requestPasswordChange);
+router.post('/requestPasswordChange', AuthCtrl.requestPasswordChange);
 // change password
-router.post("/changePassword", AuthCtrl.changePassword);
-router.put("/logout", AuthCtrl.logout);
-router.post("/google", AuthCtrl.google);
-router.get("/protected", checkToken, (req, res) => {
+router.post('/changePassword', AuthCtrl.changePassword);
+router.put('/logout', AuthCtrl.logout);
+router.post('/google', AuthCtrl.google);
+router.get('/protected', checkToken, (req, res) => {
   res.status(200).json({ succes: true });
 });
-router.post("/refreshToken", AuthCtrl.refreshToken);
-router.put("/checkAccess", AuthCtrl.checkAccess);
+router.post('/refreshToken', AuthCtrl.refreshToken);
+router.put('/checkAccess', AuthCtrl.checkAccess);
 
 module.exports = router;
