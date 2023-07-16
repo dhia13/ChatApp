@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const AuthCtrl = require('../../controllers/AuthController');
-const checkToken = require('../../utils/Authentication.js');
+const checkToken = require('../../utils/authentication.js');
 //register
 router.post('/register', AuthCtrl.register);
 // register check if email is available
