@@ -13,7 +13,7 @@
     "server": "node index.js",
     "buildFront": "cd front && npm install && npm run build",
     "start": "node index.js",
-    "build": "npm install && npm buildFront"
+    "build": "npm install && npm run buildFront"
   },
   "author": "",
   "license": "ISC",
