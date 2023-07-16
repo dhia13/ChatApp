@@ -1,7 +1,7 @@
 const { User } = require('../models/User');
 const sendMail = require('../utils/mailer.js');
 const { CLIENT_URL } = process.env;
-const { generateToken, verifyToken } = require('../utils/jwt.js');
+const { generateToken, verifyToken } = require('../utils/jwt');
 const jwt = require('jsonwebtoken');
 
 const authCtrl = {
