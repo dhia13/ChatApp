@@ -1,30 +1,30 @@
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Fragment, useEffect } from "react";
-import { BellIcon } from "@heroicons/react/24/outline";
-import { AiOutlineSchedule } from "react-icons/ai";
-import { HiOutlineUsers, HiOutlineHome } from "react-icons/hi";
-import { FiSettings } from "react-icons/fi";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import axios from "axios";
-import { useTheme } from "next-themes";
-import { useState } from "react";
-import MenuButton from "../UI/MenuButton";
+import { Disclosure, Menu, Transition } from '@headlessui/react';
+import { Fragment, useEffect } from 'react';
+import { BellIcon } from '@heroicons/react/24/outline';
+import { AiOutlineSchedule } from 'react-icons/ai';
+import { HiOutlineUsers, HiOutlineHome } from 'react-icons/hi';
+import { FiSettings } from 'react-icons/fi';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import axios from 'axios';
+import { useTheme } from 'next-themes';
+import { useState } from 'react';
+import MenuButton from '../UI/MenuButton';
 const Layout = ({ children, user, setCurrentSection, currentSection }) => {
   const router = useRouter();
   const { pathname } = router;
   function getRouteName(pathname) {
-    const baseRoute = pathname.split("/dashboard")[1]; // Extract the part after '/dashboard'
-    if (baseRoute === "") {
-      return "dashboard";
-    } else if (baseRoute.startsWith("/schedule")) {
-      return "schedule";
-    } else if (baseRoute.startsWith("/clients")) {
-      return "clients";
-    } else if (baseRoute === "/profile") {
-      return "profile";
-    } else if (baseRoute === "/settings") {
-      return "settings";
+    const baseRoute = pathname.split('/dashboard')[1]; // Extract the part after '/dashboard'
+    if (baseRoute === '') {
+      return 'dashboard';
+    } else if (baseRoute.startsWith('/schedule')) {
+      return 'schedule';
+    } else if (baseRoute.startsWith('/clients')) {
+      return 'clients';
+    } else if (baseRoute === '/profile') {
+      return 'profile';
+    } else if (baseRoute === '/settings') {
+      return 'settings';
     } else {
       return null; // Route not matched
     }
@@ -32,7 +32,7 @@ const Layout = ({ children, user, setCurrentSection, currentSection }) => {
   const handleLogout = async () => {
     await axios
       .post(
-        `${process.env.NEXT_PUBLIC_API_URL}auth/logout`,
+        `${process.env.REACT_APP_API_URL}auth/logout`,
         {},
         {
           withCredentials: true,
@@ -95,80 +95,80 @@ const Layout = ({ children, user, setCurrentSection, currentSection }) => {
         <Disclosure
           as="nav"
           className={`w-full flex ${
-            currentPage === "dashboard" || currentPage == "clients"
-              ? "justify-end"
-              : "justify-between"
+            currentPage === 'dashboard' || currentPage == 'clients'
+              ? 'justify-end'
+              : 'justify-between'
           } items-center h-[70px] `}
         >
-          {currentPage === "settings" && (
+          {currentPage === 'settings' && (
             <div className="h-full flex justify-center items-center gap-4 ml-8">
               <div
                 className={classNames(
-                  currentSection == "appSettings"
-                    ? "bg-primary-active hover:bg-secondary-hover"
-                    : "bg-secondary-bg hover:bg-primary-hover",
-                  "flex justify-center items-center h-[50px] rounded-md cursor-pointer shadow-sm shadow-primary-shadow"
+                  currentSection == 'appSettings'
+                    ? 'bg-primary-active hover:bg-secondary-hover'
+                    : 'bg-secondary-bg hover:bg-primary-hover',
+                  'flex justify-center items-center h-[50px] rounded-md cursor-pointer shadow-sm shadow-primary-shadow'
                 )}
-                onClick={() => setCurrentSection("appSettings")}
+                onClick={() => setCurrentSection('appSettings')}
               >
                 <h1 className={`text-lg font-medium px-4 `}>App Settings</h1>
               </div>
               <div
                 className={classNames(
-                  currentSection == "workingDay"
-                    ? "bg-primary-active hover:bg-secondary-hover"
-                    : "bg-secondary-bg hover:bg-primary-hover",
-                  "flex justify-center items-center h-[50px] rounded-md cursor-pointer shadow-sm shadow-primary-shadow"
+                  currentSection == 'workingDay'
+                    ? 'bg-primary-active hover:bg-secondary-hover'
+                    : 'bg-secondary-bg hover:bg-primary-hover',
+                  'flex justify-center items-center h-[50px] rounded-md cursor-pointer shadow-sm shadow-primary-shadow'
                 )}
-                onClick={() => setCurrentSection("workingDay")}
+                onClick={() => setCurrentSection('workingDay')}
               >
                 <h1 className={`text-lg font-medium px-4 `}>Working Hours</h1>
               </div>
               <div
                 className={classNames(
-                  currentSection == "vacancies"
-                    ? "bg-primary-active hover:bg-secondary-hover"
-                    : "bg-secondary-bg hover:bg-primary-hover",
-                  "flex justify-center items-center h-[50px] rounded-md cursor-pointer shadow-sm shadow-primary-shadow"
+                  currentSection == 'vacancies'
+                    ? 'bg-primary-active hover:bg-secondary-hover'
+                    : 'bg-secondary-bg hover:bg-primary-hover',
+                  'flex justify-center items-center h-[50px] rounded-md cursor-pointer shadow-sm shadow-primary-shadow'
                 )}
-                onClick={() => setCurrentSection("vacancies")}
+                onClick={() => setCurrentSection('vacancies')}
               >
                 <h1 className={`text-lg font-medium px-4 `}>Vacancies</h1>
               </div>
             </div>
           )}
-          {currentPage === "schedule" && (
+          {currentPage === 'schedule' && (
             <div className="h-full flex justify-center items-center gap-4 ml-8">
               <div
                 className={classNames(
-                  currentSection == "calendar"
-                    ? "bg-primary-active hover:bg-secondary-hover"
-                    : "bg-secondary-bg hover:bg-primary-hover",
-                  "flex justify-center items-center h-[50px] rounded-md cursor-pointer shadow-sm shadow-primary-shadow"
+                  currentSection == 'calendar'
+                    ? 'bg-primary-active hover:bg-secondary-hover'
+                    : 'bg-secondary-bg hover:bg-primary-hover',
+                  'flex justify-center items-center h-[50px] rounded-md cursor-pointer shadow-sm shadow-primary-shadow'
                 )}
-                onClick={() => setCurrentSection("calendar")}
+                onClick={() => setCurrentSection('calendar')}
               >
                 <h1 className={`text-lg font-medium px-4 `}>Calendar</h1>
               </div>
               <div
                 className={classNames(
-                  currentSection == "list"
-                    ? "bg-primary-active hover:bg-secondary-hover"
-                    : "bg-secondary-bg hover:bg-primary-hover",
-                  "flex justify-center items-center h-[50px] rounded-md cursor-pointer shadow-sm shadow-primary-shadow"
+                  currentSection == 'list'
+                    ? 'bg-primary-active hover:bg-secondary-hover'
+                    : 'bg-secondary-bg hover:bg-primary-hover',
+                  'flex justify-center items-center h-[50px] rounded-md cursor-pointer shadow-sm shadow-primary-shadow'
                 )}
-                onClick={() => setCurrentSection("list")}
+                onClick={() => setCurrentSection('list')}
               >
                 <h1 className={`text-lg font-medium px-4 `}>Schedule List</h1>
               </div>
               <div
                 className={classNames(
-                  currentSection == "manual"
-                    ? "bg-primary-active hover:bg-secondary-hover"
-                    : "bg-secondary-bg hover:bg-primary-hover",
-                  "flex justify-center items-center h-[50px] rounded-md cursor-pointer shadow-sm shadow-primary-shadow"
+                  currentSection == 'manual'
+                    ? 'bg-primary-active hover:bg-secondary-hover'
+                    : 'bg-secondary-bg hover:bg-primary-hover',
+                  'flex justify-center items-center h-[50px] rounded-md cursor-pointer shadow-sm shadow-primary-shadow'
                 )}
-                onClick={() => setCurrentSection("manual")}
+                onClick={() => setCurrentSection('manual')}
               >
                 <h1 className={`text-lg font-medium px-4 `}>Manual</h1>
               </div>
@@ -219,8 +219,8 @@ const Layout = ({ children, user, setCurrentSection, currentSection }) => {
                         {({ active }) => (
                           <div
                             className={classNames(
-                              active ? "bg-hover-primary cursor-pointer" : "",
-                              "block px-4 py-2 text-sm text-primary  w-full"
+                              active ? 'bg-hover-primary cursor-pointer' : '',
+                              'block px-4 py-2 text-sm text-primary  w-full'
                             )}
                           >
                             <Link href="/dashboard/profile">Profile</Link>
@@ -231,8 +231,8 @@ const Layout = ({ children, user, setCurrentSection, currentSection }) => {
                         {({ active }) => (
                           <div
                             className={classNames(
-                              active ? "bg-hover-primary cursor-pointer" : "",
-                              "block px-4 py-2 text-sm text-primary  w-full"
+                              active ? 'bg-hover-primary cursor-pointer' : '',
+                              'block px-4 py-2 text-sm text-primary  w-full'
                             )}
                           >
                             <Link href="/dashboard/settings">Settings</Link>
@@ -244,8 +244,8 @@ const Layout = ({ children, user, setCurrentSection, currentSection }) => {
                           <div
                             onClick={handleLogout}
                             className={classNames(
-                              active ? "bg-hover-primary cursor-pointer" : "",
-                              "block px-4 py-2 text-sm text-primary  w-full"
+                              active ? 'bg-hover-primary cursor-pointer' : '',
+                              'block px-4 py-2 text-sm text-primary  w-full'
                             )}
                           >
                             Sign out
@@ -267,5 +267,5 @@ const Layout = ({ children, user, setCurrentSection, currentSection }) => {
 };
 export default Layout;
 function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ');
 }

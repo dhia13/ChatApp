@@ -1,23 +1,23 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import PasswordInput from "../components/Auth/PasswordInput";
-import Input from "../components/Auth/Input";
-import Logo from '../assets/logos/logo.png'
-import { Link ,useNavigate } from "react-router-dom";
-import Bg from '../assets/images/messaging.jpg'
-import valid from '../assets/icons/valid.png'
-import invalid from '../assets/icons/invalid.png'
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import PasswordInput from '../components/Auth/PasswordInput';
+import Input from '../components/Auth/Input';
+import Logo from '../assets/logos/logo.png';
+import { Link, useNavigate } from 'react-router-dom';
+import Bg from '../assets/images/messaging.jpg';
+import valid from '../assets/icons/valid.png';
+import invalid from '../assets/icons/invalid.png';
 
-function Login () {
+function Login() {
   const navigate = useNavigate();
   const isEmpty = (value) => {
-    return value === "";
+    return value === '';
   };
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [validEmail, setValidEmail] = useState(false);
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState('');
   const [disable, setDisable] = useState(true);
   const [success, setSuccess] = useState(false);
   const [loginSuccessData, setLoginSuccessData] = useState();
@@ -66,7 +66,7 @@ function Login () {
   useEffect(() => {
     if (success) {
       setTimeout(() => {
-        console.log(loginSuccessData)
+        console.log(loginSuccessData);
         localStorage.setItem('userData', JSON.stringify(loginSuccessData));
         navigate('/chat');
       }, 1000);
@@ -119,39 +119,32 @@ function Login () {
                     onClick={handleSubmit}
                     className={`flex justify-center items-center border rounded-md h-full w-full shadow-sm ${
                       disable
-                        ? "bg-gray-200 cursor-not-allowed"
+                        ? 'bg-gray-200 cursor-not-allowed'
                         : loading
-                        ? "bg-green-500"
+                        ? 'bg-green-500'
                         : error
-                        ? "bg-red-500"
+                        ? 'bg-red-500'
                         : success
-                        ? "bg-green-500"
-                        : "bg-blue-400 hover:bg-blue-500"
+                        ? 'bg-green-500'
+                        : 'bg-blue-400 hover:bg-blue-500'
                     } `}
                   >
                     {loading ? (
-                      <img src={require('../assets/icons/loading.gif')}
-                      width={32}
-                        height={32}
-                       alt="loading..." />
-
-                    ) : error ? (
                       <img
-                        src={invalid}
-                        alt="invalid"
-                        width={24}
-                        height={24}
-                      />
-                    ) : success ? (
-                      <img
-                        src={valid}
-                        alt="valid"
+                        src={require('../assets/icons/loading.gif')}
                         width={32}
                         height={32}
+                        alt="loading..."
                       />
+                    ) : error ? (
+                      <img src={invalid} alt="invalid" width={24} height={24} />
+                    ) : success ? (
+                      <img src={valid} alt="valid" width={32} height={32} />
                     ) : (
                       <div>
-                        <p className="font-semibold text-lg text-white">Login</p>
+                        <p className="font-semibold text-lg text-white">
+                          Login
+                        </p>
                       </div>
                     )}
                   </button>
@@ -180,9 +173,9 @@ function Login () {
             </div>
           </section>
         </main>
-        <img src={Bg} className="w-full h-full" alt='doctor'/>
+        <img src={Bg} className="w-full h-full" alt="doctor" />
       </div>
     </div>
   );
-};
+}
 export default Login;

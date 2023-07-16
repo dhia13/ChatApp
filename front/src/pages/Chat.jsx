@@ -11,7 +11,7 @@ const Chat = () => {
     const checkToken = async () => {
       try {
         await axios.put(
-          'http://localhost:8000/api/v1/checkAccess',
+          `${process.env.REACT_APP_API_URL}checkAccess`,
           {},
           {
             withCredentials: true, // Make sure to include this option to send cookies

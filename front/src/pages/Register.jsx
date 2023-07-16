@@ -1,45 +1,44 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import "react-calendar/dist/Calendar.css";
-import PasswordInput from "../components/Auth/PasswordInput";
-import Input from "../components/Auth/Input";
-import SelectGender from "../components/Auth/SelectGender";
-import { Link } from "react-router-dom";
-import Logo from '../assets/logos/logo.png'
-import Bg from '../assets/images/messaging.jpg'
-import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
-import valid from '../assets/icons/valid.png'
-import invalid from '../assets/icons/invalid.png'
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import 'react-calendar/dist/Calendar.css';
+import PasswordInput from '../components/Auth/PasswordInput';
+import Input from '../components/Auth/Input';
+import SelectGender from '../components/Auth/SelectGender';
+import { Link } from 'react-router-dom';
+import Logo from '../assets/logos/logo.png';
+import Bg from '../assets/images/messaging.jpg';
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import valid from '../assets/icons/valid.png';
+import invalid from '../assets/icons/invalid.png';
 
-
-function Register () {
+function Register() {
   const [registerStep, setRegisterStep] = useState(0);
   // password scope
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState('');
   const [validPassword, setValidPassword] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-  const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
+  const [passwordErrorMsg, setPasswordErrorMsg] = useState('');
   useEffect(() => {
     function validatePassword(password) {
       if (password.length < 8) {
-        return "Password should be at least 8 characters long.";
+        return 'Password should be at least 8 characters long.';
       }
       if (!/[A-Z]/.test(password)) {
-        return "Password should contain at least one uppercase letter.";
+        return 'Password should contain at least one uppercase letter.';
       }
       if (!/\d/.test(password)) {
-        return "Password should contain at least one number.";
+        return 'Password should contain at least one number.';
       }
       return true;
     }
     let validationResult = validatePassword(password);
-    if (typeof validationResult === "string") {
+    if (typeof validationResult === 'string') {
       setPasswordError(true);
       setPasswordErrorMsg(validationResult);
       setValidPassword(false);
     } else if (
-      typeof validationResult === "boolean" &&
+      typeof validationResult === 'boolean' &&
       validationResult === true
     ) {
       setPasswordError(false);
@@ -47,7 +46,7 @@ function Register () {
     }
   }, [password]);
   // confirmPassword scope
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [validConfirmPassword, setValidConfirmPassword] = useState(false);
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   useEffect(() => {
@@ -61,10 +60,10 @@ function Register () {
   }, [password, confirmPassword]);
 
   // email scope
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [validEmail, setValidEmail] = useState(false);
   const [emailError, setEmailError] = useState(false);
-  const [emailErrorMsg, setEmailErrorMsg] = useState("");
+  const [emailErrorMsg, setEmailErrorMsg] = useState('');
   useEffect(() => {
     function isValidEmail(email) {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -72,17 +71,14 @@ function Register () {
     }
     if (!isValidEmail(email)) {
       setEmailError(true);
-      setEmailErrorMsg("Invalid Email");
+      setEmailErrorMsg('Invalid Email');
     } else {
       // check if email exists in db
       const checkAvailability = async (email) => {
         await axios
-          .post(
-            `${process.env.REACT_APP_API_URL}checkEmailAvailability`,
-            {
-              email,
-            }
-          )
+          .post(`${process.env.REACT_APP_API_URL}checkEmailAvailability`, {
+            email,
+          })
           .then((res) => {
             if (res.data.success) {
               setEmailError(false);
@@ -91,7 +87,7 @@ function Register () {
           })
           .catch((e) => {
             setEmailError(true);
-            setEmailErrorMsg("Email already registered try to login");
+            setEmailErrorMsg('Email already registered try to login');
             setValidEmail(false);
           });
       };
@@ -99,24 +95,21 @@ function Register () {
     }
   }, [email]);
 
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState('');
   const [validUsername, setValidUsername] = useState(false);
   const [usernameError, setUsernameError] = useState(false);
-  const [usernameErrMsg, setUsernameErrMsg] = useState("");
+  const [usernameErrMsg, setUsernameErrMsg] = useState('');
   useEffect(() => {
     if (username.length < 6) {
       setUsernameError(true);
-      setUsernameErrMsg("username must be at least 6 caracters long");
+      setUsernameErrMsg('username must be at least 6 caracters long');
       setValidUsername(false);
     } else {
       const checkAvailability = async (username) => {
         await axios
-          .post(
-            `${process.env.REACT_APP_API_URL}checkUsernameAvailability`,
-            {
-              username,
-            }
-          )
+          .post(`${process.env.REACT_APP_API_URL}checkUsernameAvailability`, {
+            username,
+          })
           .then((res) => {
             if (res.data.success) {
               setUsernameError(false);
@@ -125,7 +118,7 @@ function Register () {
           })
           .catch((e) => {
             setUsernameError(true);
-            setUsernameErrMsg("username already taken");
+            setUsernameErrMsg('username already taken');
             setValidUsername(false);
           });
       };
@@ -134,14 +127,14 @@ function Register () {
   }, [username]);
 
   const [disable2, setDisable2] = useState(false);
-  const genderList = ["Male", "Female"];
+  const genderList = ['Male', 'Female'];
   const [gender, setGender] = useState(genderList[0]);
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
   const [validName, setValidName] = useState(false);
   const [nameError, setNameError] = useState(false);
-  const nameErrorMsg = "Please enter your name";
+  const nameErrorMsg = 'Please enter your name';
   useEffect(() => {
-    if (name === " ") {
+    if (name === ' ') {
       setValidName(false);
       setNameError(true);
     } else {
@@ -153,7 +146,7 @@ function Register () {
   }, [name]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [errMsg, setErrMsg] = useState("");
+  const [errMsg, setErrMsg] = useState('');
   const [disable, setDisable] = useState(true);
   useEffect(() => {
     if (validEmail && validPassword && validConfirmPassword) {
@@ -192,11 +185,10 @@ function Register () {
           setError(false);
           setSuccess(true);
           localStorage.setItem('userData', JSON.stringify(res.data.data));
-
         })
         .catch((error) => {
           setError(true);
-          setErrMsg(error.msg)
+          setErrMsg(error.msg);
           setLoading(false);
         });
     }
@@ -220,7 +212,7 @@ function Register () {
   return (
     <div className="w-screen h-screen flex justify-center items-center flex-col overflow-hidden relative">
       <div className="absolute w-full h-full top-0 left-0">
-        <img src={Bg} alt='bg' className="w-full h-full" />
+        <img src={Bg} alt="bg" className="w-full h-full" />
       </div>
       <main className="flex justify-start items-center flex-col z-40 rounded-lg bg-white shadow-lg p-2">
         <div className="w-full h-full flex items-center justify-start  flex-col  ">
@@ -234,9 +226,7 @@ function Register () {
           {/*inputs  */}
           {registerStep === 0 && (
             <div className="w-[450px] flex flex-col items-center justify-center pt-4">
-              <form
-                className="flex justify-center items-center gap-3 flex-col"
-              >
+              <form className="flex justify-center items-center gap-3 flex-col">
                 <Input
                   label="Email"
                   placeholder="Enter email"
@@ -274,8 +264,8 @@ function Register () {
                   onClick={() => setRegisterStep(1)}
                   className={`flex justify-center items-center border rounded-md h-full w-full shadow-sm ${
                     disable
-                      ? "bg-gray-200 cursor-not-allowed"
-                      : "bg-blue-400 hover:bg-blue-500"
+                      ? 'bg-gray-200 cursor-not-allowed'
+                      : 'bg-blue-400 hover:bg-blue-500'
                   } `}
                 >
                   <h2 className="text-white text-sm font-semibold">Next</h2>
@@ -300,9 +290,7 @@ function Register () {
           )}
           {registerStep === 1 && (
             <div className="w-[450px] bg-white flex flex-col   shadow-sm items-center justify-center pt-4">
-              <form
-                className="flex justify-center items-center gap-3 flex-col"
-              >
+              <form className="flex justify-center items-center gap-3 flex-col">
                 <Input
                   label="Username"
                   placeholder="Enter username"
@@ -333,8 +321,8 @@ function Register () {
                   onClick={() => setRegisterStep(2)}
                   className={`flex justify-center items-center border rounded-md h-full w-full shadow-sm ${
                     disable2
-                      ? "bg-gray-200 cursor-not-allowed"
-                      : "bg-blue-400 hover:bg-blue-500"
+                      ? 'bg-gray-200 cursor-not-allowed'
+                      : 'bg-blue-400 hover:bg-blue-500'
                   } `}
                 >
                   <h2 className="text-white text-sm font-semibold">Next</h2>
@@ -353,53 +341,49 @@ function Register () {
           )}
           {registerStep === 2 && (
             <div className="w-[450px] bg-white flex flex-col h-[300px]  shadow-sm items-center justify-around pt-4">
-              <form
-                className="flex justify-center items-center gap-3 flex-col"
-              >
-              <LocalizationProvider dateAdapter={AdapterDateFns}>
-                <DatePicker label="Birthday" value={birthday} onChange={(newValue) => setBirthday(newValue)} className="w-[289px]"/>
-              </LocalizationProvider>
+              <form className="flex justify-center items-center gap-3 flex-col">
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                  <DatePicker
+                    label="Birthday"
+                    value={birthday}
+                    onChange={(newValue) => setBirthday(newValue)}
+                    className="w-[289px]"
+                  />
+                </LocalizationProvider>
               </form>
               <div className="flex justify-center items-center flex-col h-[40px] my-2 w-72 mx-5 ">
-                  <button
-                    onClick={handleSubmit}
-                    className={`flex justify-center items-center border rounded-md h-full w-full shadow-sm ${
-                       loading
-                        ? "bg-green-500"
-                        : error
-                        ? "bg-red-500"
-                        : success
-                        ? "bg-green-500"
-                        : "bg-blue-400 hover:bg-blue-500"
-                    } `}
-                  >
-                    {loading ? (
-                      <img src={require('../assets/icons/loading.gif')}
+                <button
+                  onClick={handleSubmit}
+                  className={`flex justify-center items-center border rounded-md h-full w-full shadow-sm ${
+                    loading
+                      ? 'bg-green-500'
+                      : error
+                      ? 'bg-red-500'
+                      : success
+                      ? 'bg-green-500'
+                      : 'bg-blue-400 hover:bg-blue-500'
+                  } `}
+                >
+                  {loading ? (
+                    <img
+                      src={require('../assets/icons/loading.gif')}
                       width={32}
-                        height={32}
-                       alt="loading..." />
-
-                    ) : error ? (
-                      <img
-                        src={invalid}
-                        alt="invalid"
-                        width={24}
-                        height={24}
-                      />
-                    ) : success ? (
-                      <img
-                        src={valid}
-                        alt="valid"
-                        width={32}
-                        height={32}
-                      />
-                    ) : (
-                      <div>
-                        <p className="font-semibold text-lg text-white">Register</p>
-                      </div>
-                    )}
-                  </button>
-                </div>
+                      height={32}
+                      alt="loading..."
+                    />
+                  ) : error ? (
+                    <img src={invalid} alt="invalid" width={24} height={24} />
+                  ) : success ? (
+                    <img src={valid} alt="valid" width={32} height={32} />
+                  ) : (
+                    <div>
+                      <p className="font-semibold text-lg text-white">
+                        Register
+                      </p>
+                    </div>
+                  )}
+                </button>
+              </div>
               <div className="flex justify-center items-center flex-col h-[30px] my-1 w-[272px] mx-5">
                 {error ? (
                   <h1 className="text-md font-semibold text-red-500 text-center">
@@ -446,5 +430,5 @@ function Register () {
       </main>
     </div>
   );
-};
+}
 export default Register;

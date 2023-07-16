@@ -1,21 +1,21 @@
-import { Menu, Transition } from "@headlessui/react";
-import { BellIcon } from "@heroicons/react/24/outline";
-import axios from "axios";
-import Link from "next/link";
-import { Fragment } from "react";
-import { useRouter } from "next/router";
-import { useTheme } from "next-themes";
-import { useEffect } from "react";
-import { useState } from "react";
+import { Menu, Transition } from '@headlessui/react';
+import { BellIcon } from '@heroicons/react/24/outline';
+import axios from 'axios';
+import Link from 'next/link';
+import { Fragment } from 'react';
+import { useRouter } from 'next/router';
+import { useTheme } from 'next-themes';
+import { useEffect } from 'react';
+import { useState } from 'react';
 function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ');
 }
 const MainNav = ({ children, isLoggedIn, user }) => {
   const router = useRouter();
   const handleLogout = async () => {
     await axios
       .post(
-        `${process.env.NEXT_PUBLIC_API_URL}auth/logout`,
+        `${process.env.REACT_APP_API_URL}auth/logout`,
         {},
         {
           withCredentials: true,
@@ -127,8 +127,8 @@ const MainNav = ({ children, isLoggedIn, user }) => {
                           {({ active }) => (
                             <div
                               className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700 w-full cursor-pointer"
+                                active ? 'bg-gray-100' : '',
+                                'block px-4 py-2 text-sm text-gray-700 w-full cursor-pointer'
                               )}
                             >
                               <Link href="/dashboard/profile">Profile</Link>
@@ -139,8 +139,8 @@ const MainNav = ({ children, isLoggedIn, user }) => {
                           {({ active }) => (
                             <div
                               className={classNames(
-                                active ? "bg-gray-100 cursor-pointer" : "",
-                                "block px-4 py-2 text-sm text-gray-700 w-full"
+                                active ? 'bg-gray-100 cursor-pointer' : '',
+                                'block px-4 py-2 text-sm text-gray-700 w-full'
                               )}
                             >
                               <Link href="/dashboard/settings">Settings</Link>
@@ -152,8 +152,8 @@ const MainNav = ({ children, isLoggedIn, user }) => {
                             <div
                               onClick={handleLogout}
                               className={classNames(
-                                active ? "bg-gray-100 cursor-pointer" : "",
-                                "block px-4 py-2 text-sm text-gray-700 w-full"
+                                active ? 'bg-gray-100 cursor-pointer' : '',
+                                'block px-4 py-2 text-sm text-gray-700 w-full'
                               )}
                             >
                               Sign out
