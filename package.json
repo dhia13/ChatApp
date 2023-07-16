@@ -12,8 +12,8 @@
     "dev": "nodemon index.js",
     "server": "node index.js",
     "buildFront": "cd front && npm run build",
-    "start": "node index.js",
-    "install": "npm install && cd front && npm install && npm buildFront"
+    "start": "node index.js"
+    // "install": "npm install && cd front && npm install && npm buildFront"
   },
   "author": "",
   "license": "ISC",
