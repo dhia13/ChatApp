@@ -1,55 +1,34 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { RiExpandLeftLine, RiExpandRightLine } from 'react-icons/ri';
-
+import UserMenu from '../components/ChatUi/UserMenu';
+import ChatBox from '../components/ChatUi/ChatBox';
+import RecentChats from '../components/ChatUi/RecentChats';
+import ListMenu from './ListMenu';
+import Contacts from '../components/ChatUi/Contacts';
+import useUser from '../hooks/userUser';
+import AddNew from '../components/popups/AddNew';
+import { useSelector } from 'react-redux';
+import useSocket from '../hooks/useSocket';
+import HiddenMenus from '../components/popups/HiddenMenus';
 const Chat = () => {
   const navigate = useNavigate();
-  const [isTokenChecked, setIsTokenChecked] = useState(true); // State variable to track token check
-
+  const user = useUser();
+  useSocket();
   useEffect(() => {
-    const checkToken = async () => {
-      try {
-        await axios.put(
-          `${process.env.REACT_APP_API_URL}checkAccess`,
-          {},
-          {
-            withCredentials: true, // Make sure to include this option to send cookies
-          }
-        );
-        console.log('you are logged');
-        setIsTokenChecked(true); // Update state variable once token check is completed
-      } catch (err) {
-        navigate('/login');
-      }
-    };
-    checkToken();
-  }, [navigate]);
-
-  const [openMenu, setOpenMenu] = useState(false);
-  const handleLogout = async () => {
-    try {
-      await axios.put(
-        'http://localhost:8000/api/v1/logout',
-        {},
-        {
-          withCredentials: true,
-        }
-      );
-      console.log('logged out');
-      localStorage.clear();
-      navigate('/login');
-    } catch (err) {
-      console.log('logout failed');
+    if (user !== null && user?.isLogged === false) {
+      // navigate('/login');
     }
-  };
-  if (!isTokenChecked) {
+  }, [navigate, user]);
+  const { menu, isRecent } = useSelector((state) => state.ui);
+  const [currentChat, setCurrentChat] = useState(null);
+
+  if (user === null) {
     return (
       <div className="w-screen h-screen flex justify-center items-center">
         <div role="status">
           <svg
             aria-hidden="true"
-            class="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+            className="w-8 h-8 mr-2 text-blue-200 animate-spin dark:text-blue-600 fill-blue-600"
             viewBox="0 0 100 101"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -69,47 +48,28 @@ const Chat = () => {
     );
   }
   return (
-    <div className="w-screen h-screen flex justify-start items-start bg-gray-100">
+    <div className="w-screen h-screen flex justify-start items-start overflow-hidden relative">
+      <HiddenMenus />
       {/* left nav */}
       <div
-        className={`h-full ${
-          openMenu ? 'w-[340px]' : 'w-[60px]'
-        } flex justify-start items-start bg-red-100 transition-all duration-200 flex-col`}
+        className={`h-screen ${
+          menu ? 'w-[290px]' : 'w-[60px]'
+        } flex justify-start items-start border-r border-blue-200 transition-all duration-200 flex-col`}
       >
-        {/* create room and recent rooms */}
+        <UserMenu />
+        <ListMenu />
+        {/* recent chats list */}
+        {!isRecent ? (
+          <Contacts setCurrentChat={setCurrentChat} />
+        ) : (
+          <RecentChats setCurrentChat={setCurrentChat} />
+        )}
+        {/* create new chat or chat group */}
+        {!isRecent && <AddNew />}
         {/* user and menu toggle */}
-        <div
-          className={`flex justify-between items-center w-full ${
-            openMenu ? 'px-4 py-2' : 'flex-col gap-2'
-          } bg-red-200`}
-        >
-          <div className="flex justify-center items-center gap-4">
-            <div className="w-[40px] h-[40px] rounded-full bg-green-600 overflow-hidden">
-              <img
-                src="https://scontent.falg7-1.fna.fbcdn.net/v/t39.30808-6/347824599_1002457060920123_4746083599100789479_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFkPKUxO2M2GPQalxb4VuG6WW-qbIBkjkFZb6psgGSOQf37DxoS33wrdHcKYoc3gTXMJoN07s0g4AmUxYtmAluN&_nc_ohc=cXG8-GTffxUAX9MfZCr&_nc_ht=scontent.falg7-1.fna&oh=00_AfAP017CprMAZ6Eff8L4HOUfXmFHrDSM0HTgvwtsJnuOTQ&oe=64B7A85F"
-                alt="profile"
-                className="w-full h-full"
-              />
-            </div>
-            {openMenu && <div className="font-semibold">Sahhar Dhia</div>}
-          </div>
-          <div
-            className="w-[40px] h-[40px] rounded-full bg-green-600 justify-center items-center flex"
-            onClick={() => setOpenMenu(!openMenu)}
-          >
-            {openMenu ? <RiExpandLeftLine /> : <RiExpandRightLine />}
-          </div>
-        </div>
       </div>
-      {/* main */}
-      <div
-        className={`${
-          openMenu ? 'w-[calc(100%-340px)]' : 'w-[calc(100%-60px)]'
-        } transition-all duration-200 bg-yellow-200 h-screen`}
-      ></div>
-      {/* <p onClick={handleLogout}>logout</p> */}
-      {/* <p onClick={() => setOpenMenu(!openMenu)}>menu</p> */}
-      {/* Render other content once token check is completed */}
+      {/* Chat box */}
+      <ChatBox currentChat={currentChat} />
     </div>
   );
 };

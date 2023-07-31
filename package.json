@@ -11,26 +11,30 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
     "server": "node index.js",
-    "buildFront": "cd front && npm install && npm run build",
-    "start": "node index.js",
-    "build": "npm install && npm run buildFront"
+    "build-font": "cd front && npm install && npm run build",
+    "startProd": "set NODE_ENV=production && node index.js",
+    "build": "npm install && npm run build-font",
+    "production": "set NODE_ENV=production && npm run build-font && npm run server"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "googleapis": "^121.0.0",
+    "helmet": "^7.0.0",
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.3.3",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.9.3",
-    "socket.io": "^4.7.1"
+    "socket.io": "^4.7.1",
+    "socketio-auth": "^0.1.1",
+    "winston": "^3.10.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"

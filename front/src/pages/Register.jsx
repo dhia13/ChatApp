@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import 'react-calendar/dist/Calendar.css';
 import PasswordInput from '../components/Auth/PasswordInput';
 import Input from '../components/Auth/Input';
@@ -11,6 +10,7 @@ import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import valid from '../assets/icons/valid.png';
 import invalid from '../assets/icons/invalid.png';
+import api from '../api/axiosInstance';
 
 function Register() {
   const [registerStep, setRegisterStep] = useState(0);
@@ -75,8 +75,8 @@ function Register() {
     } else {
       // check if email exists in db
       const checkAvailability = async (email) => {
-        await axios
-          .post(`${process.env.REACT_APP_API_URL}checkEmailAvailability`, {
+        await api
+          .post(`/checkEmailAvailability`, {
             email,
           })
           .then((res) => {
@@ -106,8 +106,8 @@ function Register() {
       setValidUsername(false);
     } else {
       const checkAvailability = async (username) => {
-        await axios
-          .post(`${process.env.REACT_APP_API_URL}checkUsernameAvailability`, {
+        await api
+          .post(`/checkUsernameAvailability`, {
             username,
           })
           .then((res) => {
@@ -167,9 +167,9 @@ function Register() {
   const handleSubmit = async (e) => {
     if (validEmail && validPassword && validConfirmPassword) {
       setLoading(true);
-      await axios
+      await api
         .post(
-          `${process.env.REACT_APP_API_URL}register`,
+          `/register`,
           {
             email,
             password,

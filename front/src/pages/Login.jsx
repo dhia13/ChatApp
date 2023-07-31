@@ -1,14 +1,18 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import PasswordInput from '../components/Auth/PasswordInput';
 import Input from '../components/Auth/Input';
-import Logo from '../assets/logos/logo.png';
 import { Link, useNavigate } from 'react-router-dom';
 import Bg from '../assets/images/messaging.jpg';
 import valid from '../assets/icons/valid.png';
 import invalid from '../assets/icons/invalid.png';
+import api from '../api/axiosInstance';
+import Logo from '../components/UI/Logo';
+import { setUser } from '../store/Slices/userSlice';
+import { useDispatch } from 'react-redux';
+import { setNotificationAlert } from '../store/Slices/notificationsSlice';
 
 function Login() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const isEmpty = (value) => {
     return value === '';
@@ -43,9 +47,9 @@ function Login() {
     e.preventDefault();
     if (validEmail && !isEmpty(password));
     setLoading(true);
-    await axios
+    await api
       .post(
-        `${process.env.REACT_APP_API_URL}login`,
+        `/login`,
         {
           email: email,
           password: password,
@@ -56,6 +60,7 @@ function Login() {
         setLoading(false);
         setError(false);
         setSuccess(true);
+        console.log(res.data);
         setLoginSuccessData(res.data.data);
       })
       .catch((error) => {
@@ -66,12 +71,26 @@ function Login() {
   useEffect(() => {
     if (success) {
       setTimeout(() => {
-        console.log(loginSuccessData);
-        localStorage.setItem('userData', JSON.stringify(loginSuccessData));
+        dispatch(
+          setUser({
+            username: loginSuccessData.username,
+            name: loginSuccessData.name,
+            img: loginSuccessData.img,
+            email: loginSuccessData.email,
+            id: loginSuccessData.id,
+            birthday: loginSuccessData.birthday,
+          })
+        );
+        if (loginSuccessData.unseenNotificationsCount > 0) {
+          console.log('dispatching');
+          dispatch(
+            setNotificationAlert(loginSuccessData.unseenNotificationsCount)
+          );
+        }
         navigate('/chat');
       }, 1000);
     }
-  }, [success, loginSuccessData, navigate]);
+  }, [success, loginSuccessData, navigate, dispatch]);
   useEffect(() => {
     if (error) {
       setTimeout(() => {
@@ -85,14 +104,8 @@ function Login() {
         <main className="h-full flex justify-start items-center flex-col z-40 bg-white">
           <section className="flex flex-col h-full">
             <div className="w-full h-full flex items-center justify-center  flex-col ">
-              {/*inputs  */}
-              <Link to="/">
-                <img
-                  className="hidden h-28 w-auto lg:block my-6 cursor-pointer"
-                  src={Logo}
-                  alt="Logo"
-                />
-              </Link>
+              {/* logo */}
+              <Logo width="80" />
               <div className="w-[400px] flex flex-col items-center justify-center pt-4">
                 <form
                   className="flex justify-center items-center gap-3 flex-col"

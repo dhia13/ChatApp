@@ -21,5 +21,5 @@ const loadRoutes = (app, directory, routePrefix = '/api/v1') => {
 };
 
 module.exports = {
-  loadRoutes
+  loadRoutes,
 };

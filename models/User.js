@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const UserSchema = new mongoose.Schema(
   {
@@ -22,11 +22,6 @@ const UserSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    accountType: {
-      type: String,
-      enum: ["client", "doctor"],
-      default: "client",
-    },
     username: {
       type: String,
       unique: true,
@@ -39,10 +34,27 @@ const UserSchema = new mongoose.Schema(
       type: String,
       select: false,
     },
-    img:{
-      type:String,
-      default:""
+    img: {
+      type: String,
+      default: '',
     },
+    socketId: {
+      type: String,
+      default: null,
+    },
+    isOnline: {
+      type: Boolean,
+      default: false,
+    },
+    requests: [{ type: mongoose.Schema.Types.ObjectId, ref: 'ContactAttempt' }],
+    invites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'ContactAttempt' }],
+    notifications: [
+      { type: mongoose.Schema.Types.ObjectId, ref: 'Notification' },
+    ],
+    unseenNotificationsCount: { type: Number, default: 0 },
+    unseeRequestsCount: { type: Number, default: 0 },
+    recentChats: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Chat' }],
+    contacts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   },
   {
     toJSON: { virtuals: true },
@@ -53,13 +65,13 @@ const UserSchema = new mongoose.Schema(
 UserSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
-UserSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) {
+UserSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) {
     next();
   }
   const salt = await bcrypt.genSalt(12);
   this.password = await bcrypt.hash(this.password, salt);
 });
 
-const User = mongoose.model("User", UserSchema);
+const User = mongoose.model('User', UserSchema);
 module.exports = { User };

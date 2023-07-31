@@ -3,6 +3,7 @@ const sendMail = require('../utils/mailer.js');
 const { CLIENT_URL } = process.env;
 const { generateToken, verifyToken } = require('../utils/jwt.js');
 const jwt = require('jsonwebtoken');
+const { logger } = require('../utils/logger');
 
 const authCtrl = {
   register: async (req, res) => {
@@ -66,7 +67,47 @@ const authCtrl = {
         data: userData,
       });
     } catch (err) {
+      logger.Logger.error(err.message);
+      console.log(err.message);
       return res.status(500).json({ msg: err.message, success: false });
+    }
+  },
+  login: async (req, res) => {
+    try {
+      const { email, password } = req.body;
+      const user = await User.findOne({ email });
+      if (!user) {
+        res.status(401).json({ success: false, msg: 'wrong credentials' });
+      } else if (!(await user.matchPassword(password))) {
+        res.status(401).json({ success: false, msg: 'wrong credentials' });
+      } else if (user && (await user.matchPassword(password))) {
+        res.cookie('accessToken', generateToken(user.id, 'access'), {
+          httpOnly: true,
+          secure: true,
+        });
+        res.cookie('refreshToken', generateToken(user.id, 'refresh'), {
+          httpOnly: true,
+          sercure: true,
+        });
+        res.status(200).json({
+          data: {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            confirmedEmail: user.confirmedEmail,
+            username: user.username,
+            gender: user.gender,
+            img: user.img,
+            birthday: user.birthday,
+            unseenNotificationsCount: user.unseenNotificationsCount,
+            unseenIvitesCount: user.unseenIvitesCount,
+          },
+          success: true,
+        });
+      }
+    } catch (error) {
+      logger.Logger.error(err.message);
+      res.status(500).json({ success: false, msg: error.messages });
     }
   },
   checkEmailAvailability: async (req, res) => {
@@ -111,41 +152,6 @@ const authCtrl = {
       }
     } catch (err) {
       return res.status(500).json({ msg: err.message, success: false });
-    }
-  },
-  login: async (req, res) => {
-    try {
-      const { email, password } = req.body;
-      const user = await User.findOne({ email });
-      if (!user) {
-        res.status(401).json({ success: false, msg: 'wrong credentials' });
-      } else if (!(await user.matchPassword(password))) {
-        res.status(401).json({ success: false, msg: 'wrong credentials' });
-      } else if (user && (await user.matchPassword(password))) {
-        res.cookie('accessToken', generateToken(user.id, 'access'), {
-          httpOnly: true,
-          secure: true,
-        });
-        res.cookie('refreshToken', generateToken(user.id, 'refresh'), {
-          httpOnly: true,
-          sercure: true,
-        });
-        res.status(200).json({
-          data: {
-            id: user.id,
-            email: user.email,
-            name: user.name,
-            confirmedEmail: user.confirmedEmail,
-            username: user.username,
-            gender: user.gender,
-            img: user.img,
-            birthday: user.birthday,
-          },
-          success: true,
-        });
-      }
-    } catch (error) {
-      res.status(500).json({ success: false, msg: error.messages });
     }
   },
   requestPasswordChange: async (req, res) => {
@@ -219,7 +225,7 @@ const authCtrl = {
               httpOnly: true,
               secure: true,
             });
-            res.status(200).json({ message: 'Authorized' });
+            res.status(200).json({ message: 'Authorized', id: decoded.id });
           }
         }
       );
@@ -231,7 +237,6 @@ const authCtrl = {
     token = req.header;
   },
   logout: async (req, res) => {
-    console.log('logout');
     try {
       // Clear the access token cookie
       res.clearCookie('accessToken', { httpOnly: true, secure: true });
