@@ -4,7 +4,7 @@ const { logger } = require('../utils/logger');
 
 async function AuthMiddleware(req, res, next) {
   try {
-    if (req.cookies?.refreshToken) {
+    if (req?.cookies?.refreshToken) {
       const refreshToken = req.cookies.refreshToken;
       const decoded = verifyToken(refreshToken, 'refresh');
       if (decoded) {

@@ -17,6 +17,8 @@ const server = http.createServer(app);
 const port = process.env.PORT || 8000;
 const CONNECTION_URL = process.env.CONNECTION_URL;
 const socketMiddleware = setupSocketServer(server);
+// middleware
+
 app.use(corsMiddleware);
 app.use(cookieParser());
 app.use(express.json());
@@ -47,7 +49,18 @@ function loadRoutes(directory) {
 
 loadRoutes(routersDir);
 
-// Serve front-end on production
+// Serve front-end
+
+app.use(express.static(path.join(__dirname, 'front/build')));
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, 'front/build/index.html'))
+);
+// Fallback route for 404 errors
+app.use((req, res) => {
+  res
+    .status(404)
+    .sendFile(path.join(__dirname, 'public', 'pages', '404', 'index.html'));
+});
 
 // Connect to MongoDB and start the server
 mongoose
@@ -56,30 +69,7 @@ mongoose
     server.listen(port, () => {
       console.log(`Server is running on port http://localhost:${port}`);
     });
-
-    // Use the socket middleware and pass the server instance
   })
   .catch((error) => {
     console.log(`${error} did not connect`);
   });
-
-if (process.env?.NODE_ENV?.trim() === 'production') {
-  console.log('in prod');
-  app.use(express.static(path.join(__dirname, '/front/build')));
-  app.get(
-    '*',
-    (req, res) =>
-      res.sendFile(path.resolve(__dirname, 'front', 'build', 'index.html'))
-    // res.status(200)
-  );
-} else {
-  app.get('/', (req, res) => {
-    res.send('API is running in dev mode');
-  });
-  // Fallback route for 404 errors
-  app.use((req, res) => {
-    res
-      .status(404)
-      .sendFile(path.join(__dirname, 'public', 'pages', '404', 'index.html'));
-  });
-}
