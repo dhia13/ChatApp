@@ -13,12 +13,9 @@ const HomeNavbar = ({ isTokenChecked, setIsTokenChecked }) => {
           withCredentials: true,
         }
       );
-      console.log('logged out');
       localStorage.clear();
       setIsTokenChecked(false);
-    } catch (err) {
-      console.log('logout failed');
-    }
+    } catch (err) {}
   };
   return (
     <div className="w-full h-[80px] flex justify-start items-center bg-gray-500">

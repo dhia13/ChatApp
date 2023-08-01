@@ -3,6 +3,7 @@ import api from '../../api/axiosInstance';
 import { GrAdd } from 'react-icons/gr';
 import { useDispatch } from 'react-redux';
 import { fetchInvites, fetchRequests } from '../../store/Slices/contactsSlice';
+import { toast } from 'react-toastify';
 
 const NewContact = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const NewContact = () => {
   }, [dispatch]);
   const handleSendRequest = async (id) => {
     try {
+      setLoading(true);
       await api
         .post(
           '/sendRequest',
@@ -39,26 +41,53 @@ const NewContact = () => {
           }
         )
         .then((res) => {
+          const notify = () =>
+            toast.success('Request sent', {
+              position: 'top-right',
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: 'light',
+            });
+          notify();
           searsh(keyword);
         });
     } catch (error) {
+      const notify = () =>
+        toast.error('Something went wrong', {
+          position: 'top-right',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        });
+      notify();
       throw Error('Failed to send request');
     }
   };
   return (
     <div className="w-[500px] h-[400px] absolute top-1/2 left-1/2 bg-white rounded-md -translate-x-1/2 -translate-y-1/2 flex flex-col border border-gray-400 z-50">
-      <div className="w-full h-[50px] flex justify-start items-center border-b border-gray-500">
+      <div className="w-full h-[50px] flex justify-start items-center">
         <h1 className="px-4 text-xl font-semibold">Find new friends</h1>
       </div>
-      <input
-        className="w-full h-[30px] border-b border-black p-4 outline-none"
-        type="text"
-        value={keyword}
-        onChange={(e) => setKeyword(e.target.value)}
-        placeholder="Search by Name, Username, Email"
-      />
+      <div className="w-full h-[50px] flex justify-center items-center">
+        <input
+          className="w-[96%] h-[30px] bg-gray-50 rounded-md p-4 py-5 outline-none shadow-md"
+          type="text"
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+          autoComplete="off"
+          placeholder="Search by Name, Username, Email"
+        />
+      </div>
       {loading ? (
-        <div className="w-full h-full justify-center items-center flex">
+        <div className="w-full h-[250px] justify-center items-center flex">
           <div role="status">
             <svg
               aria-hidden="true"
@@ -112,7 +141,7 @@ const NewContact = () => {
               ))}
             </div>
           ) : (
-            <div className="w-full h-full flex justify-center items-center">
+            <div className="w-full h-[200px] flex justify-center items-center">
               No result
             </div>
           )}

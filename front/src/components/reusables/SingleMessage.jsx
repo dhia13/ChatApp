@@ -6,7 +6,7 @@ const SingleMessage = ({ message, isMine, userImg }) => {
     <>
       {isMine ? (
         <div className="w-full  flex justify-end items-start gap-4 p-2 my-2">
-          <div className="max-w-2/3 bg-white px-2 pb-1 rounded-md border border-gray-200 shadow-sm flex justify-end flex-col items-end text-end">
+          <div className="mt-1 max-w-2/3 pb-1 rounded-md bg-gray-50 shadow-sm p-2">
             <p>{content}</p>
             <p className="text-xs font-thin">{format(updatedAt)}</p>
           </div>
@@ -14,7 +14,7 @@ const SingleMessage = ({ message, isMine, userImg }) => {
             <img
               src={userImg}
               alt="profileImg"
-              className="w-[40px] h-[40px] rounded-full border border-white"
+              className="w-[40px] h-[40px] rounded-full border border-white object-cover"
             />
           </div>
         </div>
@@ -24,10 +24,10 @@ const SingleMessage = ({ message, isMine, userImg }) => {
             <img
               src={userImg}
               alt="profileImg"
-              className="w-[40px] h-[40px] rounded-full border border-white"
+              className="w-[40px] h-[40px] rounded-full border border-white object-cover"
             />
           </div>
-          <div className="border border-gray-200 max-w-2/3 bg-white px-2 pb-1 rounded-md shadow-sm">
+          <div className="mt-1 max-w-2/3 min-w-[100px] pb-1 rounded-md bg-gray-50 shadow-sm p-2">
             <p>{content}</p>
             <p className="text-xs font-thin">{format(updatedAt)}</p>
           </div>

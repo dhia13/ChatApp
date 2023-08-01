@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import SingleMessage from './SingleMessage';
+import SingleMessage from '../reusables/SingleMessage';
 import styled from 'styled-components';
 import api from '../../api/axiosInstance';
 import useMessages from '../../hooks/useMessages';
 import { fetchRecentRooms } from '../../store/Slices/roomsSlice';
+import { LiaPaperPlaneSolid } from 'react-icons/lia';
 
 const ChatBox = () => {
   const dispatch = useDispatch();
@@ -79,18 +80,19 @@ const ChatBox = () => {
       } transition-all duration-200 h-screen`}
     >
       {currentRoomId === '' ? (
-        <div className="w-full h-full flex justify-center items-center">
-          select a contact to start chatting
+        <div className="w-full h-full flex justify-center items-center bg-gray-200 text-2xl font-semibold">
+          Select a chat or start a new conversation
         </div>
       ) : (
         <>
-          <div className="w-full h-[60px] flex justify-center items-center border-b border-blue-200">
-            {secondUser?.username}
+          <div className="w-full h-[80px] flex justify-center font-bold items-center border-b-2 border-blue-300 bg-blue-50">
+            {secondUser?.username.charAt(0).toUpperCase() +
+              secondUser?.username.slice(1)}
           </div>
-          <ChatBoxContainer className="w-full h-[calc(100vh-150px)] justify-start items-center flex flex-col gap-2 overflow-y-auto">
+          <ChatBoxContainer className="w-full h-[calc(100vh-170px)] justify-start items-center flex flex-col gap-2 overflow-y-auto">
             {messages.length > 0 &&
               messages.map((m) => (
-                <div ref={scrollRef} className="w-full">
+                <div ref={scrollRef} className="w-full" key={m._id}>
                   <SingleMessage
                     message={m}
                     isMine={m.owner === id}
@@ -100,16 +102,31 @@ const ChatBox = () => {
               ))}
           </ChatBoxContainer>
           <form
-            className="w-full h-[80px] border-t border-blue-200"
+            className="w-full h-[80px] flex justify-center items-center relative"
             onSubmit={(e) => handleSendMessage(e)}
           >
             <input
-              className="w-full h-full border-none outline-none pl-2"
+              className="w-[96%] bg-gray-100 shadow-md h-[60px] border-none outline-none pl-2 rounded-md"
               value={message}
               type="text"
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Send a message"
             />
+            {message === '' ? (
+              <LiaPaperPlaneSolid
+                className={`absolute right-[45px] top-[30px] text-2xl cursor-pointer hover:text-blue-700 ${
+                  message !== '' && 'text-blue-900'
+                }`}
+                onClick={(e) => handleSendMessage(e)}
+              />
+            ) : (
+              <LiaPaperPlaneSolid
+                className={`absolute right-[45px] top-[30px] text-2xl cursor-pointer hover:text-blue-700 ${
+                  message !== '' && 'text-blue-900'
+                }`}
+                onClick={(e) => handleSendMessage(e)}
+              />
+            )}
           </form>
         </>
       )}
@@ -135,18 +152,18 @@ const ChatBoxContainer = styled.div`
 
   /* For WebKit based browsers (Chrome, Safari, Opera) */
   &::-webkit-scrollbar-thumb {
-    background-color: #888;
+    background-color: rgb(147 197 253);
     border-radius: 4px;
   }
 
   /* For WebKit based browsers (Chrome, Safari, Opera) */
   &::-webkit-scrollbar-thumb:hover {
-    background-color: #555;
+    background-color: #3f65d4;
   }
 
   /* For WebKit based browsers (Chrome, Safari, Opera) */
   &::-webkit-scrollbar-thumb:active {
-    background-color: #333;
+    background-color: #466cdf;
   }
 
   /* For WebKit based browsers (Chrome, Safari, Opera) */

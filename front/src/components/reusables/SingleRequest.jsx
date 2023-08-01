@@ -29,7 +29,7 @@ const SingeInvites = ({ request }) => {
         <img
           src={request.receiver.img}
           alt="profile"
-          className="w-[40px] h-[40px] rounded-full mx-2 border border-blue-300"
+          className="w-[40px] h-[40px] rounded-full mx-2 border border-blue-300 object-cover"
         />
         <div className="flex justify-start items-start flex-col">
           <p className="text-xs font-light">you sent request to</p>

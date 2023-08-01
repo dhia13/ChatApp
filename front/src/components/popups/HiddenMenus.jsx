@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   toggleAddChat,
@@ -8,7 +7,6 @@ import {
   toggleUserMenu,
 } from '../../store/Slices/uiSlice';
 import NewContact from './NewContact';
-import NewChat from '../ChatUi/NewChat';
 
 const HiddenMenus = () => {
   const dispatch = useDispatch();
@@ -41,14 +39,9 @@ const HiddenMenus = () => {
           onClick={() => dispatch(toggleAddChat())}
         ></div>
       )}
-      {addChat && (
-        <div className="w-[500px] h-[400px] absolute top-1/2 left-1/2 z-50 bg-white rounded-md -translate-x-1/2 -translate-y-1/2">
-          <NewChat />
-        </div>
-      )}
       {addContact && (
         <div
-          className="w-screen h-screen absolute bg-black opacity-20"
+          className="w-screen h-screen absolute bg-black opacity-20 z-40"
           onClick={() => dispatch(toggleAddContact())}
         ></div>
       )}

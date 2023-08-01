@@ -33,7 +33,6 @@ const logger = winston.createLogger({
 
 // Error logging middleware
 function errorLogger(err, req, res, next) {
-  console.log('hi');
   logger.error(err.message || err);
   next(err);
 }

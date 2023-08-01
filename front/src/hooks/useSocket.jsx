@@ -4,6 +4,7 @@ import useUser from './userUser';
 import { useDispatch, useSelector } from 'react-redux';
 import { setOnlineUsers } from '../store/Slices/contactsSlice';
 import { addNotification } from '../store/Slices/notificationsSlice';
+import { toast } from 'react-toastify';
 
 const useSocket = () => {
   const currentOnlineUsers = useSelector((state) => state.contacts.onlineUsers);
@@ -26,7 +27,6 @@ const useSocket = () => {
         // Send the user ID as the socket connection ID
       });
       socket.on('isOnline', (data) => {
-        console.log(data);
         // Handle the online status update received from the server
         const prevOnlineUsers = prevOnlineUsersRef.current;
 
@@ -40,6 +40,18 @@ const useSocket = () => {
       });
       socket.on('notification', (data) => {
         dispatch(addNotification(data.newNotification));
+        const notify = () =>
+          toast.success('New request', {
+            position: 'top-left',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+          });
+        notify();
       });
       // Clean up on component unmount
       // Add 'beforeunload' event listener for cleanup

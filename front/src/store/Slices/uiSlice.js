@@ -28,6 +28,15 @@ const uiSloce = createSlice({
       state.notifications = false;
       state.invites = false;
     },
+    resetSettings: (state, action) => {
+      state.addChat = false;
+      state.addContact = false;
+      state.userMenu = false;
+      state.currentChat = false;
+      state.editContacts = false;
+      state.notifications = false;
+      state.invites = false;
+    },
     toggleIsRecent: (state, action) => {
       state.isRecent = action.payload;
     },
@@ -91,6 +100,7 @@ export const {
   toggleEditContacts,
   toggleNotifications,
   toggleInvites,
+  resetSettings,
 } = uiSloce.actions;
 
 export default uiSloce.reducer;

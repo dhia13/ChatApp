@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import api from '../../../api/axiosInstance';
 
 const NotificationMenu = ({ menu }) => {
@@ -11,7 +11,6 @@ const NotificationMenu = ({ menu }) => {
       })
       .then((res) => {
         setLoading(false);
-        console.log(res.data);
         setNotificationsList(res.data.notifications);
       });
   };
@@ -31,9 +30,8 @@ const NotificationMenu = ({ menu }) => {
   };
   return (
     <div
-      className={`w-[260px] h-[400px] border border-blue-200  bg-white z-50 flex justify-center items-center rounded-md absolute shadow-md ${
-        menu ? 'top-[54px] left-[212px]' : 'top-[49px] left-[34px]'
-      }`}
+      className={`w-[260px] h-[400px] border border-blue-200  bg-white z-50 flex justify-center items-center rounded-md absolute shadow-md top-[65px] left-[170px]
+      `}
     >
       {loading ? (
         <div
@@ -81,14 +79,14 @@ const NotificationMenu = ({ menu }) => {
               </div>
             </div>
           ))}
-          <div
-            className="w-full h-[40px] bottom-0 flex justify-center items-center absolute hover:bg-gray-200 cursor-pointer"
-            onClick={handleClearNotifications}
-          >
-            Clear all notifications
-          </div>
         </div>
       )}
+      <div
+        className="w-full h-[40px] bottom-0 flex justify-center items-center absolute bg-gray-100 hover:bg-gray-200 cursor-pointer"
+        onClick={handleClearNotifications}
+      >
+        Clear all notifications
+      </div>
     </div>
   );
 };

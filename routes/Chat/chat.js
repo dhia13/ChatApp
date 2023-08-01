@@ -22,7 +22,6 @@ router.put('/findChatRoom', async (req, res) => {
       res.status(201).json({ msg: 'chatRoom Created', id: newChatRoom._id });
     }
   } catch (error) {
-    console.log(error);
     res.status(500).json(error);
   }
 });
@@ -42,7 +41,6 @@ router.put('/getMessages', async (req, res) => {
       target: secondUser.users[0],
     });
   } catch (error) {
-    console.log(error);
     res.status(500).json(error);
   }
 });
@@ -69,7 +67,6 @@ router.post('/newMessage', async (req, res) => {
     }
     res.status(200).json({ success: true });
   } catch (error) {
-    console.log(error);
     res.status(500).json(error);
   }
 });
@@ -91,7 +88,6 @@ router.get('/rooms', async (req, res) => {
       .sort({ updatedAt: -1 });
     res.status(200).json({ success: true, rooms });
   } catch (error) {
-    console.log(error);
     res.status(500).json(error);
   }
 });

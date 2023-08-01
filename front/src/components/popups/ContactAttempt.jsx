@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetchInvites, fetchRequests } from '../../store/Slices/contactsSlice';
-import Invites from './Invites';
-import Requests from './Requests';
+import Invites from '../reusables/Invites';
+import Requests from '../reusables/Requests';
 
-const RenderInvites = () => {
+const ContactAttempt = () => {
   const dispatch = useDispatch();
-  const { menu } = useSelector((state) => state.ui);
   const [isInvites, setIsInvites] = useState(true);
   useEffect(() => {
     if (isInvites) {
@@ -18,9 +17,7 @@ const RenderInvites = () => {
   return (
     <div
       className={`w-[300px] h-[300px] border border-blue-200 bg-white z-50 flex flex-col 
-      justify-start items-start rounded-md absolute shadow-md ${
-        menu ? 'top-[54px] left-[255px]' : 'top-[49px] left-[34px]'
-      }`}
+      justify-start items-start rounded-md absolute shadow-md top-[65px] left-[195px]`}
     >
       <div className="w-full h-[40px] flex justify-center items-center border-b border-gray-400 ">
         <div
@@ -45,4 +42,4 @@ const RenderInvites = () => {
   );
 };
 
-export default RenderInvites;
+export default ContactAttempt;

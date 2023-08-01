@@ -50,7 +50,7 @@ const SingeInvites = ({ invite }) => {
       <img
         src={invite.sender.img}
         alt="profile"
-        className="w-[40px] h-[40px] rounded-full mx-2 border border-blue-300"
+        className="w-[40px] h-[40px] rounded-full mx-2 border border-blue-300 object-cover"
       />
       <div className="flex justify-start items-start flex-col">
         <p className="text-sm">{invite.sender.username}</p>

@@ -48,22 +48,6 @@ function loadRoutes(directory) {
 loadRoutes(routersDir);
 
 // Serve front-end on production
-if (process.env?.NODE_ENV?.trim() === 'production') {
-  app.use(express.static(path.join(__dirname, '/frontend/build')));
-  app.get('*', (req, res) =>
-    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
-  );
-} else {
-  app.get('/', (req, res) => {
-    res.send('API is running in dev mode');
-  });
-  // Fallback route for 404 errors
-  app.use((req, res) => {
-    res
-      .status(404)
-      .sendFile(path.join(__dirname, 'public', 'pages', '404', 'index.html'));
-  });
-}
 
 // Connect to MongoDB and start the server
 mongoose
@@ -78,3 +62,24 @@ mongoose
   .catch((error) => {
     console.log(`${error} did not connect`);
   });
+
+if (process.env?.NODE_ENV?.trim() === 'production') {
+  console.log('in prod');
+  app.use(express.static(path.join(__dirname, '/front/build')));
+  app.get(
+    '*',
+    (req, res) =>
+      res.sendFile(path.resolve(__dirname, 'front', 'build', 'index.html'))
+    // res.status(200)
+  );
+} else {
+  app.get('/', (req, res) => {
+    res.send('API is running in dev mode');
+  });
+  // Fallback route for 404 errors
+  app.use((req, res) => {
+    res
+      .status(404)
+      .sendFile(path.join(__dirname, 'public', 'pages', '404', 'index.html'));
+  });
+}

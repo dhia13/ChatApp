@@ -15,7 +15,6 @@ const useUser = () => {
 
         if (res.status === 200) {
           setUser({ isLogged: true, user: res.data });
-          // console.log(res.data);
         } else {
           setUser({ isLogged: false, user: null });
         }

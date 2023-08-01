@@ -60,7 +60,6 @@ function Login() {
         setLoading(false);
         setError(false);
         setSuccess(true);
-        console.log(res.data);
         setLoginSuccessData(res.data.data);
       })
       .catch((error) => {
@@ -82,7 +81,6 @@ function Login() {
           })
         );
         if (loginSuccessData.unseenNotificationsCount > 0) {
-          console.log('dispatching');
           dispatch(
             setNotificationAlert(loginSuccessData.unseenNotificationsCount)
           );
