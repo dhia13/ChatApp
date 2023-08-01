@@ -1,0 +1,45 @@
+{"level":"info","message":"GET / 304  - Not Modified"}
+{"level":"info","message":"GET /static/css/main.41150e2a.css 304  - Not Modified"}
+{"level":"info","message":"GET /static/js/main.df19cb83.js 304  - Not Modified"}
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
+{"level":"info","message":"GET / 304  - Not Modified"}
+{"level":"info","message":"GET /static/css/main.41150e2a.css 304  - Not Modified"}
+{"level":"info","message":"GET /static/js/main.df19cb83.js 304  - Not Modified"}
+{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+{"level":"info","message":"GET /logo192.png 200  644 OK"}
+{"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 200  644 OK"}
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+{"level":"info","message":"PUT /api/v1/getMessages 500  221 Internal Server Error"}
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
+{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/invitesList 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/contacts?keyword= 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/requestsList 200  - OK"}
+{"level":"info","message":"GET /api/v1/contacts?keyword=k 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/contacts?keyword= 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/contacts?keyword=s 304  - Not Modified"}
+{"level":"info","message":"POST /api/v1/sendRequest 200  37 OK"}
+{"level":"info","message":"GET /api/v1/contacts?keyword=s 200  52 OK"}
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/readNotifications 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/notificationsList 200  - OK"}
+{"level":"info","message":"GET /api/v1/invitesList 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/requestsList 200  - OK"}
+{"level":"info","message":"PUT /api/v1/removeRequest 200  41 OK"}
+{"level":"info","message":"GET /api/v1/requestsList 200  - OK"}
+{"level":"info","message":"PUT /api/v1/removeRequest 200  41 OK"}
+{"level":"info","message":"GET /api/v1/requestsList 200  52 OK"}
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
+{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
