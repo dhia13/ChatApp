@@ -1,30 +1,41 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { setRoom } from '../../store/Slices/roomsSlice';
 import api from '../../api/axiosInstance';
-
+import IconContainer from './IconContainer';
+import { RiDeleteBinLine } from 'react-icons/ri';
+import { fetchContacts } from '../../store/Slices/contactsSlice';
 const SingleContact = ({ contact }) => {
   const dispatch = useDispatch();
+  const { editContacts } = useSelector((state) => state.ui);
+
   const onlineUsers = useSelector((state) => state.contacts.onlineUsers);
   const handleOpenChat = async (id) => {
-    try {
-      await api
-        .put(
-          '/findChatRoom',
-          { target: id },
-          {
-            withCredentials: true,
-          }
-        )
-        .then((res) => {
-          dispatch(setRoom(res.data.id));
-        });
-    } catch (error) {}
+    if (!editContacts) {
+      try {
+        await api
+          .put(
+            '/findChatRoom',
+            { target: id },
+            {
+              withCredentials: true,
+            }
+          )
+          .then((res) => {
+            dispatch(setRoom(res.data.id));
+          });
+      } catch (error) {}
+    }
+  };
+  const handleRemoveContact = async (id) => {
+    api.delete(`/contact/${id}`, { withCredentials: true }).then((res) => {
+      dispatch(fetchContacts());
+    });
   };
   return (
     <div
       key={contact.id}
-      className={`h-[70px] w-[96%] py-4 flex justify-between items-center  cursor-pointer relative hover:bg-gray-200 rounded-md `}
       onClick={() => handleOpenChat(contact.id)}
+      className={`h-[70px] w-[96%] py-4 flex justify-between items-center  cursor-pointer relative hover:bg-gray-200 rounded-md `}
     >
       <div className="flex justify-start items-center gap-1 w-full">
         <div
@@ -49,7 +60,14 @@ const SingleContact = ({ contact }) => {
           </div>
         </div>
       </div>
-      <div className="mr-8">ss</div>
+      {editContacts && (
+        <IconContainer
+          className="mr-2"
+          handleClick={() => handleRemoveContact(contact.id)}
+        >
+          <RiDeleteBinLine />
+        </IconContainer>
+      )}
     </div>
   );
 };

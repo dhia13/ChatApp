@@ -83,7 +83,7 @@ router.get('/rooms', async (req, res) => {
       })
       .populate({
         path: 'messages',
-        options: { sort: { createdAt: -1 }, limit: 1 }, // Sort messages by 'createdAt' in descending order and only get the latest one
+        options: { sort: { createdAt: -1 }, limit: 1 },
       })
       .sort({ updatedAt: -1 });
     res.status(200).json({ success: true, rooms });

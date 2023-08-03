@@ -1,10 +1,15 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleAddContact, toggleIsRecent } from '../../store/Slices/uiSlice';
+import {
+  toggleAddContact,
+  toggleEditContacts,
+  toggleIsRecent,
+} from '../../store/Slices/uiSlice';
 import IconContainer from '../reusables/IconContainer';
 import { IoMdAdd } from 'react-icons/io';
+import { LiaEditSolid, LiaSave } from 'react-icons/lia';
 const ContactsOrRooms = () => {
-  const { isRecent } = useSelector((state) => state.ui);
+  const { isRecent, editContacts } = useSelector((state) => state.ui);
   const dispatch = useDispatch();
   return (
     <div className="w-full h-[30px] flex justify-between my-4 items-center">
@@ -27,12 +32,20 @@ const ContactsOrRooms = () => {
         </div>
       </div>
       {!isRecent && (
-        <IconContainer
-          handleClick={() => dispatch(toggleAddContact())}
-          className="mr-2"
-        >
-          <IoMdAdd />
-        </IconContainer>
+        <div className="flex justify-center items-center gap-4 mr-2">
+          <IconContainer
+            handleClick={() => dispatch(toggleAddContact())}
+            className="mr-2"
+          >
+            <IoMdAdd />
+          </IconContainer>
+          <IconContainer
+            handleClick={() => dispatch(toggleEditContacts())}
+            className={'w-1/6'}
+          >
+            {editContacts ? <LiaSave /> : <LiaEditSolid />}
+          </IconContainer>
+        </div>
       )}
     </div>
   );

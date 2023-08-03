@@ -1,14 +1,21 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from '../../store/Slices/contactsSlice';
+import {
+  fetchContacts,
+  fetchContactsWitouLoading,
+} from '../../store/Slices/contactsSlice';
 import ListRender from '../reusables/ListRender';
 import SingleContact from '../reusables/SingleContact';
 const Contacts = () => {
   const dispatch = useDispatch();
   const { contactsList, loading } = useSelector((state) => state.contacts);
   useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+    if (contactsList.length > 0) {
+      dispatch(fetchContactsWitouLoading());
+    } else {
+      dispatch(fetchContacts());
+    }
+  }, [contactsList.length, dispatch]);
   return (
     <ListRender
       loading={loading}

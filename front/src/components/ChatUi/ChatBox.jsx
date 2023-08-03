@@ -1,18 +1,20 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import SingleMessage from '../reusables/SingleMessage';
 import styled from 'styled-components';
 import api from '../../api/axiosInstance';
-import useMessages from '../../hooks/useMessages';
-import { fetchRecentRooms } from '../../store/Slices/roomsSlice';
+import useSocket from '../../hooks/useSocket';
+import {
+  fetchRecentRooms,
+  fetchRecentRoomsWitoutLoading,
+} from '../../store/Slices/roomsSlice';
 import { LiaPaperPlaneSolid } from 'react-icons/lia';
 
 const ChatBox = () => {
   const dispatch = useDispatch();
-  const menu = useSelector((state) => state.ui.menu);
   const [message, setMessage] = useState('');
   const scrollRef = useRef();
-  const { currentRoomId } = useSelector((state) => state.rooms);
+  const { currentRoomId, rooms } = useSelector((state) => state.rooms);
   const [secondUser, setSecondUser] = useState();
   const [messages, setMessages] = useState([]);
   const { img, id } = useSelector((state) => state.user);
@@ -33,7 +35,9 @@ const ChatBox = () => {
           });
       } catch (error) {}
     };
-    getMessages();
+    if (currentRoomId) {
+      getMessages();
+    }
   }, [currentRoomId]);
   const handleSendMessage = (e) => {
     e.preventDefault();
@@ -58,26 +62,32 @@ const ChatBox = () => {
         { withCredentials: true }
       )
       .then((res) => {
-        dispatch(fetchRecentRooms());
+        if (rooms.length > 0) {
+          dispatch(fetchRecentRoomsWitoutLoading(id));
+        } else {
+          dispatch(fetchRecentRooms(id));
+        }
       });
   };
-  const newMsg = useMessages();
+  const newMsg = useSocket();
 
   useEffect(() => {
     if (newMsg && currentRoomId === newMsg.room) {
       setMessages((prevMessages) => [...prevMessages, newMsg]);
     }
-    dispatch(fetchRecentRooms());
-  }, [currentRoomId, dispatch, newMsg]);
+    if (rooms.length > 0) {
+      dispatch(fetchRecentRoomsWitoutLoading());
+    } else {
+      dispatch(fetchRecentRooms());
+    }
+  }, [currentRoomId, dispatch, newMsg, rooms.length]);
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
   return (
     <div
-      className={`${
-        menu ? 'w-[calc(100%-290px)]' : 'w-[calc(100%-60px)]'
-      } transition-all duration-200 h-screen`}
+      className={`w-[calc(100%-290px)] transition-all duration-200 h-screen`}
     >
       {currentRoomId === '' ? (
         <div className="w-full h-full flex justify-center items-center bg-gray-200 text-2xl font-semibold">
@@ -96,7 +106,7 @@ const ChatBox = () => {
                   <SingleMessage
                     message={m}
                     isMine={m.owner === id}
-                    userImg={m.owner === id ? img : secondUser.img}
+                    userImg={m?.owner === id ? img : secondUser?.img}
                   />
                 </div>
               ))}

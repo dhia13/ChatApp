@@ -1,16 +1,22 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import io from 'socket.io-client';
 import useUser from './userUser';
 import { useDispatch, useSelector } from 'react-redux';
-import { setOnlineUsers } from '../store/Slices/contactsSlice';
+import {
+  fetchContactsWitouLoading,
+  newInvite,
+  setOnlineUsers,
+} from '../store/Slices/contactsSlice';
 import { addNotification } from '../store/Slices/notificationsSlice';
 import { toast } from 'react-toastify';
 
 const useSocket = () => {
-  const currentOnlineUsers = useSelector((state) => state.contacts.onlineUsers);
   const dispatch = useDispatch();
   const user = useUser();
-  const prevOnlineUsersRef = useRef(currentOnlineUsers); // Ref to store the previous onlineUsers value
+  const [msg, setMessage] = useState();
+  const currentOnlineUsers = useSelector((state) => state.contacts.onlineUsers);
+
+  const prevOnlineUsersRef = useRef(currentOnlineUsers);
   useEffect(() => {
     let socket;
 
@@ -21,15 +27,14 @@ const useSocket = () => {
           userId: user.user.id,
         },
       });
-
-      // Listen for the 'connect' event
+      socket.on('msg', (data) => {
+        setMessage(data);
+      });
       socket.on('connection', () => {
         // Send the user ID as the socket connection ID
       });
       socket.on('isOnline', (data) => {
-        // Handle the online status update received from the server
         const prevOnlineUsers = prevOnlineUsersRef.current;
-
         if (data.online && !prevOnlineUsers.includes(data.id)) {
           dispatch(setOnlineUsers([...prevOnlineUsers, data.id]));
         } else if (!data.online && prevOnlineUsers.includes(data.id)) {
@@ -38,44 +43,54 @@ const useSocket = () => {
           );
         }
       });
-      socket.on('notification', (data) => {
-        dispatch(addNotification(data.newNotification));
+      socket.on('invite', () => {
+        dispatch(newInvite());
         const notify = () =>
-          toast.success('New request', {
-            position: 'top-left',
-            autoClose: 5000,
-            hideProgressBar: false,
+          toast.success('New Invitation', {
+            position: 'top-right',
+            autoClose: 2000,
+            hideProgressBar: true,
             closeOnClick: true,
             pauseOnHover: true,
-            draggable: true,
+            draggable: false,
             progress: undefined,
             theme: 'light',
           });
         notify();
       });
-      // Clean up on component unmount
-      // Add 'beforeunload' event listener for cleanup
-      const handleBeforeUnload = () => {
-        socket.disconnect();
-      };
-
-      window.addEventListener('beforeunload', handleBeforeUnload);
-
-      // Clean up on component unmount
-      return () => {
-        // Remove the 'beforeunload' event listener
-        window.removeEventListener('beforeunload', handleBeforeUnload);
-
-        // Perform cleanup tasks
-        socket.disconnect();
-      };
+      socket.on('notification', (data) => {
+        if (data?.type === 'inviteAccepted') {
+          dispatch(addNotification());
+          const notify = () =>
+            toast.success(
+              `${data.from.username} accepted your friend request`,
+              {
+                position: 'top-right',
+                autoClose: 2000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+                theme: 'light',
+              }
+            );
+          notify();
+          dispatch(fetchContactsWitouLoading());
+        }
+      });
     }
+
+    // Cleanup the socket connection when the component unmounts
+    return () => {
+      if (socket) {
+        socket.disconnect();
+      }
+    };
   }, [dispatch, user?.isLogged, user?.user?.id]);
 
-  // Update the previous onlineUsers value when it changes
-  useEffect(() => {
-    prevOnlineUsersRef.current = currentOnlineUsers;
-  }, [currentOnlineUsers]);
+  // Return the 'msg' state
+  return msg;
 };
 
 export default useSocket;

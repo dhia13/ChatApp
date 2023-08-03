@@ -1,8 +1,11 @@
+const userCtrl = require('../../controllers/user');
 const { User } = require('../../models/User');
 const { Notification } = require('../../models/notification');
 
 const router = require('express').Router();
 //register
+router.get('/initData', userCtrl.initData);
+
 router.post('/user', (req, res) => {
   res.status(200).json({ success: true });
 });

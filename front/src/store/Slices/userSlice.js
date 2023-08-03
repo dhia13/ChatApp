@@ -10,6 +10,7 @@ const initialState = {
   id: '',
   birthday: '',
   gender: '',
+  isLogged: false,
 };
 
 const userSlice = createSlice({
@@ -25,10 +26,17 @@ const userSlice = createSlice({
       state.birthday = action.payload.birthday;
       state.confirmenEmail = action.payload.confirmenEmail;
       state.email = action.payload.email;
+      state.isLogged = true;
     },
     clearUser: (state) => {
+      state.name = '';
       state.username = '';
       state.email = '';
+      state.img = '';
+      state.id = '';
+      state.birthday = '';
+      state.gender = '';
+      state.isLogged = false;
     },
   },
 });

@@ -28,11 +28,9 @@ const UserSchema = new mongoose.Schema(
     },
     gender: {
       type: String,
-      select: false,
     },
     birthday: {
       type: String,
-      select: false,
     },
     img: {
       type: String,
@@ -52,8 +50,7 @@ const UserSchema = new mongoose.Schema(
       { type: mongoose.Schema.Types.ObjectId, ref: 'Notification' },
     ],
     unseenNotificationsCount: { type: Number, default: 0 },
-    unseeRequestsCount: { type: Number, default: 0 },
-    recentChats: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Chat' }],
+    unseenIvitesCount: { type: Number, default: 0 },
     contacts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   },
   {

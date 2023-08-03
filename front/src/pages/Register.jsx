@@ -218,7 +218,7 @@ function Register() {
         <div className="w-full h-full flex items-center justify-start  flex-col  ">
           <Link to="/">
             <img
-              className="hidden h-28 w-auto lg:block my-6 cursor-pointer"
+              className={`w-[120px] lg:block mx-10 cursor-pointer`}
               src={Logo}
               alt="Logo"
             />

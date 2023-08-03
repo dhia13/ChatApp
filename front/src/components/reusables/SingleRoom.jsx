@@ -34,14 +34,22 @@ const SingleRoom = ({ room }) => {
             {room.users[0].username.charAt(0).toUpperCase() +
               room.users[0].username.slice(1)}
           </h3>
-          <div className="flex justify-start items-center gap-2">
-            <p className="font-extralight text-xs">
-              {room?.messages[0]?.content}
-            </p>
-            <p className="font-extralight text-xs">
-              {format(room?.messages[0]?.update)}
-            </p>
-          </div>
+          {room?.messages[0] && (
+            <div className="flex justify-start items-center gap-2">
+              <p
+                className={` ${
+                  room?.seen
+                    ? 'text-base font-semibold'
+                    : 'font-extralight text-xs'
+                }`}
+              >
+                {room?.messages[0]?.content}
+              </p>
+              <p className="font-extralight text-xs">
+                {format(room?.messages[0]?.update)}
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>

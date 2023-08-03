@@ -6,21 +6,51 @@ import RecentRooms from '../components/ChatUi/RecentRooms';
 import ContactsOrRooms from '../components/UI/ContactsOrRooms';
 import Contacts from '../components/ChatUi/Contacts';
 import useUser from '../hooks/userUser';
-import { useSelector } from 'react-redux';
-import useSocket from '../hooks/useSocket';
+import { useDispatch, useSelector } from 'react-redux';
 import HiddenMenus from '../components/popups/HiddenMenus';
 import Loading from '../components/reusables/Loading/Loading';
 import { ToastContainer } from 'react-toastify';
+import api from '../api/axiosInstance';
+import { setUser } from '../store/Slices/userSlice';
+import { setNotificationAlert } from '../store/Slices/notificationsSlice';
+import { setInvitesAlert } from '../store/Slices/contactsSlice';
 
 const Chat = () => {
   const navigate = useNavigate();
   const user = useUser();
-  useSocket();
+  const dispatch = useDispatch();
   useEffect(() => {
     if (user !== null && user?.isLogged === false) {
       navigate('/login');
+    } else {
+      const getInitData = async () => {
+        await api
+          .get('/initData', {
+            withCredentials: true,
+          })
+          .then((res) => {
+            const user = res.data;
+            dispatch(
+              setUser({
+                username: user.username,
+                name: user.name,
+                img: user.img,
+                email: user.email,
+                id: user.id,
+                birthday: user.birthday,
+              })
+            );
+            if (user.unseenNotificationsCount > 0) {
+              dispatch(setNotificationAlert(user.unseenNotificationsCount));
+            }
+            if (user.unseenIvitesCount > 0) {
+              dispatch(setInvitesAlert(user.unseenIvitesCount));
+            }
+          });
+      };
+      getInitData();
     }
-  }, [navigate, user]);
+  }, [dispatch, navigate, user]);
   const { isRecent } = useSelector((state) => state.ui);
   const [currentChat, setCurrentChat] = useState(null);
   if (user === null) {

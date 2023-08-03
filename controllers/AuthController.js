@@ -43,32 +43,34 @@ const authCtrl = {
       // const emailActivationToken = generateToken(newUser.id, "email");
       // const url = `${CLIENT_URL}/confirmEmail/${emailActivationToken}`;
       // sendMail(email, url, "Verify your email address");
-      const userData = {
-        id: newUser.id,
-        email: newUser.email,
-        name: newUser.name,
-        confirmedEmail: newUser.confirmedEmail,
-        username: newUser.username,
-        gender: newUser.gender,
-        img: newUser.img,
-        birthday: newUser.birthday,
-      };
-      res.cookie('accessToken', generateToken(userData.id, 'access'), {
+      res.cookie('accessToken', generateToken(newUser.id, 'access'), {
         httpOnly: true,
         secure: true,
       });
-      res.cookie('refreshToken', generateToken(userData.id, 'refresh'), {
+      res.cookie('refreshToken', generateToken(newUser.id, 'refresh'), {
         httpOnly: true,
         sercure: true,
       });
+      console.log(newUser);
       res.status(202).json({
         msg: 'Register Success! Please activate your email to start.',
         success: true,
-        data: userData,
+        data: {
+          id: newUser.id,
+          email: newUser.email,
+          name: newUser.name,
+          confirmedEmail: newUser.confirmedEmail,
+          username: newUser.username,
+          gender: newUser.gender,
+          img: newUser.img,
+          birthday: newUser.birthday,
+          unseenNotificationsCount: newUser.unseenNotificationsCount,
+          unseenIvitesCount: newUser.unseenIvitesCount,
+        },
       });
     } catch (err) {
       logger.Logger.error(err.message);
-      console.log(err.message);
+      console.log(err);
       return res.status(500).json({ msg: err.message, success: false });
     }
   },

@@ -6,15 +6,11 @@ import api from '../../api/axiosInstance';
 
 const SingeInvites = ({ request }) => {
   const dispatch = useDispatch();
-  const handleRemoveRequest = async (id) => {
+  const handleCancelRequest = async (id) => {
     try {
-      await api.put(
-        '/removeRequest',
-        { requestId: id },
-        {
-          withCredentials: true,
-        }
-      );
+      await api.delete(`/cancelRequest/${id}`, {
+        withCredentials: true,
+      });
     } catch (error) {
       throw Error('Failed to cancel request');
     }
@@ -39,7 +35,7 @@ const SingeInvites = ({ request }) => {
       <div className="flex justify-center items-center h-full gap-2 mr-2">
         <div className={`flex justify-center items-center w-full`}>
           <div
-            onClick={() => handleRemoveRequest(request.id)}
+            onClick={() => handleCancelRequest(request.id)}
             className="w-[40px] h-[40px] rounded-full text-2xl hover:bg-red-400 hover:text-white hover:border-red-400 shadow-md hover:shadow-lg border border-blue-200 cursor-pointer justify-center items-center flex"
           >
             <LiaBanSolid />

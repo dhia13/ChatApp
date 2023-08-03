@@ -6,7 +6,7 @@ const SingleMessage = ({ message, isMine, userImg }) => {
     <>
       {isMine ? (
         <div className="w-full  flex justify-end items-start gap-4 p-2 my-2">
-          <div className="mt-1 max-w-2/3 pb-1 rounded-md bg-gray-50 shadow-sm p-2">
+          <div className="mt-1 max-w-2/3 pb-1 rounded-md bg-gray-50 shadow-md p-2">
             <p>{content}</p>
             <p className="text-xs font-thin">{format(updatedAt)}</p>
           </div>

@@ -1,6 +1,7 @@
 const { User } = require('../../models/User');
 const { Notification } = require('../../models/notification');
 const { ContactAttempt } = require('../../models/contactAttepmt');
+const { default: mongoose } = require('mongoose');
 const router = require('express').Router();
 // contacts crud
 // list of user contacts
@@ -65,11 +66,10 @@ router.get('/requestsList', async (req, res) => {
   }
 });
 // send request
-router.post('/sendRequest', async (req, res) => {
+router.post('/request', async (req, res) => {
   try {
-    const io = req.io;
-    const receiver = req.body.receiver;
     const sender = req.user.id;
+    const receiver = req.body.receiver;
     const socketMap = req?.socketMap;
     const receiverSocket = socketMap.get(receiver);
 
@@ -79,61 +79,56 @@ router.post('/sendRequest', async (req, res) => {
       receiver,
     });
     newContactAttempt.save();
-    // creating the notification
-    const newNotification = new Notification({
-      type: 'invite',
-      from: sender,
-      to: receiver,
-      refrence: {
-        ref: newContactAttempt.id,
-        refrenceType: 'ContactAttempt',
-      },
-    });
-    newNotification.save();
     await User.findByIdAndUpdate(
       sender,
       {
-        $push: {
+        $addToSet: {
           requests: newContactAttempt.id,
-          notifications: newNotification.id,
         },
-        $inc: { unseenNotificationsCount: 1 },
       },
       { new: true }
     );
-    const notificationPoulated = await Notification.findById(
-      newNotification.id
-    ).populate('from', 'img username name');
-    if (receiverSocket) {
-      receiverSocket.emit('notification', notificationPoulated);
-    }
-    await User.findByIdAndUpdate(receiver, {
-      $addToSet: {
-        notifications: newNotification.id,
-        invites: newContactAttempt.id,
+
+    await User.findByIdAndUpdate(
+      receiver,
+      {
+        $inc: {
+          unseenIvitesCount: 1,
+        },
+        $addToSet: {
+          invites: newContactAttempt.id,
+        },
       },
-      $inc: { unseenNotificationsCount: 1, unseenIvitesCount: 1 },
-    });
-    res.status(200).json({
+      { new: true }
+    );
+    if (receiverSocket) {
+      console.log('sending invite noti');
+      receiverSocket.emit('invite', (ack) => {
+        if (ack === 'invite_received') {
+          console.log(`Invite successfully sent to ${receiver}`);
+          // Do something here if the invite is successfully sent
+        } else {
+          console.log(`Failed to deliver invite to ${receiver}`);
+          // Do something here if the invite failed to be sent
+        }
+      });
+    }
+    res.status(201).json({
       success: true,
       msg: 'request sent',
       request: ContactAttempt,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ success: false, msg: error, msg });
   }
 });
-// remove request
-router.put('/removeRequest', async (req, res) => {
-  const requestId = req.body.requestId;
+// cancel request
+router.delete('/cancelRequest/:id', async (req, res) => {
+  const requestId = req.params.id;
   const userId = req.user.id;
   try {
     const request = await ContactAttempt.findById(requestId);
-    // console.log(request);
-    await ContactAttempt.findByIdAndDelete(requestId);
-    // remove from sender
-    const pullRequest = await User.findByIdAndUpdate(
+    await User.findByIdAndUpdate(
       userId,
       { $pull: { requests: requestId } },
       { new: true }
@@ -142,13 +137,57 @@ router.put('/removeRequest', async (req, res) => {
     await User.findByIdAndUpdate(request.receiver, {
       $pull: { invites: requestId },
     });
+
+    await ContactAttempt.findByIdAndDelete(requestId);
+
     res.status(200).json({
       success: true,
       msg: 'requests removed',
     });
   } catch (error) {
-    console.log(error.msg);
     res.status(500).json({ success: false, msg: error, msg });
+  }
+});
+// ignore request
+router.delete('/ignoreRequest/:id', async (req, res) => {
+  const requestId = req.params.id;
+  try {
+    const request = await ContactAttempt.findById(requestId);
+    await User.findByIdAndUpdate(
+      request.sender,
+      { $pull: { requests: requestId } },
+      { new: true }
+    );
+    // remove from receiver
+    await User.findByIdAndUpdate(request.receiver, {
+      $pull: { invites: requestId },
+    });
+
+    await ContactAttempt.findByIdAndDelete(requestId);
+
+    res.status(200).json({
+      success: true,
+      msg: 'requests removed',
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, msg: error, msg });
+  }
+});
+// mark requests as seen
+router.put('/invitesSeen', async (req, res) => {
+  try {
+    const user = req.user.id;
+    await User.findByIdAndUpdate(
+      user,
+      { $set: { unseenIvitesCount: 0 } },
+      { new: true }
+    );
+    res
+      .status(200)
+      .json({ message: 'Unseen invites count updated successfully.' });
+  } catch (error) {
+    console.error('Error updating unseen invites count:', error);
+    res.status(500).json({ error: 'Internal server error.' });
   }
 });
 // accept invite
@@ -157,41 +196,84 @@ router.put('/acceptInvite', async (req, res) => {
   try {
     const request = await ContactAttempt.findById(requestId);
     const { sender, receiver } = request;
+    console.log({ sender, receiver });
     await User.findByIdAndUpdate(sender, {
       $pull: { requests: requestId },
       $push: { contacts: receiver },
     });
+
+    const newNoti = new Notification({
+      to: receiver,
+      from: sender,
+      type: 'inviteAccepted',
+    });
+    newNoti.save();
+    const notification = await Notification.findById(newNoti._id).populate({
+      path: 'from',
+      select: 'img username id',
+    });
     await User.findByIdAndUpdate(receiver, {
       $pull: { invites: requestId },
       $push: { contacts: sender },
+      $inc: { unseenNotificationsCount: 1 },
+      $addToSet: { notifications: notification._id },
     });
+    const socketMap = req?.socketMap;
+    const senderString = sender ? sender.toString() : null;
+
+    if (socketMap && senderString) {
+      const receiverSocket = socketMap.get(senderString);
+      if (receiverSocket) {
+        console.log('emit noti');
+        receiverSocket.emit('notification', notification);
+      }
+    }
     await ContactAttempt.findByIdAndDelete(requestId);
+
     res.status(200).json({
       success: true,
       msg: 'invite accepted',
     });
   } catch (error) {
-    console.log(error.msg);
+    console.log(error);
     res.status(500).json({ success: false, msg: error, msg });
   }
 });
 
 // delete contact
-router.put('/removeContact', async (req, res) => {
+router.delete('/contact/:id', async (req, res) => {
   try {
-    await User.findByIdAndUpdate(req.user.id, {
-      $pull: { contacts: req.body.contactId },
-    });
-    await User.findByIdAndUpdate(req.body.contactId, {
-      $pull: { contacts: req.user.id },
-    });
+    console.log(req.user.id);
+    const requester = req.user.id;
+    const other = req.params.id;
+    console.log('want to remove');
+    console.log(req.params.id);
+    const v1 = await User.findByIdAndUpdate(
+      other,
+      {
+        $pull: { contacts: requester },
+      },
+      { new: true }
+    );
+    console.log('removing requester from the other');
+    console.log(v1);
+    const v2 = await User.findByIdAndUpdate(
+      requester,
+      {
+        $pull: { contacts: other },
+      },
+      { new: true }
+    );
+    console.log(`removing ${other} from the ${requester}`);
 
+    console.log(v2);
     res.status(200).json({
       success: true,
       msg: 'contact removed',
-      contacts: contacts.contacts,
     });
-  } catch (error) {}
+  } catch (error) {
+    res.status(500).json({ error });
+  }
 });
 // searsh for contacts
 router.get('/contacts', async (req, res) => {

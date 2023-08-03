@@ -17,22 +17,6 @@ const notificationSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    content: {
-      type: String,
-      default: '',
-    },
-    refrence: {
-      refrenceType: {
-        type: String,
-        enum: ['ContactAttempt'],
-        required: true,
-        trim: true,
-      },
-      ref: {
-        type: mongoose.Schema.Types.ObjectId,
-        refPath: 'refrence.refrenceType',
-      },
-    },
     state: {
       type: String,
       default: 'notSeen',

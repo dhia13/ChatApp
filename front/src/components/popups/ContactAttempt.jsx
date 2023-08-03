@@ -17,7 +17,7 @@ const ContactAttempt = () => {
   return (
     <div
       className={`w-[300px] h-[300px] border border-blue-200 bg-white z-50 flex flex-col 
-      justify-start items-start rounded-md absolute shadow-md top-[65px] left-[195px]`}
+      justify-start items-start rounded-md absolute shadow-md top-[65px] left-[170px]`}
     >
       <div className="w-full h-[40px] flex justify-center items-center border-b border-gray-400 ">
         <div

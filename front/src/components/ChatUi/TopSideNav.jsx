@@ -1,6 +1,5 @@
 import React from 'react';
 import { LiaBellSolid, LiaUserFriendsSolid } from 'react-icons/lia';
-import RenderInvites from '../popups/ContactAttempt';
 import api from '../../api/axiosInstance';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -12,6 +11,8 @@ import IconContainer from '../reusables/IconContainer';
 import { markAllNotificationsAsSeen } from '../../store/Slices/notificationsSlice';
 import NotificationMenu from '../popups/notifications/NotificationMenu';
 import UserMenu from '../popups/UserMenu';
+import ContactAttempt from '../popups/ContactAttempt';
+import { markInviteAsSeen } from '../../store/Slices/contactsSlice';
 const TopSideNav = () => {
   const dispatch = useDispatch();
   const { username, img, email } = useSelector((state) => state.user);
@@ -21,7 +22,9 @@ const TopSideNav = () => {
   const { unseenNotificationsCount, isUnseen } = useSelector(
     (state) => state.notifications
   );
-
+  const { unseenInvites, unseenInvitesCount } = useSelector(
+    (state) => state.contacts.invites
+  );
   const handleOpenNotifications = async () => {
     await api.get('/readNotifications', {
       withCredentials: true,
@@ -31,6 +34,15 @@ const TopSideNav = () => {
   };
   const handleOpenInvites = () => {
     dispatch(toggleInvites());
+    dispatch(markInviteAsSeen());
+    const markInviteInDb = async () => {
+      try {
+        await api.put('/invitesSeen', { id: null }, { withCredentials: true });
+      } catch (error) {
+        console.error('Error marking invite in the database:', error);
+      }
+    };
+    markInviteInDb();
   };
   return (
     <>
@@ -73,6 +85,11 @@ const TopSideNav = () => {
             <IconContainer handleClick={handleOpenInvites} className={'w-1/2'}>
               <LiaUserFriendsSolid className="text-2xl" />
             </IconContainer>
+            {unseenInvites && (
+              <div className="w-[15px] h-[15px] absolute bottom-[23px] left-[27.5px] rounded-full flex justify-center items-center bg-red-500">
+                <p className="text-xs">{unseenInvitesCount}</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -80,7 +97,7 @@ const TopSideNav = () => {
       {/* user menu */}
       {userMenu && <UserMenu />}
       {notifications && <NotificationMenu menu={menu} />}
-      {invites && <RenderInvites />}
+      {invites && <ContactAttempt />}
     </>
   );
 };

@@ -14,11 +14,7 @@ const getContactsList = async () => {
 
 const addContact = async (id) => {
   try {
-    const res = await api.post(
-      '/contact',
-      { contactId: id },
-      { withCredentials: true }
-    );
+    await api.post('/contact', { contactId: id }, { withCredentials: true });
   } catch (error) {
     console.log(error);
   }

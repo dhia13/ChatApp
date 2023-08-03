@@ -42,6 +42,19 @@ export const fetchContacts = createAsyncThunk(
     }
   }
 );
+export const fetchContactsWitouLoading = createAsyncThunk(
+  'contacts/fetchContactsWitouLoading',
+  async () => {
+    try {
+      const response = await api.get('/contactsList', {
+        withCredentials: true,
+      });
+      return response.data;
+    } catch (error) {
+      throw Error('Failed to fetch contacts');
+    }
+  }
+);
 export const fetchInvites = createAsyncThunk(
   'contacts/fetchInvites',
   async () => {
@@ -77,7 +90,7 @@ export const sendRequest = createAsyncThunk(
   async (id) => {
     try {
       const response = await api.post(
-        '/sendRequest',
+        '/request',
         { receiver: id },
         {
           withCredentials: true,
@@ -93,13 +106,9 @@ export const removeRequest = createAsyncThunk(
   'contacts/removeRequest',
   async (id) => {
     try {
-      const response = await api.put(
-        '/removeRequest',
-        { requestId: id },
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await api.delete(`/request/${id}`, {
+        withCredentials: true,
+      });
       return response.data.contacts;
     } catch (error) {
       throw Error('Failed to fetch contacts');
@@ -118,8 +127,20 @@ const contactsSlice = createSlice({
     setOnlineUsers: (state, action) => {
       state.onlineUsers = action.payload;
     },
+    newInvite: (state, action) => {
+      state.invites.unseenInvitesCount += 1;
+      state.invites.unseenInvites = true;
+    },
     setLastFetchedTimestamp: (state, action) => {
       state.invites.lastFetchedTimestamp = action.payload;
+    },
+    markInviteAsSeen: (state, action) => {
+      state.invites.unseenInvitesCount = 0;
+      state.invites.unseenInvites = false;
+    },
+    setInvitesAlert: (state, action) => {
+      state.invites.unseenInvitesCount = action.payload;
+      state.invites.unseenInvites = true;
     },
   },
   extraReducers: (builder) => {
@@ -129,6 +150,13 @@ const contactsSlice = createSlice({
         state.loading = true;
       })
       .addCase(fetchContacts.fulfilled, (state, action) => {
+        state.loading = false;
+        state.contactsList = action.payload.contacts;
+        state.contactsCount = action.payload.contacts.length;
+        state.onlineUsers = action.payload.onlineUsers;
+        state.error = null;
+      })
+      .addCase(fetchContactsWitouLoading.fulfilled, (state, action) => {
         state.loading = false;
         state.contactsList = action.payload.contacts;
         state.contactsCount = action.payload.contacts.length;
@@ -171,6 +199,7 @@ const contactsSlice = createSlice({
   },
 });
 
-export const { setOnlineUsers } = contactsSlice.actions;
+export const { setOnlineUsers, newInvite, markInviteAsSeen, setInvitesAlert } =
+  contactsSlice.actions;
 
 export default contactsSlice.reducer;

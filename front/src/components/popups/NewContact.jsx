@@ -34,7 +34,7 @@ const NewContact = () => {
       setLoading(true);
       await api
         .post(
-          '/sendRequest',
+          '/request',
           { receiver: id },
           {
             withCredentials: true,

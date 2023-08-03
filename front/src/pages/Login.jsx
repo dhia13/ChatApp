@@ -6,10 +6,11 @@ import Bg from '../assets/images/messaging.jpg';
 import valid from '../assets/icons/valid.png';
 import invalid from '../assets/icons/invalid.png';
 import api from '../api/axiosInstance';
-import Logo from '../components/UI/Logo';
 import { setUser } from '../store/Slices/userSlice';
 import { useDispatch } from 'react-redux';
 import { setNotificationAlert } from '../store/Slices/notificationsSlice';
+import LogoPng from '../assets/logos/logo.png';
+import { setInvitesAlert } from '../store/Slices/contactsSlice';
 
 function Login() {
   const dispatch = useDispatch();
@@ -61,6 +62,7 @@ function Login() {
         setError(false);
         setSuccess(true);
         setLoginSuccessData(res.data.data);
+        console.log(res.data);
       })
       .catch((error) => {
         setError(true);
@@ -85,6 +87,9 @@ function Login() {
             setNotificationAlert(loginSuccessData.unseenNotificationsCount)
           );
         }
+        if (loginSuccessData.unseenIvitesCount > 0) {
+          dispatch(setInvitesAlert(loginSuccessData.unseenIvitesCount));
+        }
         navigate('/chat');
       }, 1000);
     }
@@ -103,7 +108,13 @@ function Login() {
           <section className="flex flex-col h-full">
             <div className="w-full h-full flex items-center justify-center  flex-col ">
               {/* logo */}
-              <Logo width="80" />
+              <Link to="/">
+                <img
+                  className={`w-[120px] lg:block mx-10 cursor-pointer`}
+                  src={LogoPng}
+                  alt="Logo"
+                />
+              </Link>
               <div className="w-[400px] flex flex-col items-center justify-center pt-4">
                 <form
                   className="flex justify-center items-center gap-3 flex-col"

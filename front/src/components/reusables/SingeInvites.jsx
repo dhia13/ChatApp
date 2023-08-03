@@ -27,16 +27,11 @@ const SingeInvites = ({ invite }) => {
   const handleIgnoreInvite = async (id) => {
     try {
       await api
-        .put(
-          '/removeRequest',
-          { requestId: id },
-          {
-            withCredentials: true,
-          }
-        )
+        .delete(`/ignoreRequest/${id}`, {
+          withCredentials: true,
+        })
         .then((res) => {
           dispatch(fetchInvites());
-          dispatch(fetchContacts());
         });
     } catch (error) {
       throw Error('Failed to cancel request');

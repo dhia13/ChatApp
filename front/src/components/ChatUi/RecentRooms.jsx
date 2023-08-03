@@ -1,14 +1,22 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import SingleRoom from '../reusables/SingleRoom';
-import { fetchRecentRooms } from '../../store/Slices/roomsSlice';
+import {
+  fetchRecentRooms,
+  fetchRecentRoomsWitoutLoading,
+} from '../../store/Slices/roomsSlice';
 import ListRender from '../reusables/ListRender';
 const RecentRooms = () => {
   const dispatch = useDispatch();
   const { rooms, loading } = useSelector((state) => state.rooms);
+  const id = useSelector((state) => state.user.id);
   useEffect(() => {
-    dispatch(fetchRecentRooms());
-  }, [dispatch]);
+    if (rooms.length > 0) {
+      dispatch(fetchRecentRoomsWitoutLoading(id));
+    } else {
+      dispatch(fetchRecentRooms(id));
+    }
+  }, [dispatch, id, rooms.length]);
   return (
     <ListRender
       loading={loading}

@@ -8,14 +8,71 @@ const initialState = {
   currentRoomId: '',
 };
 
-export const fetchRecentRooms = createAsyncThunk('room/fetch', async () => {
+export const fetchRecentRooms = createAsyncThunk('room/fetch', async (id) => {
   try {
     const response = await api.get('/rooms', { withCredentials: true });
-    return response.data.rooms;
+    let rooms = response.data.rooms;
+    // rooms.map((r) => {
+    //   let isFirst = false;
+    //   console.log({ usersOrder1: r.users[0]._id, owner: id });
+    //   if (r.users[0]._id === id) {
+    //     isFirst = true;
+    //   }
+    //   if (isFirst && r.seen[1] === true) {
+    //     if (r.seen[1] === true) {
+    //       r.seen = true;
+    //     } else {
+    //       r.seen = false;
+    //     }
+    //   } else {
+    //     if (r.seen[0] === true) {
+    //       r.seen = true;
+    //     } else {
+    //       r.seen = false;
+    //     }
+    //   }
+    //   return r;
+    // });
+    return rooms;
   } catch (error) {
     throw Error('Failed to fetch recent rooms');
   }
 });
+export const fetchRecentRoomsWitoutLoading = createAsyncThunk(
+  'roomWithoutLoading/fetch',
+  async (id) => {
+    try {
+      const response = await api.get('/rooms', { withCredentials: true });
+      let rooms = response.data.rooms;
+      // console.log({ reswinoutLoad: response.data.rooms });
+      // rooms.map((r) => {
+      //   let isFirst = false;
+      //   if (r.users[0].id === id) {
+      //     isFirst = true;
+      //   }
+      //   console.log({ r });
+      //   console.log({ isFirst });
+      //   if (isFirst && r.seen[1] === true) {
+      //     if (r.seen[1] === true) {
+      //       r.seen = true;
+      //     } else {
+      //       r.seen = false;
+      //     }
+      //   } else {
+      //     if (r.seen[0] === true) {
+      //       r.seen = true;
+      //     } else {
+      //       r.seen = false;
+      //     }
+      //   }
+      //   return r;
+      // });
+      return rooms;
+    } catch (error) {
+      throw Error('Failed to fetch recent rooms');
+    }
+  }
+);
 
 const roomsSlice = createSlice({
   name: 'rooms',
@@ -31,6 +88,10 @@ const roomsSlice = createSlice({
         state.loading = true;
       })
       .addCase(fetchRecentRooms.fulfilled, (state, action) => {
+        state.rooms = action.payload;
+        state.loading = false;
+      })
+      .addCase(fetchRecentRoomsWitoutLoading.fulfilled, (state, action) => {
         state.rooms = action.payload;
         state.loading = false;
       })
