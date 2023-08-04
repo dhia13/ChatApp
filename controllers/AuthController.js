@@ -51,7 +51,6 @@ const authCtrl = {
         httpOnly: true,
         sercure: true,
       });
-      console.log(newUser);
       res.status(202).json({
         msg: 'Register Success! Please activate your email to start.',
         success: true,
@@ -70,7 +69,6 @@ const authCtrl = {
       });
     } catch (err) {
       logger.Logger.error(err.message);
-      console.log(err);
       return res.status(500).json({ msg: err.message, success: false });
     }
   },
@@ -209,30 +207,34 @@ const authCtrl = {
   },
   checkAccess: async (req, res) => {
     // Read access token from cookie
-    const refreshToken = req.cookies.refreshToken;
-    // // Verify token
-    try {
-      jwt.verify(
-        refreshToken,
-        process.env.REFRESH_TOKEN_SECRET,
-        (err, decoded) => {
-          if (err) {
-            // Token verification failed
-            res.clearCookie('accessToken'); // Clear the accessToken cookie
-            res.clearCookie('refreshToken'); // Clear the accessToken cookie
-            res.status(401).json({ message: 'Unauthorized' });
-          } else {
-            // Token is valid
-            res.cookie('accessToken', generateToken(decoded.id, 'access'), {
-              httpOnly: true,
-              secure: true,
-            });
-            res.status(200).json({ message: 'Authorized', id: decoded.id });
+    if (req.cookies?.refreshToken) {
+      const refreshToken = req.cookies.refreshToken;
+      // // Verify token
+      try {
+        jwt.verify(
+          refreshToken,
+          process.env.REFRESH_TOKEN_SECRET,
+          (err, decoded) => {
+            if (err) {
+              // Token verification failed
+              res.clearCookie('accessToken'); // Clear the accessToken cookie
+              res.clearCookie('refreshToken'); // Clear the accessToken cookie
+              res.status(401).json({ message: 'Unauthorized' });
+            } else {
+              // Token is valid
+              res.cookie('accessToken', generateToken(decoded.id, 'access'), {
+                httpOnly: true,
+                secure: true,
+              });
+              res.status(200).json({ message: 'Authorized', id: decoded.id });
+            }
           }
-        }
-      );
-    } catch (error) {
-      res.status(500).json({ message: 'server error' });
+        );
+      } catch (error) {
+        res.status(500).json({ message: 'server error' });
+      }
+    } else {
+      res.status(401).json({ msg: 'not authenticated' });
     }
   },
   google: async (req, res) => {

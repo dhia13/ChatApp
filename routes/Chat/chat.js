@@ -33,7 +33,7 @@ router.put('/getMessages', async (req, res) => {
     const secondUser = await Room.findById(roomId).populate({
       path: 'users',
       match: { _id: { $ne: user } },
-      select: 'img username',
+      select: 'img username name',
     });
     res.status(201).json({
       msg: 'chatRoom Created',
@@ -71,24 +71,28 @@ router.post('/newMessage', async (req, res) => {
   }
 });
 router.get('/rooms', async (req, res) => {
-  const user = req.user.id;
-  try {
-    const rooms = await Room.find({
-      users: { $in: [user] },
-    })
-      .populate({
-        path: 'users',
-        match: { _id: { $ne: user } },
-        select: 'img username',
+  if (req.user.id) {
+    const user = req.user.id;
+    try {
+      const rooms = await Room.find({
+        users: { $in: [user] },
       })
-      .populate({
-        path: 'messages',
-        options: { sort: { createdAt: -1 }, limit: 1 },
-      })
-      .sort({ updatedAt: -1 });
-    res.status(200).json({ success: true, rooms });
-  } catch (error) {
-    res.status(500).json(error);
+        .populate({
+          path: 'users',
+          match: { _id: { $ne: user } },
+          select: 'img username name',
+        })
+        .populate({
+          path: 'messages',
+          options: { sort: { createdAt: -1 }, limit: 1 },
+        })
+        .sort({ updatedAt: -1 });
+      res.status(200).json({ success: true, rooms });
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  } else {
+    res.status(400).json({ msg: 'bad request' });
   }
 });
 module.exports = router;

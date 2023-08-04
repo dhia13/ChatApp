@@ -6,7 +6,7 @@ import Bg from '../assets/images/messaging.jpg';
 import valid from '../assets/icons/valid.png';
 import invalid from '../assets/icons/invalid.png';
 import api from '../api/axiosInstance';
-import { setUser } from '../store/Slices/userSlice';
+import { setLogged, setUser } from '../store/Slices/userSlice';
 import { useDispatch } from 'react-redux';
 import { setNotificationAlert } from '../store/Slices/notificationsSlice';
 import LogoPng from '../assets/logos/logo.png';
@@ -82,6 +82,7 @@ function Login() {
             birthday: loginSuccessData.birthday,
           })
         );
+        dispatch(setLogged());
         if (loginSuccessData.unseenNotificationsCount > 0) {
           dispatch(
             setNotificationAlert(loginSuccessData.unseenNotificationsCount)
