@@ -742,3 +742,29 @@ GET /static/css/main.31c0fc41.css 304  - Not Modified
 GET /static/css/main.31c0fc41.css.map 200  - OK
 {"level":"info","message":"GET /static/js/main.a92fab37.js.map 200  - OK"}
 GET /static/js/main.a92fab37.js.map 200  - OK
+{"level":"info","message":"GET /chat 200  644 OK"}
+GET /chat 200  644 OK
+GET /static/css/main.31c0fc41.css 304  - Not Modified
+{"level":"info","message":"GET /static/css/main.31c0fc41.css 304  - Not Modified"}
+{"level":"info","message":"GET /static/js/main.a92fab37.js 304  - Not Modified"}
+GET /static/js/main.a92fab37.js 304  - Not Modified
+GET /static/css/main.31c0fc41.css.map 304  - Not Modified
+{"level":"info","message":"GET /static/css/main.31c0fc41.css.map 304  - Not Modified"}
+{"level":"info","message":"GET /static/js/main.a92fab37.js.map 304  - Not Modified"}
+GET /static/js/main.a92fab37.js.map 304  - Not Modified
+{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
+GET /manifest.json 304  - Not Modified
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+PUT /api/v1/checkAccess 200  56 OK
+{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
+GET /favicon.ico 304  - Not Modified
+{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
+GET /logo192.png 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
