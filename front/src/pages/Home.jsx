@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import api from '../api/axiosInstance';
 import HomeNavbar from '../components/UI/HomeNavbar';
-import Loading from '../components/UI/Loading';
+import Loading from '../components/reusables/Loading/Loading';
 
 const Home = () => {
   const [isTokenChecked, setIsTokenChecked] = useState(true);

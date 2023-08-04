@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import api from '../api/axiosInstance';
+import { setLogged, setNotLogged } from '../store/Slices/userSlice';
+import { useDispatch } from 'react-redux';
 
 const useUser = () => {
-  const [user, setUser] = useState(null); // Use null as the initial state to represent the loading state
-
+  const dispatch = useDispatch();
   useEffect(() => {
     const checkUserAuthentication = async () => {
       try {
@@ -14,19 +15,15 @@ const useUser = () => {
         );
 
         if (res.status === 200) {
-          setUser({ isLogged: true, user: res.data });
+          dispatch(setLogged());
         } else {
-          setUser({ isLogged: false, user: null });
+          dispatch(setNotLogged());
         }
-      } catch (err) {
-        setUser({ isLogged: false, user: null });
-      }
+      } catch (err) {}
     };
 
     checkUserAuthentication();
-  }, []);
-
-  return user;
+  }, [dispatch]);
 };
 
 export default useUser;

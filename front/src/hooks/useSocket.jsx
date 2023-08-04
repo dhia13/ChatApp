@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import io from 'socket.io-client';
-import useUser from './userUser';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchContactsWitouLoading,
@@ -11,28 +10,26 @@ import { addNotification } from '../store/Slices/notificationsSlice';
 import { toast } from 'react-toastify';
 
 const useSocket = () => {
+  const { isLogged, id } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const user = useUser();
   const [msg, setMessage] = useState();
   const currentOnlineUsers = useSelector((state) => state.contacts.onlineUsers);
 
   const prevOnlineUsersRef = useRef(currentOnlineUsers);
   useEffect(() => {
     let socket;
-
-    if (user?.isLogged) {
+    console.log(process.env);
+    if (isLogged) {
       // Connect to the socket server
       socket = io('http://localhost:8000', {
         query: {
-          userId: user.user.id,
+          userId: id,
         },
       });
       socket.on('msg', (data) => {
         setMessage(data);
       });
-      socket.on('connection', () => {
-        // Send the user ID as the socket connection ID
-      });
+      socket.on('connection');
       socket.on('isOnline', (data) => {
         const prevOnlineUsers = prevOnlineUsersRef.current;
         if (data.online && !prevOnlineUsers.includes(data.id)) {
@@ -87,7 +84,7 @@ const useSocket = () => {
         socket.disconnect();
       }
     };
-  }, [dispatch, user?.isLogged, user?.user?.id]);
+  }, [dispatch, id, isLogged]);
 
   // Return the 'msg' state
   return msg;

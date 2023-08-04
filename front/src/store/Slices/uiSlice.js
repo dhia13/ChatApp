@@ -12,6 +12,8 @@ const initialState = {
   editContacts: false,
   notifications: false,
   invites: false,
+  current: 'chat',
+  second: 'profile',
 };
 
 const uiSloce = createSlice({
@@ -27,6 +29,10 @@ const uiSloce = createSlice({
       state.editContacts = false;
       state.notifications = false;
       state.invites = false;
+    },
+    setCurrent: (state, action) => {
+      state.current = action.payload.current;
+      state.second = action.payload.second;
     },
     resetSettings: (state, action) => {
       state.addChat = false;
@@ -101,6 +107,7 @@ export const {
   toggleNotifications,
   toggleInvites,
   resetSettings,
+  setCurrent,
 } = uiSloce.actions;
 
 export default uiSloce.reducer;

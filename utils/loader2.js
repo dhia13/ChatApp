@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 function loadRoutes(app, directory) {
-  console.log(directory);
   fs.readdirSync(directory).forEach((file) => {
     const filePath = path.join(directory, file);
     const stat = fs.statSync(filePath);

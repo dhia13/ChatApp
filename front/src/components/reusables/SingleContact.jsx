@@ -4,13 +4,19 @@ import api from '../../api/axiosInstance';
 import IconContainer from './IconContainer';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { fetchContacts } from '../../store/Slices/contactsSlice';
+import InitialsAvatar from 'react-initials-avatar';
+import { setCurrent } from '../../store/Slices/uiSlice';
+
 const SingleContact = ({ contact }) => {
   const dispatch = useDispatch();
-  const { editContacts } = useSelector((state) => state.ui);
+  const { editContacts, current } = useSelector((state) => state.ui);
 
   const onlineUsers = useSelector((state) => state.contacts.onlineUsers);
   const handleOpenChat = async (id) => {
     if (!editContacts) {
+      if (current !== 'chat') {
+        dispatch(setCurrent({ current: 'chat', second: '' }));
+      }
       try {
         await api
           .put(
@@ -41,11 +47,18 @@ const SingleContact = ({ contact }) => {
         <div
           className={`w-[56px] h-[56px] relative rounded-full overflow-hidden border border-blue-200  hover:shadow-lg shadow-md m-2`}
         >
-          <img
-            alt="profile"
-            className="w-full h-full object-cover"
-            src={contact.img}
-          />
+          {contact.img ? (
+            <img
+              alt="profile"
+              className="w-full h-full object-cover"
+              src={contact.img}
+            />
+          ) : (
+            <InitialsAvatar
+              name={contact.name}
+              className="w-full h-full bg-blue-300 rounded-full flex-center"
+            />
+          )}
         </div>
         {onlineUsers.includes(contact.id) && (
           <div className="w-[18px] h-[18px] rounded-full top-[10px] left-[48px] border-[2px] border-white  bg-green-600 absolute"></div>

@@ -8,6 +8,8 @@ import {
   toggleUserMenu,
 } from '../../store/Slices/uiSlice';
 import IconContainer from '../reusables/IconContainer';
+import InitialsAvatar from 'react-initials-avatar';
+
 import { markAllNotificationsAsSeen } from '../../store/Slices/notificationsSlice';
 import NotificationMenu from '../popups/notifications/NotificationMenu';
 import UserMenu from '../popups/UserMenu';
@@ -15,7 +17,7 @@ import ContactAttempt from '../popups/ContactAttempt';
 import { markInviteAsSeen } from '../../store/Slices/contactsSlice';
 const TopSideNav = () => {
   const dispatch = useDispatch();
-  const { username, img, email } = useSelector((state) => state.user);
+  const { username, img, email, name } = useSelector((state) => state.user);
   const { menu, userMenu, notifications, invites } = useSelector(
     (state) => state.ui
   );
@@ -26,10 +28,10 @@ const TopSideNav = () => {
     (state) => state.contacts.invites
   );
   const handleOpenNotifications = async () => {
+    dispatch(toggleNotifications());
     await api.get('/readNotifications', {
       withCredentials: true,
     });
-    dispatch(toggleNotifications());
     dispatch(markAllNotificationsAsSeen());
   };
   const handleOpenInvites = () => {
@@ -47,7 +49,7 @@ const TopSideNav = () => {
   return (
     <>
       <div
-        className={`flex justify-center items-center w-full border-b-2 border-blue-300 relative h-[80px] bg-blue-50`}
+        className={`flex justify-center items-center w-full relative h-[80px] bg-blue-50 shadow-sm`}
       >
         {/* user name + icon */}
         <div
@@ -59,7 +61,14 @@ const TopSideNav = () => {
               userMenu ? 'outline outline-blue-400 shadow-lg' : 'shadow-md'
             }`}
           >
-            <img alt="profile" className="w-full h-full" src={img} />
+            {img ? (
+              <img alt="profile" className="w-full h-full" src={img} />
+            ) : (
+              <InitialsAvatar
+                name={name}
+                className="w-full h-full bg-blue-300 rounded-full flex-center"
+              />
+            )}
           </div>
           <div className="flex justify-start items-start flex-col">
             <div className="font-medium mx-4">{username}</div>

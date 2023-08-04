@@ -3,6 +3,7 @@ import { LiaBanSolid } from 'react-icons/lia';
 import { useDispatch } from 'react-redux';
 import { fetchRequests } from '../../store/Slices/contactsSlice';
 import api from '../../api/axiosInstance';
+import InitialsAvatar from 'react-initials-avatar';
 
 const SingeInvites = ({ request }) => {
   const dispatch = useDispatch();
@@ -22,11 +23,18 @@ const SingeInvites = ({ request }) => {
       key={request.id}
     >
       <div className="flex justify-center items-center h-full">
-        <img
-          src={request.receiver.img}
-          alt="profile"
-          className="w-[40px] h-[40px] rounded-full mx-2 border border-blue-300 object-cover"
-        />
+        {request.receiver.img ? (
+          <img
+            src={request.receiver.img}
+            alt="profile"
+            className="w-[40px] h-[40px] rounded-full mx-2 border border-blue-300 object-cover"
+          />
+        ) : (
+          <InitialsAvatar
+            name={request.receiver.name}
+            className="w-[40px] h-[40px] bg-blue-300 rounded-full flex-center"
+          />
+        )}
         <div className="flex justify-start items-start flex-col">
           <p className="text-xs font-light">you sent request to</p>
           <p className="text-sm">{request.receiver.username}</p>

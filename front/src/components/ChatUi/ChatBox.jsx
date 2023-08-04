@@ -9,7 +9,7 @@ import {
   fetchRecentRoomsWitoutLoading,
 } from '../../store/Slices/roomsSlice';
 import { LiaPaperPlaneSolid } from 'react-icons/lia';
-
+import chatBg from '../../assets/images/chatBg2.jpg';
 const ChatBox = () => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState('');
@@ -17,7 +17,7 @@ const ChatBox = () => {
   const { currentRoomId, rooms } = useSelector((state) => state.rooms);
   const [secondUser, setSecondUser] = useState();
   const [messages, setMessages] = useState([]);
-  const { img, id } = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user);
   useEffect(() => {
     const getMessages = async () => {
       try {
@@ -47,7 +47,7 @@ const ChatBox = () => {
       ...messages,
       {
         updatedAt: current,
-        owner: id,
+        owner: user.id,
         content: message,
         room: currentRoomId,
       },
@@ -56,16 +56,16 @@ const ChatBox = () => {
       .post(
         '/newMessage',
         {
-          message: { owner: id, content: message, room: currentRoomId },
+          message: { owner: user.id, content: message, room: currentRoomId },
           receiver: secondUser._id,
         },
         { withCredentials: true }
       )
       .then((res) => {
         if (rooms.length > 0) {
-          dispatch(fetchRecentRoomsWitoutLoading(id));
+          dispatch(fetchRecentRoomsWitoutLoading(user.id));
         } else {
-          dispatch(fetchRecentRooms(id));
+          dispatch(fetchRecentRooms(user.id));
         }
       });
   };
@@ -86,61 +86,68 @@ const ChatBox = () => {
     scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
   return (
-    <div
-      className={`w-[calc(100%-290px)] transition-all duration-200 h-screen`}
-    >
+    <>
       {currentRoomId === '' ? (
         <div className="w-full h-full flex justify-center items-center bg-gray-200 text-2xl font-semibold">
           Select a chat or start a new conversation
         </div>
       ) : (
         <>
-          <div className="w-full h-[80px] flex justify-center font-bold items-center border-b-2 border-blue-300 bg-blue-50">
+          <div className="w-full h-[80px] flex justify-center font-bold items-center shadow-sm bg-blue-50">
             {secondUser?.username.charAt(0).toUpperCase() +
               secondUser?.username.slice(1)}
           </div>
-          <ChatBoxContainer className="w-full h-[calc(100vh-170px)] justify-start items-center flex flex-col gap-2 overflow-y-auto">
-            {messages.length > 0 &&
-              messages.map((m) => (
-                <div ref={scrollRef} className="w-full" key={m._id}>
-                  <SingleMessage
-                    message={m}
-                    isMine={m.owner === id}
-                    userImg={m?.owner === id ? img : secondUser?.img}
-                  />
-                </div>
-              ))}
-          </ChatBoxContainer>
-          <form
-            className="w-full h-[80px] flex justify-center items-center relative"
-            onSubmit={(e) => handleSendMessage(e)}
-          >
-            <input
-              className="w-[96%] bg-gray-100 shadow-md h-[60px] border-none outline-none pl-2 rounded-md"
-              value={message}
-              type="text"
-              onChange={(e) => setMessage(e.target.value)}
-              placeholder="Send a message"
-            />
-            {message === '' ? (
-              <LiaPaperPlaneSolid
-                className={`absolute right-[45px] top-[30px] text-2xl cursor-pointer hover:text-blue-700 ${
-                  message !== '' && 'text-blue-900'
-                }`}
-                onClick={(e) => handleSendMessage(e)}
+          <div className="flex-center flex-col relative">
+            <div className="absolute top-0 left-0 bg-red-200 w-full h-full ">
+              <img
+                src={chatBg}
+                alt="bg"
+                className="w-full h-full object-cover"
               />
-            ) : (
-              <LiaPaperPlaneSolid
-                className={`absolute right-[45px] top-[30px] text-2xl cursor-pointer hover:text-blue-700 ${
-                  message !== '' && 'text-blue-900'
-                }`}
-                onClick={(e) => handleSendMessage(e)}
+            </div>
+            <ChatBoxContainer className="w-full h-[calc(100vh-160px)] justify-start items-center flex flex-col gap-2 overflow-y-auto z-30">
+              {messages.length > 0 &&
+                messages.map((m) => (
+                  <div ref={scrollRef} className="w-full" key={m._id}>
+                    <SingleMessage
+                      message={m}
+                      isMine={m.owner === user.id}
+                      user={m?.owner === user.id ? user : secondUser}
+                    />
+                  </div>
+                ))}
+            </ChatBoxContainer>
+            <form
+              className="w-full h-[80px] flex justify-center items-center relative"
+              onSubmit={(e) => handleSendMessage(e)}
+            >
+              <input
+                className="w-[96%] bg-gray-100 shadow-md h-[60px] border-none outline-none pl-2 rounded-md"
+                value={message}
+                type="text"
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Send a message"
               />
-            )}
-          </form>
+              {message === '' ? (
+                <LiaPaperPlaneSolid
+                  className={`absolute right-[45px] top-[30px] text-2xl cursor-pointer hover:text-blue-700 ${
+                    message !== '' && 'text-blue-900'
+                  }`}
+                  onClick={(e) => handleSendMessage(e)}
+                />
+              ) : (
+                <LiaPaperPlaneSolid
+                  className={`absolute right-[45px] top-[30px] text-2xl cursor-pointer hover:text-blue-700 ${
+                    message !== '' && 'text-blue-900'
+                  }`}
+                  onClick={(e) => handleSendMessage(e)}
+                />
+              )}
+            </form>
+          </div>
         </>
       )}
-    </div>
+    </>
   );
 };
 

@@ -30,7 +30,7 @@ const MainNav = ({ children, isLoggedIn, user }) => {
     if (isLoggedIn) {
       setTheme(user.theme);
     }
-  }, [user?.theme]);
+  }, [isLoggedIn, setTheme, user.theme]);
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
@@ -44,6 +44,7 @@ const MainNav = ({ children, isLoggedIn, user }) => {
             <li>
               <Link href="/">
                 <img
+                  alt="logo"
                   src="./logos/logo.png"
                   width={40}
                   className="mx-6 cursor-pointer"

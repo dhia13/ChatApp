@@ -17,6 +17,12 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
+    setLogged: (state) => {
+      state.isLogged = true;
+    },
+    setNotLogged: (state) => {
+      state.isLogged = false;
+    },
     setUser: (state, action) => {
       state.username = action.payload.username;
       state.name = action.payload.name;
@@ -26,7 +32,6 @@ const userSlice = createSlice({
       state.birthday = action.payload.birthday;
       state.confirmenEmail = action.payload.confirmenEmail;
       state.email = action.payload.email;
-      state.isLogged = true;
     },
     clearUser: (state) => {
       state.name = '';
@@ -41,6 +46,7 @@ const userSlice = createSlice({
   },
 });
 
-export const { setUser, clearUser } = userSlice.actions;
+export const { setUser, clearUser, setLogged, setNotLogged } =
+  userSlice.actions;
 
 export default userSlice.reducer;

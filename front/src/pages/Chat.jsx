@@ -10,50 +10,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import HiddenMenus from '../components/popups/HiddenMenus';
 import Loading from '../components/reusables/Loading/Loading';
 import { ToastContainer } from 'react-toastify';
-import api from '../api/axiosInstance';
-import { setUser } from '../store/Slices/userSlice';
-import { setNotificationAlert } from '../store/Slices/notificationsSlice';
-import { setInvitesAlert } from '../store/Slices/contactsSlice';
+import useSocket from '../hooks/useSocket';
+import Profile from '../components/ChatUi/Profile';
 
 const Chat = () => {
   const navigate = useNavigate();
-  const user = useUser();
+  useUser();
   const dispatch = useDispatch();
+  const { isLogged } = useSelector((state) => state.user);
+  useSocket();
   useEffect(() => {
-    if (user !== null && user?.isLogged === false) {
-      navigate('/login');
+    if (isLogged) {
+      setLoading(false);
     } else {
-      const getInitData = async () => {
-        await api
-          .get('/initData', {
-            withCredentials: true,
-          })
-          .then((res) => {
-            const user = res.data;
-            dispatch(
-              setUser({
-                username: user.username,
-                name: user.name,
-                img: user.img,
-                email: user.email,
-                id: user.id,
-                birthday: user.birthday,
-              })
-            );
-            if (user.unseenNotificationsCount > 0) {
-              dispatch(setNotificationAlert(user.unseenNotificationsCount));
-            }
-            if (user.unseenIvitesCount > 0) {
-              dispatch(setInvitesAlert(user.unseenIvitesCount));
-            }
-          });
-      };
-      getInitData();
+      navigate('/login');
     }
-  }, [dispatch, navigate, user]);
-  const { isRecent } = useSelector((state) => state.ui);
+  }, [dispatch, isLogged, navigate]);
+  const { isRecent, current } = useSelector((state) => state.ui);
   const [currentChat, setCurrentChat] = useState(null);
-  if (user === null) {
+  const [loading, setLoading] = useState(true);
+  if (loading) {
     return <Loading />;
   }
   return (
@@ -61,7 +37,7 @@ const Chat = () => {
       <ToastContainer />
       <HiddenMenus />
       {/* left nav */}
-      <div className="h-screen w-[400px] flex justify-start items-start border-r-2 border-blue-300 flex-col">
+      <div className="h-screen w-[400px] flex justify-start items-start shadow-cyan-400 shadow-sm flex-col">
         <TopSideNav />
         <ContactsOrRooms />
         {/* recent chats list */}
@@ -72,7 +48,12 @@ const Chat = () => {
         )}
       </div>
       {/* Chat box */}
-      <ChatBox currentChat={currentChat} />
+      <div
+        className={`w-[calc(100%-290px)] transition-all duration-200 h-screen`}
+      >
+        {current === 'chat' && <ChatBox currentChat={currentChat} />}
+        {current === 'profile' && <Profile />}
+      </div>
     </div>
   );
 };
