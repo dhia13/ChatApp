@@ -35,10 +35,10 @@ async function AuthMiddleware(req, res, next) {
       '/api/v1/clearNotifications',
       '/api/v1/readNotifications',
       '/api/v1/notificationsList',
-      '/',
     ];
 
     // If the route requires authentication but the user is not authenticated, return unauthorized
+    console.log(req.url);
     if (requiresAuth.includes(req.url) && !req.user) {
       return res.status(401).json({ message: 'Unauthorized' });
     }
