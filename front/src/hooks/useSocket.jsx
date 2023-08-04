@@ -19,7 +19,7 @@ const useSocket = () => {
   useEffect(() => {
     let socket;
     let url = 'http://localhost:8000';
-    if (process.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV.trim() === 'production') {
       console.log('production');
       url = 'https://chat-odn3.onrender.com';
     }

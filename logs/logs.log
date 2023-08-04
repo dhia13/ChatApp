@@ -706,3 +706,39 @@
 {"level":"info","message":"GET /api/v1/invitesList 304  - Not Modified"}
 {"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
 {"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
+{"level":"info","message":"GET / 200  644 OK"}
+GET / 200  644 OK
+{"level":"info","message":"GET /static/css/main.31c0fc41.css 200  - OK"}
+GET /static/css/main.31c0fc41.css 200  - OK
+{"level":"info","message":"GET /static/js/main.a92fab37.js 200  - OK"}
+GET /static/js/main.a92fab37.js 200  - OK
+{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
+GET /manifest.json 304  - Not Modified
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+PUT /api/v1/checkAccess 200  56 OK
+{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
+GET /favicon.ico 304  - Not Modified
+{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
+GET /logo192.png 304  - Not Modified
+{"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 200  32012 OK"}
+GET /static/media/logo.69f1f0a17dde6a19dce7.png 200  32012 OK
+{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
+GET /favicon.ico 304  - Not Modified
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+PUT /api/v1/checkAccess 200  56 OK
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
+GET /manifest.json 304  - Not Modified
+{"level":"info","message":"GET /static/css/main.31c0fc41.css 304  - Not Modified"}
+GET /static/css/main.31c0fc41.css 304  - Not Modified
+{"level":"info","message":"GET /static/css/main.31c0fc41.css.map 200  - OK"}
+GET /static/css/main.31c0fc41.css.map 200  - OK
+{"level":"info","message":"GET /static/js/main.a92fab37.js.map 200  - OK"}
+GET /static/js/main.a92fab37.js.map 200  - OK
