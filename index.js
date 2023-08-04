@@ -27,7 +27,7 @@ app.use(AuthMiddleware);
 app.use(helmet());
 app.use(compression());
 app.use(express.urlencoded({ extended: true }));
-app.use(createLogMiddleware());
+app.use(createLogMiddleware(process.env.WRITETOFILE));
 
 // Load routes to the server
 const routersDir = path.join(__dirname, 'routes');
