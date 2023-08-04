@@ -37,7 +37,8 @@ function errorLogger(err, req, res, next) {
   next(err);
 }
 
-function createLogMiddleware() {
+// Updated log middleware with shouldWriteToFile parameter
+function createLogMiddleware(shouldWriteToFile) {
   return (req, res, next) => {
     res.on('finish', () => {
       const { method, originalUrl } = req;
@@ -45,6 +46,11 @@ function createLogMiddleware() {
       const contentLength = res.get('Content-Length') || '-';
       const logMessage = `${method} ${originalUrl} ${statusCode}  ${contentLength} ${statusMessage}`;
       logger.info(logMessage);
+
+      if (shouldWriteToFile) {
+        // Optionally write the log to the file
+        fs.appendFileSync(logFilePath, `${logMessage}\n`);
+      }
     });
 
     next();

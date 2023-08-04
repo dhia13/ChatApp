@@ -631,3 +631,78 @@
 {"level":"info","message":"GET /static/css/main.31c0fc41.css 304  - Not Modified"}
 {"level":"info","message":"GET /static/css/main.31c0fc41.css.map 200  - OK"}
 {"level":"info","message":"GET /static/js/main.a92fab37.js.map 200  - OK"}
+{"level":"info","message":"GET /chat 200  644 OK"}
+{"level":"info","message":"GET /static/css/main.31c0fc41.css 304  - Not Modified"}
+{"level":"info","message":"GET /static/js/main.a92fab37.js 304  - Not Modified"}
+{"level":"info","message":"GET /static/js/main.a92fab37.js.map 304  - Not Modified"}
+{"level":"info","message":"GET /static/css/main.31c0fc41.css.map 304  - Not Modified"}
+{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
+{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
+{"level":"info","message":"PUT /api/v1/logout 200  48 OK"}
+{"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 304  - Not Modified"}
+{"level":"info","message":"GET /static/media/messaging.873788bb8bff7db56353.jpg 200  859507 OK"}
+{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
+{"level":"info","message":"GET /static/media/loading.335fed369e247f2cc8d2.gif 200  71970 OK"}
+{"level":"info","message":"POST /api/v1/login 200  263 OK"}
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
+{"level":"info","message":"GET /chat 304  - Not Modified"}
+{"level":"info","message":"GET /static/js/main.a92fab37.js 304  - Not Modified"}
+{"level":"info","message":"GET /static/css/main.31c0fc41.css 304  - Not Modified"}
+{"level":"info","message":"GET /static/css/main.31c0fc41.css.map 304  - Not Modified"}
+{"level":"info","message":"GET /static/js/main.a92fab37.js.map 304  - Not Modified"}
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
+{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
+{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
+{"level":"info","message":"GET / 304  - Not Modified"}
+{"level":"info","message":"GET /static/js/main.a92fab37.js 304  - Not Modified"}
+{"level":"info","message":"GET /static/css/main.31c0fc41.css 304  - Not Modified"}
+{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
+{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
+{"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 304  - Not Modified"}
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
+{"level":"info","message":"PUT /api/v1/logout 200  48 OK"}
+{"level":"info","message":"GET /static/media/messaging.873788bb8bff7db56353.jpg 304  - Not Modified"}
+{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
+{"level":"info","message":"GET /static/media/loading.335fed369e247f2cc8d2.gif 304  - Not Modified"}
+{"level":"info","message":"POST /api/v1/login 200  263 OK"}
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
+{"level":"info","message":"PUT /api/v1/invitesSeen 200  56 OK"}
+{"level":"info","message":"GET /api/v1/invitesList 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+{"level":"info","message":"GET /static/media/chatBg2.824af49abe476ad62a79.jpg 200  1040699 OK"}
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
+{"level":"info","message":"POST /api/v1/newMessage 200  16 OK"}
+{"level":"info","message":"GET /api/v1/rooms 200  806 OK"}
+{"level":"info","message":"PUT /api/v1/invitesSeen 200  56 OK"}
+{"level":"info","message":"GET /api/v1/invitesList 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/requestsList 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/invitesList 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/invitesList 304  - Not Modified"}
+{"level":"info","message":"PUT /api/v1/invitesSeen 200  56 OK"}
+{"level":"info","message":"GET /api/v1/requestsList 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/invitesList 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/requestsList 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/invitesList 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
