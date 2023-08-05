@@ -4,7 +4,7 @@ import { format } from 'timeago.js';
 import styled from 'styled-components';
 import InitialsAvatar from 'react-initials-avatar';
 
-const NotificationMenu = ({ menu }) => {
+const NotificationMenu = () => {
   const [loading, setLoading] = useState(true);
   const [notificationsList, setNotificationsList] = useState([]);
   const getNotifications = async () => {
@@ -33,7 +33,7 @@ const NotificationMenu = ({ menu }) => {
   };
   return (
     <div
-      className={`w-[260px] h-[380px] border border-blue-200  bg-white z-50 flex justify-center  items-center rounded-md absolute shadow-md top-[65px] left-[265px]
+      className={`w-[260px] h-[380px] border border-blue-200  bg-white z-50 flex justify-center  items-center rounded-md absolute shadow-md top-[65px] left-[257px]
       `}
     >
       {loading ? (

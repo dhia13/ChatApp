@@ -39,7 +39,7 @@ const SingleRoom = ({ room }) => {
               name={room.users[0].name}
               className="w-full h-full bg-blue-300 rounded-full flex-center"
             />
-          )}
+          )}{' '}
         </div>
         {onlineUsers.includes(room.users[0]._id) && (
           <div className="w-[18px] h-[18px] rounded-full top-[10px] left-[48px] border-[2px] border-white  bg-green-600 absolute"></div>
@@ -53,7 +53,7 @@ const SingleRoom = ({ room }) => {
             <div className="flex justify-start items-center gap-2">
               <p
                 className={` ${
-                  room?.seen
+                  !room?.messages[0]?.seen
                     ? 'text-base font-semibold'
                     : 'font-extralight text-xs'
                 }`}

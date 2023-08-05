@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import io from 'socket.io-client';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -8,13 +8,17 @@ import {
 } from '../store/Slices/contactsSlice';
 import { addNotification } from '../store/Slices/notificationsSlice';
 import { toast } from 'react-toastify';
+import {
+  fetchRecentRoomsWitoutLoading,
+  setMessagesToSeen,
+  setNewMsg,
+} from '../store/Slices/roomsSlice';
 
 const useSocket = () => {
   const { isLogged, id } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const [msg, setMessage] = useState();
   const currentOnlineUsers = useSelector((state) => state.contacts.onlineUsers);
-
+  const currentRoom = useSelector((state) => state.rooms.currentRoomId);
   const prevOnlineUsersRef = useRef(currentOnlineUsers);
   useEffect(() => {
     let socket;
@@ -25,9 +29,15 @@ const useSocket = () => {
         },
       });
       socket.on('msg', (data) => {
-        setMessage(data);
+        dispatch(setNewMsg(data));
       });
       socket.on('connection');
+      socket.on('seen', (data) => {
+        if (data.roomId === currentRoom) {
+          dispatch(setMessagesToSeen(data.messages));
+        }
+        dispatch(fetchRecentRoomsWitoutLoading());
+      });
       socket.on('isOnline', (data) => {
         const prevOnlineUsers = prevOnlineUsersRef.current;
         if (data.online && !prevOnlineUsers.includes(data.id)) {
@@ -82,10 +92,7 @@ const useSocket = () => {
         socket.disconnect();
       }
     };
-  }, [dispatch, id, isLogged]);
-
-  // Return the 'msg' state
-  return msg;
+  }, [currentRoom, dispatch, id, isLogged]);
 };
 
 export default useSocket;

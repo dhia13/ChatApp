@@ -1,6 +1,4 @@
-const { User } = require('../../models/User');
 const Message = require('../../models/message');
-const { Notification } = require('../../models/notification');
 const Room = require('../../models/room');
 
 const router = require('express').Router();
@@ -57,6 +55,7 @@ router.post('/newMessage', async (req, res) => {
       owner: message.owner,
       room: message.room,
       content: message.content,
+      seen: false,
     });
     newMessage.save();
     await Room.findByIdAndUpdate(message.room, {
@@ -65,7 +64,7 @@ router.post('/newMessage', async (req, res) => {
     if (receiverSocket) {
       receiverSocket.emit('msg', newMessage);
     }
-    res.status(200).json({ success: true });
+    res.status(200).json({ success: true, msg: newMessage });
   } catch (error) {
     res.status(500).json(error);
   }
@@ -90,6 +89,30 @@ router.get('/rooms', async (req, res) => {
       res.status(200).json({ success: true, rooms });
     } catch (error) {
       res.status(500).json(error);
+    }
+  } else {
+    res.status(400).json({ msg: 'bad request' });
+  }
+});
+router.put('/sawMessages', async (req, res) => {
+  if (req.user.id) {
+    const io = req.io;
+    const receiver = req.body.receiver;
+    const socketMap = req?.socketMap;
+    const receiverSocket = socketMap.get(receiver);
+    try {
+      const messages = req.body.messages;
+      for (const m of messages) {
+        await Message.findByIdAndUpdate(m, {
+          $set: { seen: true },
+        });
+      }
+      if (receiverSocket) {
+        receiverSocket.emit('seen', { messages, roomId: req.body.roomId });
+      }
+      res.status(200).json({ msg: 'seen' });
+    } catch (error) {
+      console.log(error);
     }
   } else {
     res.status(400).json({ msg: 'bad request' });

@@ -6,6 +6,8 @@ const initialState = {
   loading: false,
   error: null,
   currentRoomId: '',
+  newMsg: {},
+  messagesToSeen: [],
 };
 
 export const fetchRecentRooms = createAsyncThunk('room/fetch', async (id) => {
@@ -81,6 +83,15 @@ const roomsSlice = createSlice({
     setRoom: (state, action) => {
       state.currentRoomId = action.payload;
     },
+    setNewMsg: (state, action) => {
+      state.newMsg = action.payload;
+    },
+    setMessagesToSeen: (state, action) => {
+      state.messagesToSeen = action.payload;
+    },
+    cleanSeenMessages: (state, action) => {
+      state.messagesToSeen = [];
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -102,6 +113,7 @@ const roomsSlice = createSlice({
   },
 });
 
-export const { setRoom } = roomsSlice.actions;
+export const { setRoom, setNewMsg, setMessagesToSeen, cleanSeenMessages } =
+  roomsSlice.actions;
 
 export default roomsSlice.reducer;

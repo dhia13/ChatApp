@@ -43,7 +43,7 @@ const UserMenu = () => {
   };
   return (
     <div
-      className={`w-[130px] h-[150px] border border-blue-200  bg-white  rounded-md absolute shadow-md z-50 top-[75px] left-[45px]`}
+      className={`w-[130px] h-[150px] border border-blue-200  bg-white  rounded-md absolute shadow-md z-50 top-[75px] left-[19px]`}
     >
       <button className="w-full h-[50px] border-b border-blue-300 justify-center items-center flex hover:bg-blue-200 rounded-t-md">
         <p

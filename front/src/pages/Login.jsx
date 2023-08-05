@@ -62,7 +62,6 @@ function Login() {
         setError(false);
         setSuccess(true);
         setLoginSuccessData(res.data.data);
-        console.log(res.data);
       })
       .catch((error) => {
         setError(true);

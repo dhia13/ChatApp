@@ -18,9 +18,7 @@ import { markInviteAsSeen } from '../../store/Slices/contactsSlice';
 const TopSideNav = () => {
   const dispatch = useDispatch();
   const { username, img, email, name } = useSelector((state) => state.user);
-  const { menu, userMenu, notifications, invites } = useSelector(
-    (state) => state.ui
-  );
+  const { userMenu, notifications, invites } = useSelector((state) => state.ui);
   const { unseenNotificationsCount, isUnseen } = useSelector(
     (state) => state.notifications
   );
@@ -105,7 +103,7 @@ const TopSideNav = () => {
 
       {/* user menu */}
       {userMenu && <UserMenu />}
-      {notifications && <NotificationMenu menu={menu} />}
+      {notifications && <NotificationMenu />}
       {invites && <ContactAttempt />}
     </>
   );
