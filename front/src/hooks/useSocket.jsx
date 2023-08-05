@@ -19,9 +19,10 @@ const useSocket = () => {
   useEffect(() => {
     let socket;
     if (isLogged) {
-      let api = process.env.REACT_APP_API_URL
-        ? process.env.REACT_APP_API_URL
-        : 'http://localhost:8000';
+      let api =
+        process.env.NODE_ENV === 'production'
+          ? 'https://chat-odn3.onrender.com'
+          : 'http://localhost:8000';
       console.log(api);
       // Connect to the socket server
       socket = io(api, {
