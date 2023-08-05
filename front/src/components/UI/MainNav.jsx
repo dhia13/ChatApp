@@ -15,7 +15,7 @@ const MainNav = ({ children, isLoggedIn, user }) => {
   const handleLogout = async () => {
     await axios
       .post(
-        `${process.env.REACT_APP_API_URL}auth/logout`,
+        `/logout`,
         {},
         {
           withCredentials: true,

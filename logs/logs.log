@@ -1,711 +1,293 @@
-{"level":"info","message":"PUT /api/v1/checkAccess 401  26 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  26 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  26 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  26 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  26 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  26 Unauthorized"}
-{"level":"info","message":"POST /api/v1/login 401  43 Unauthorized"}
-{"level":"info","message":"POST /api/v1/login 401  43 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/logout 200  48 OK"}
-{"level":"info","message":"POST /api/v1/login 200  263 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  26 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  26 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  26 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  26 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  26 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  26 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  26 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  26 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  26 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  26 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  26 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  27 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  27 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  27 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  27 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  27 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  27 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  27 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  27 Unauthorized"}
-{"level":"info","message":"POST /api/v1/login 200  263 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  27 Unauthorized"}
-{"level":"info","message":"POST /api/v1/login 200  263 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"POST /api/v1/login 200  263 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"POST /api/v1/login 200  263 OK"}
 {"level":"info","message":"GET / 200  644 OK"}
-{"level":"info","message":"GET /static/css/main.5f0f04d1.css 200  - OK"}
-{"level":"info","message":"GET /static/js/main.a2ed7fc2.js 200  - OK"}
-{"level":"info","message":"GET /manifest.json 200  492 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /favicon.ico 200  - OK"}
-{"level":"info","message":"GET /logo192.png 200  5347 OK"}
-{"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 200  32012 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/rooms 200  806 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/logout 200  48 OK"}
-{"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 304  - Not Modified"}
-{"level":"info","message":"GET /static/media/messaging.873788bb8bff7db56353.jpg 200  859507 OK"}
-{"level":"info","message":"GET /static/media/loading.335fed369e247f2cc8d2.gif 404  237 Not Found"}
-{"level":"info","message":"POST /api/v1/login 200  263 OK"}
-{"level":"info","message":"GET /static/media/loading.335fed369e247f2cc8d2.gif 404  237 Not Found"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"POST /api/v1/login 200  263 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/rooms 200  806 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 200  548 OK"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET / 200  644 OK"}
-{"level":"info","message":"GET /static/css/main.25fd9a5d.css 200  - OK"}
-{"level":"info","message":"GET /static/js/main.c9e2c1ae.js 200  - OK"}
-{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
-{"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 200  32012 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /static/media/messaging.873788bb8bff7db56353.jpg 200  859507 OK"}
-{"level":"info","message":"GET /static/media/loading.335fed369e247f2cc8d2.gif 200  71970 OK"}
-{"level":"info","message":"POST /api/v1/login 200  263 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
-{"level":"info","message":"GET /static/css/main.25fd9a5d.css 304  - Not Modified"}
-{"level":"info","message":"GET /static/css/main.25fd9a5d.css.map 200  - OK"}
-{"level":"info","message":"GET /static/js/main.c9e2c1ae.js.map 200  - OK"}
-{"level":"info","message":"GET / 200  644 OK"}
-{"level":"info","message":"GET /static/css/main.25fd9a5d.css 200  - OK"}
-{"level":"info","message":"GET /static/js/main.a46087a6.js 200  - OK"}
-{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
-{"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 200  32012 OK"}
-{"level":"info","message":"GET /chat 200  644 OK"}
-{"level":"info","message":"GET /static/css/main.25fd9a5d.css 200  - OK"}
-{"level":"info","message":"GET /static/js/main.a46087a6.js 200  - OK"}
-{"level":"info","message":"GET /static/css/main.25fd9a5d.css.map 200  - OK"}
-{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
-{"level":"info","message":"GET /static/js/main.a46087a6.js.map 200  - OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/logout 200  48 OK"}
-{"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 200  32012 OK"}
-{"level":"info","message":"GET /static/media/messaging.873788bb8bff7db56353.jpg 200  859507 OK"}
-{"level":"info","message":"GET /chat 304  - Not Modified"}
-{"level":"info","message":"GET /static/js/main.a46087a6.js 304  - Not Modified"}
-{"level":"info","message":"GET /static/css/main.25fd9a5d.css 304  - Not Modified"}
-{"level":"info","message":"GET /static/js/main.a46087a6.js.map 304  - Not Modified"}
-{"level":"info","message":"GET /static/css/main.25fd9a5d.css.map 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  27 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  27 Unauthorized"}
-{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
-{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
-{"level":"info","message":"GET /chat 304  - Not Modified"}
-{"level":"info","message":"GET /static/js/main.a46087a6.js 304  - Not Modified"}
-{"level":"info","message":"GET /static/css/main.25fd9a5d.css 304  - Not Modified"}
-{"level":"info","message":"GET /static/js/main.a46087a6.js.map 304  - Not Modified"}
-{"level":"info","message":"GET /static/css/main.25fd9a5d.css.map 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  27 Unauthorized"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  27 Unauthorized"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
-{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/logout 200  48 OK"}
-{"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 304  - Not Modified"}
-{"level":"info","message":"GET /static/media/messaging.873788bb8bff7db56353.jpg 304  - Not Modified"}
-{"level":"info","message":"GET /favicon.ico 200  - OK"}
-{"level":"info","message":"GET /logo192.png 200  5347 OK"}
-{"level":"info","message":"GET /logo512.png 200  9664 OK"}
-{"level":"info","message":"GET /favicon.ico 200  - OK"}
-{"level":"info","message":"GET /logo192.png 200  5347 OK"}
-{"level":"info","message":"GET /logo512.png 200  9664 OK"}
-{"level":"info","message":"GET /favicon.ico 200  - OK"}
-{"level":"info","message":"GET /logo192.png 200  5347 OK"}
-{"level":"info","message":"GET /logo512.png 200  9664 OK"}
-{"level":"info","message":"GET / 200  644 OK"}
-{"level":"info","message":"GET /static/css/main.25fd9a5d.css 200  - OK"}
-{"level":"info","message":"GET /static/js/main.b2cc03ff.js 200  - OK"}
-{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
-{"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 200  32012 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/logout 200  48 OK"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /static/media/messaging.873788bb8bff7db56353.jpg 200  859507 OK"}
-{"level":"info","message":"GET /static/media/loading.335fed369e247f2cc8d2.gif 200  71970 OK"}
-{"level":"info","message":"POST /api/v1/login 200  263 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /chat 200  644 OK"}
-{"level":"info","message":"GET /static/css/main.25fd9a5d.css 304  - Not Modified"}
-{"level":"info","message":"GET /static/js/main.b2cc03ff.js 304  - Not Modified"}
-{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"PUT /api/v1/logout 200  48 OK"}
-{"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 304  - Not Modified"}
-{"level":"info","message":"GET /static/media/messaging.873788bb8bff7db56353.jpg 304  - Not Modified"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /chat 304  - Not Modified"}
-{"level":"info","message":"GET /static/js/main.b2cc03ff.js 304  - Not Modified"}
-{"level":"info","message":"GET /static/css/main.25fd9a5d.css 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  27 Unauthorized"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 304  - Not Modified"}
-{"level":"info","message":"GET /static/media/messaging.873788bb8bff7db56353.jpg 304  - Not Modified"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
-{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
-{"level":"info","message":"GET /login 200  644 OK"}
-{"level":"info","message":"GET /static/css/main.25fd9a5d.css 200  - OK"}
-{"level":"info","message":"GET /static/js/main.b2cc03ff.js 200  - OK"}
-{"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 304  - Not Modified"}
-{"level":"info","message":"GET /static/media/messaging.873788bb8bff7db56353.jpg 304  - Not Modified"}
-{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
-{"level":"info","message":"GET /favicon.ico 200  - OK"}
-{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
-{"level":"info","message":"GET /static/media/loading.335fed369e247f2cc8d2.gif 304  - Not Modified"}
-{"level":"info","message":"POST /api/v1/login 200  263 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /login 200  644 OK"}
-{"level":"info","message":"GET /login 304  - Not Modified"}
-{"level":"info","message":"GET /static/css/main.25fd9a5d.css 200  - OK"}
-{"level":"info","message":"GET /static/js/main.b2cc03ff.js 200  - OK"}
-{"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 200  32012 OK"}
-{"level":"info","message":"GET /static/media/messaging.873788bb8bff7db56353.jpg 200  859507 OK"}
-{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
-{"level":"info","message":"GET /static/media/loading.335fed369e247f2cc8d2.gif 200  71970 OK"}
-{"level":"info","message":"POST /api/v1/login 200  263 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/rooms 200  521 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/invitesList 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/invitesSeen 200  56 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"POST /api/v1/newMessage 200  16 OK"}
-{"level":"info","message":"GET /api/v1/rooms 200  521 OK"}
-{"level":"info","message":"GET /chat 304  - Not Modified"}
-{"level":"info","message":"GET /static/js/main.b2cc03ff.js 304  - Not Modified"}
-{"level":"info","message":"GET /static/css/main.25fd9a5d.css 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
-{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 200  1022 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"POST /api/v1/newMessage 200  16 OK"}
-{"level":"info","message":"GET /api/v1/rooms 200  802 OK"}
-{"level":"info","message":"PUT /api/v1/logout 200  48 OK"}
-{"level":"info","message":"GET /static/media/messaging.873788bb8bff7db56353.jpg 304  - Not Modified"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 304  - Not Modified"}
-{"level":"info","message":"GET /static/media/loading.335fed369e247f2cc8d2.gif 304  - Not Modified"}
-{"level":"info","message":"POST /api/v1/login 200  263 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"DELETE /api/v1/contact/64cbfc01a8da65de2fa671d7 200  40 OK"}
-{"level":"info","message":"GET /api/v1/contactsList 200  386 OK"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contacts?keyword= 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/requestsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/invitesList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contacts?keyword=s 200  384 OK"}
-{"level":"info","message":"GET /api/v1/contacts?keyword=si 200  279 OK"}
-{"level":"info","message":"GET /api/v1/contacts?keyword=siz 200  279 OK"}
-{"level":"info","message":"GET /api/v1/contacts?keyword=siza 200  279 OK"}
-{"level":"info","message":"POST /api/v1/request 201  37 Created"}
-{"level":"info","message":"GET /api/v1/contacts?keyword=siza 200  166 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /chat 304  - Not Modified"}
-{"level":"info","message":"GET /static/css/main.25fd9a5d.css 304  - Not Modified"}
-{"level":"info","message":"GET /static/js/main.b2cc03ff.js 304  - Not Modified"}
-{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/readNotifications 200  16 OK"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/clearNotifications 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"DELETE /api/v1/contact/64cbfc28a8da65de2fa671f4 200  40 OK"}
-{"level":"info","message":"GET /api/v1/contactsList 200  222 OK"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"DELETE /api/v1/contact/64cc6036945e650b64be2186 200  40 OK"}
-{"level":"info","message":"GET /api/v1/contactsList 200  69 OK"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /static/js/main.b2cc03ff.js 200  644 OK"}
-{"level":"info","message":"GET /static/css/main.25fd9a5d.css 200  - OK"}
-{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
-{"level":"info","message":"GET /chat 200  644 OK"}
-{"level":"info","message":"GET /static/css/main.25fd9a5d.css 304  - Not Modified"}
-{"level":"info","message":"GET /static/js/main.e0e52bc8.js 200  - OK"}
-{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /chat 200  644 OK"}
-{"level":"info","message":"GET /static/css/main.25fd9a5d.css 200  - OK"}
-{"level":"info","message":"GET /static/js/main.e0e52bc8.js 200  - OK"}
-{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 200  521 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/readNotifications 200  16 OK"}
-{"level":"info","message":"GET /api/v1/notificationsList 200  - OK"}
-{"level":"info","message":"GET /api/v1/clearNotifications 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/invitesList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contacts?keyword= 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/requestsList 200  383 OK"}
-{"level":"info","message":"GET /api/v1/contacts?keyword=s 200  271 OK"}
-{"level":"info","message":"GET /api/v1/contacts?keyword=si 200  166 OK"}
-{"level":"info","message":"GET /api/v1/contacts?keyword=siz 200  166 OK"}
-{"level":"info","message":"GET /api/v1/contacts?keyword=siza 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contacts?keyword=si 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contacts?keyword=siz 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contacts?keyword= 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contacts?keyword=s 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/invitesList 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/invitesSeen 200  56 OK"}
-{"level":"info","message":"GET /api/v1/requestsList 304  - Not Modified"}
-{"level":"info","message":"DELETE /api/v1/cancelRequest/64cd2231f09075fd62a75ba4 200  41 OK"}
-{"level":"info","message":"GET /api/v1/requestsList 200  52 OK"}
-{"level":"info","message":"GET /api/v1/contacts?keyword= 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/invitesList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/requestsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contacts?keyword=s 200  384 OK"}
-{"level":"info","message":"GET /api/v1/contacts?keyword=si 200  279 OK"}
-{"level":"info","message":"GET /api/v1/contacts?keyword=siz 200  279 OK"}
-{"level":"info","message":"GET /api/v1/contacts?keyword=siza 200  279 OK"}
-{"level":"info","message":"POST /api/v1/request 201  37 Created"}
-{"level":"info","message":"GET /api/v1/contacts?keyword=siza 200  166 OK"}
-{"level":"info","message":"PUT /api/v1/invitesSeen 200  56 OK"}
-{"level":"info","message":"GET /api/v1/invitesList 200  385 OK"}
-{"level":"info","message":"PUT /api/v1/acceptInvite 200  40 OK"}
-{"level":"info","message":"GET /api/v1/contactsList 200  255 OK"}
-{"level":"info","message":"GET /api/v1/invitesList 200  50 OK"}
-{"level":"info","message":"GET /api/v1/contactsList 200  255 OK"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/findChatRoom 201  58 Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/readNotifications 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/readNotifications 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 200  386 OK"}
-{"level":"info","message":"GET /api/v1/readNotifications 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/clearNotifications 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 200  35 OK"}
-{"level":"info","message":"GET /api/v1/readNotifications 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/readNotifications 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/readNotifications 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/readNotifications 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/readNotifications 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/readNotifications 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/readNotifications 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/readNotifications 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/invitesList 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/invitesSeen 200  56 OK"}
-{"level":"info","message":"GET /api/v1/readNotifications 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 200  35 OK"}
-{"level":"info","message":"GET /api/v1/readNotifications 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/readNotifications 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/readNotifications 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/readNotifications 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/readNotifications 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/readNotifications 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/invitesSeen 200  56 OK"}
-{"level":"info","message":"GET /api/v1/invitesList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 200  230 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/findChatRoom 201  58 Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"POST /api/v1/newMessage 200  16 OK"}
-{"level":"info","message":"GET /api/v1/rooms 200  804 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/findChatRoom 201  58 Created"}
-{"level":"info","message":"PUT /api/v1/logout 200  48 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 401  27 Unauthorized"}
-{"level":"info","message":"POST /api/v1/login 200  263 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/findChatRoom 201  58 Created"}
-{"level":"info","message":"PUT /api/v1/logout 200  48 OK"}
-{"level":"info","message":"POST /api/v1/login 200  263 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"POST /api/v1/login 200  263 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"POST /api/v1/login 200  263 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/findChatRoom 201  58 Created"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 200  804 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/readNotifications 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/invitesSeen 200  56 OK"}
-{"level":"info","message":"GET /api/v1/invitesList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/readNotifications 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/invitesSeen 200  56 OK"}
-{"level":"info","message":"GET /api/v1/invitesList 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/findChatRoom 201  58 Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET / 200  644 OK"}
+GET / 200  644 OK
 {"level":"info","message":"GET /static/css/main.31c0fc41.css 200  - OK"}
-{"level":"info","message":"GET /static/js/main.a92fab37.js 200  - OK"}
+GET /static/css/main.31c0fc41.css 200  - OK
+{"level":"info","message":"GET /static/js/main.334df09b.js 200  - OK"}
+GET /static/js/main.334df09b.js 200  - OK
 {"level":"info","message":"GET /manifest.json 304  - Not Modified"}
+GET /manifest.json 304  - Not Modified
+PUT /api/v1/checkAccess 200  56 OK
 {"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
 {"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
+GET /favicon.ico 304  - Not Modified
 {"level":"info","message":"GET /logo192.png 304  - Not Modified"}
+GET /logo192.png 304  - Not Modified
 {"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 200  32012 OK"}
+GET /static/media/logo.69f1f0a17dde6a19dce7.png 200  32012 OK
 {"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+PUT /api/v1/checkAccess 200  56 OK
 {"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/notificationsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
+GET /favicon.ico 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
 {"level":"info","message":"GET /manifest.json 304  - Not Modified"}
+GET /manifest.json 304  - Not Modified
 {"level":"info","message":"GET /static/css/main.31c0fc41.css 304  - Not Modified"}
+GET /static/css/main.31c0fc41.css 304  - Not Modified
 {"level":"info","message":"GET /static/css/main.31c0fc41.css.map 200  - OK"}
-{"level":"info","message":"GET /static/js/main.a92fab37.js.map 200  - OK"}
-{"level":"info","message":"GET /chat 200  644 OK"}
-{"level":"info","message":"GET /static/css/main.31c0fc41.css 304  - Not Modified"}
-{"level":"info","message":"GET /static/js/main.a92fab37.js 304  - Not Modified"}
-{"level":"info","message":"GET /static/js/main.a92fab37.js.map 304  - Not Modified"}
-{"level":"info","message":"GET /static/css/main.31c0fc41.css.map 304  - Not Modified"}
-{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
+GET /static/css/main.31c0fc41.css.map 200  - OK
+{"level":"info","message":"GET /static/js/main.334df09b.js.map 200  - OK"}
+GET /static/js/main.334df09b.js.map 200  - OK
 {"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/logout 200  48 OK"}
-{"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 304  - Not Modified"}
-{"level":"info","message":"GET /static/media/messaging.873788bb8bff7db56353.jpg 200  859507 OK"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /static/media/loading.335fed369e247f2cc8d2.gif 200  71970 OK"}
-{"level":"info","message":"POST /api/v1/login 200  263 OK"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"GET /chat 304  - Not Modified"}
-{"level":"info","message":"GET /static/js/main.a92fab37.js 304  - Not Modified"}
-{"level":"info","message":"GET /static/css/main.31c0fc41.css 304  - Not Modified"}
-{"level":"info","message":"GET /static/css/main.31c0fc41.css.map 304  - Not Modified"}
-{"level":"info","message":"GET /static/js/main.a92fab37.js.map 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
-{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
+PUT /api/v1/checkAccess 200  56 OK
+GET / 304  - Not Modified
 {"level":"info","message":"GET / 304  - Not Modified"}
-{"level":"info","message":"GET /static/js/main.a92fab37.js 304  - Not Modified"}
+{"level":"info","message":"GET /static/js/main.334df09b.js 304  - Not Modified"}
+GET /static/js/main.334df09b.js 304  - Not Modified
+GET /static/css/main.31c0fc41.css 304  - Not Modified
 {"level":"info","message":"GET /static/css/main.31c0fc41.css 304  - Not Modified"}
+GET /manifest.json 304  - Not Modified
 {"level":"info","message":"GET /manifest.json 304  - Not Modified"}
 {"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+PUT /api/v1/checkAccess 200  56 OK
 {"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
+GET /favicon.ico 304  - Not Modified
+GET /logo192.png 304  - Not Modified
 {"level":"info","message":"GET /logo192.png 304  - Not Modified"}
 {"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 304  - Not Modified"}
+GET /static/media/logo.69f1f0a17dde6a19dce7.png 304  - Not Modified
+{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
+GET /manifest.json 304  - Not Modified
+{"level":"info","message":"GET /static/css/main.31c0fc41.css 304  - Not Modified"}
+GET /static/css/main.31c0fc41.css 304  - Not Modified
+GET /static/js/main.334df09b.js.map 304  - Not Modified
+{"level":"info","message":"GET /static/js/main.334df09b.js.map 304  - Not Modified"}
+{"level":"info","message":"GET /static/css/main.31c0fc41.css.map 304  - Not Modified"}
+GET /static/css/main.31c0fc41.css.map 304  - Not Modified
 {"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+PUT /api/v1/checkAccess 200  56 OK
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+PUT /api/v1/checkAccess 200  56 OK
+{"level":"info","message":"GET / 304  - Not Modified"}
+GET / 304  - Not Modified
+GET /static/css/main.31c0fc41.css 304  - Not Modified
+{"level":"info","message":"GET /static/css/main.31c0fc41.css 304  - Not Modified"}
+GET /static/js/main.334df09b.js 304  - Not Modified
+{"level":"info","message":"GET /static/js/main.334df09b.js 304  - Not Modified"}
+{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
+GET /manifest.json 304  - Not Modified
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+PUT /api/v1/checkAccess 200  56 OK
 {"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
+GET /favicon.ico 304  - Not Modified
+{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
+GET /logo192.png 304  - Not Modified
+{"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 304  - Not Modified"}
+GET /static/media/logo.69f1f0a17dde6a19dce7.png 304  - Not Modified
+{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
+GET /manifest.json 304  - Not Modified
+{"level":"info","message":"GET /static/css/main.31c0fc41.css 304  - Not Modified"}
+GET /static/css/main.31c0fc41.css 304  - Not Modified
+{"level":"info","message":"GET /static/js/main.334df09b.js.map 304  - Not Modified"}
+GET /static/js/main.334df09b.js.map 304  - Not Modified
+{"level":"info","message":"GET /static/css/main.31c0fc41.css.map 304  - Not Modified"}
+GET /static/css/main.31c0fc41.css.map 304  - Not Modified
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+PUT /api/v1/checkAccess 200  56 OK
+{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
+GET /favicon.ico 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+GET / 304  - Not Modified
+{"level":"info","message":"GET / 304  - Not Modified"}
+{"level":"info","message":"GET /static/css/main.31c0fc41.css 304  - Not Modified"}
+GET /static/css/main.31c0fc41.css 304  - Not Modified
+GET /static/js/main.334df09b.js 304  - Not Modified
+{"level":"info","message":"GET /static/js/main.334df09b.js 304  - Not Modified"}
+{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
+GET /manifest.json 304  - Not Modified
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+PUT /api/v1/checkAccess 200  56 OK
+{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
+GET /favicon.ico 304  - Not Modified
+{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
+GET /logo192.png 304  - Not Modified
+{"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 304  - Not Modified"}
+GET /static/media/logo.69f1f0a17dde6a19dce7.png 304  - Not Modified
+GET /manifest.json 304  - Not Modified
+{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
+GET /static/css/main.31c0fc41.css 304  - Not Modified
+{"level":"info","message":"GET /static/css/main.31c0fc41.css 304  - Not Modified"}
+{"level":"info","message":"GET /static/css/main.31c0fc41.css.map 304  - Not Modified"}
+GET /static/css/main.31c0fc41.css.map 304  - Not Modified
+GET /static/js/main.334df09b.js.map 304  - Not Modified
+{"level":"info","message":"GET /static/js/main.334df09b.js.map 304  - Not Modified"}
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+PUT /api/v1/checkAccess 200  56 OK
+{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
+GET /favicon.ico 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"GET / 304  - Not Modified"}
+GET / 304  - Not Modified
+{"level":"info","message":"GET /static/js/main.334df09b.js 304  - Not Modified"}
+GET /static/js/main.334df09b.js 304  - Not Modified
+{"level":"info","message":"GET /static/css/main.31c0fc41.css 304  - Not Modified"}
+GET /static/css/main.31c0fc41.css 304  - Not Modified
+{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
+GET /manifest.json 304  - Not Modified
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+PUT /api/v1/checkAccess 200  56 OK
+{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
+GET /logo192.png 304  - Not Modified
+GET /favicon.ico 304  - Not Modified
+{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
+{"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 304  - Not Modified"}
+GET /static/media/logo.69f1f0a17dde6a19dce7.png 304  - Not Modified
+{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
+GET /manifest.json 304  - Not Modified
+{"level":"info","message":"GET /static/css/main.31c0fc41.css 304  - Not Modified"}
+GET /static/css/main.31c0fc41.css 304  - Not Modified
+GET /static/js/main.334df09b.js.map 304  - Not Modified
+{"level":"info","message":"GET /static/js/main.334df09b.js.map 304  - Not Modified"}
+GET /static/css/main.31c0fc41.css.map 304  - Not Modified
+{"level":"info","message":"GET /static/css/main.31c0fc41.css.map 304  - Not Modified"}
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+PUT /api/v1/checkAccess 200  56 OK
+{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
+GET /favicon.ico 304  - Not Modified
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+PUT /api/v1/checkAccess 200  56 OK
+{"level":"info","message":"GET / 200  644 OK"}
+GET / 200  644 OK
+{"level":"info","message":"GET /static/css/main.31c0fc41.css 200  - OK"}
+GET /static/css/main.31c0fc41.css 200  - OK
+{"level":"info","message":"GET /static/js/main.7796fda0.js 200  - OK"}
+GET /static/js/main.7796fda0.js 200  - OK
+{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
+GET /manifest.json 304  - Not Modified
+{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
+GET /favicon.ico 304  - Not Modified
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+PUT /api/v1/checkAccess 200  56 OK
+{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
+GET /logo192.png 304  - Not Modified
+{"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 200  32012 OK"}
+GET /static/media/logo.69f1f0a17dde6a19dce7.png 200  32012 OK
+{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
+GET /manifest.json 304  - Not Modified
+{"level":"info","message":"GET /static/css/main.31c0fc41.css 304  - Not Modified"}
+GET /static/css/main.31c0fc41.css 304  - Not Modified
+{"level":"info","message":"GET /static/css/main.31c0fc41.css.map 200  - OK"}
+GET /static/css/main.31c0fc41.css.map 200  - OK
+{"level":"info","message":"GET /static/js/main.7796fda0.js.map 200  - OK"}
+GET /static/js/main.7796fda0.js.map 200  - OK
+{"level":"info","message":"GET / 200  644 OK"}
+GET / 200  644 OK
+{"level":"info","message":"GET /static/css/main.31c0fc41.css 200  - OK"}
+GET /static/css/main.31c0fc41.css 200  - OK
+{"level":"info","message":"GET /static/js/main.a5c7a8fd.js 200  - OK"}
+GET /static/js/main.a5c7a8fd.js 200  - OK
+{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
+GET /manifest.json 304  - Not Modified
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+PUT /api/v1/checkAccess 200  56 OK
+{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
+GET /favicon.ico 304  - Not Modified
+{"level":"info","message":"GET /logo192.png 304  - Not Modified"}
+GET /logo192.png 304  - Not Modified
+{"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 200  32012 OK"}
+GET /static/media/logo.69f1f0a17dde6a19dce7.png 200  32012 OK
+{"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
+PUT /api/v1/checkAccess 200  56 OK
+{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
+GET /favicon.ico 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+GET /manifest.json 304  - Not Modified
+{"level":"info","message":"GET /manifest.json 304  - Not Modified"}
+{"level":"info","message":"GET /static/css/main.31c0fc41.css 304  - Not Modified"}
+GET /static/css/main.31c0fc41.css 304  - Not Modified
+{"level":"info","message":"GET /static/css/main.31c0fc41.css.map 200  - OK"}
+GET /static/css/main.31c0fc41.css.map 200  - OK
+{"level":"info","message":"GET /static/js/main.a5c7a8fd.js.map 200  - OK"}
+GET /static/js/main.a5c7a8fd.js.map 200  - OK
 {"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/logout 200  48 OK"}
-{"level":"info","message":"GET /static/media/messaging.873788bb8bff7db56353.jpg 304  - Not Modified"}
+GET /api/v1/contactsList 304  - Not Modified
+{"level":"info","message":"GET /chat 200  644 OK"}
+GET /chat 200  644 OK
+{"level":"info","message":"GET /static/css/main.31c0fc41.css 200  - OK"}
+GET /static/css/main.31c0fc41.css 200  - OK
+{"level":"info","message":"GET /static/js/main.a5c7a8fd.js 200  - OK"}
+GET /static/js/main.a5c7a8fd.js 200  - OK
+{"level":"info","message":"PUT /api/v1/checkAccess 401  27 Unauthorized"}
+PUT /api/v1/checkAccess 401  27 Unauthorized
+{"level":"info","message":"GET /static/media/logo.69f1f0a17dde6a19dce7.png 200  32012 OK"}
+GET /static/media/logo.69f1f0a17dde6a19dce7.png 200  32012 OK
+{"level":"info","message":"GET /static/media/messaging.873788bb8bff7db56353.jpg 200  859507 OK"}
+GET /static/media/messaging.873788bb8bff7db56353.jpg 200  859507 OK
+{"level":"info","message":"GET /manifest.json 200  492 OK"}
+GET /manifest.json 200  492 OK
+{"level":"info","message":"GET /favicon.ico 200  - OK"}
+GET /favicon.ico 200  - OK
+{"level":"info","message":"GET /logo192.png 200  5347 OK"}
+GET /logo192.png 200  5347 OK
 {"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /static/media/loading.335fed369e247f2cc8d2.gif 304  - Not Modified"}
+GET /favicon.ico 304  - Not Modified
+{"level":"info","message":"GET /static/media/loading.335fed369e247f2cc8d2.gif 200  71970 OK"}
+GET /static/media/loading.335fed369e247f2cc8d2.gif 200  71970 OK
 {"level":"info","message":"POST /api/v1/login 200  263 OK"}
+POST /api/v1/login 200  263 OK
 {"level":"info","message":"PUT /api/v1/checkAccess 200  56 OK"}
-{"level":"info","message":"GET /favicon.ico 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/invitesSeen 200  56 OK"}
-{"level":"info","message":"GET /api/v1/invitesList 304  - Not Modified"}
+PUT /api/v1/checkAccess 200  56 OK
+{"level":"info","message":"GET /api/v1/rooms 200  525 OK"}
+GET /api/v1/rooms 200  525 OK
 {"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
 {"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
+{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
 {"level":"info","message":"GET /static/media/chatBg2.824af49abe476ad62a79.jpg 200  1040699 OK"}
+GET /static/media/chatBg2.824af49abe476ad62a79.jpg 200  1040699 OK
 {"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
 {"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
+PUT /api/v1/getMessages 201  - Created
 {"level":"info","message":"POST /api/v1/newMessage 200  16 OK"}
-{"level":"info","message":"GET /api/v1/rooms 200  806 OK"}
-{"level":"info","message":"PUT /api/v1/invitesSeen 200  56 OK"}
-{"level":"info","message":"GET /api/v1/invitesList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/requestsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/invitesList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/contactsList 304  - Not Modified"}
+POST /api/v1/newMessage 200  16 OK
+{"level":"info","message":"GET /api/v1/rooms 200  522 OK"}
+GET /api/v1/rooms 200  522 OK
+{"level":"info","message":"GET /api/v1/rooms 200  803 OK"}
+GET /api/v1/rooms 200  803 OK
+{"level":"info","message":"GET /static/media/chatBg2.824af49abe476ad62a79.jpg 200  1040699 OK"}
+GET /static/media/chatBg2.824af49abe476ad62a79.jpg 200  1040699 OK
 {"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/invitesList 304  - Not Modified"}
-{"level":"info","message":"PUT /api/v1/invitesSeen 200  56 OK"}
-{"level":"info","message":"GET /api/v1/requestsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/invitesList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/requestsList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/invitesList 304  - Not Modified"}
-{"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
+GET /api/v1/rooms 304  - Not Modified
 {"level":"info","message":"PUT /api/v1/getMessages 201  - Created"}
+<<<<<<< HEAD
 {"level":"info","message":"GET / 200  644 OK"}
 GET / 200  644 OK
 {"level":"info","message":"GET /static/css/main.31c0fc41.css 200  - OK"}
@@ -734,12 +316,24 @@ GET /api/v1/rooms 304  - Not Modified
 GET /api/v1/rooms 304  - Not Modified
 {"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
 GET /api/v1/rooms 304  - Not Modified
+=======
+PUT /api/v1/getMessages 201  - Created
+{"level":"info","message":"POST /api/v1/newMessage 200  16 OK"}
+POST /api/v1/newMessage 200  16 OK
+{"level":"info","message":"GET /api/v1/rooms 200  803 OK"}
+GET /api/v1/rooms 200  803 OK
+{"level":"info","message":"POST /api/v1/newMessage 200  16 OK"}
+POST /api/v1/newMessage 200  16 OK
+{"level":"info","message":"GET /api/v1/rooms 200  524 OK"}
+GET /api/v1/rooms 200  524 OK
+>>>>>>> dev
 {"level":"info","message":"GET /manifest.json 304  - Not Modified"}
 GET /manifest.json 304  - Not Modified
 {"level":"info","message":"GET /static/css/main.31c0fc41.css 304  - Not Modified"}
 GET /static/css/main.31c0fc41.css 304  - Not Modified
 {"level":"info","message":"GET /static/css/main.31c0fc41.css.map 200  - OK"}
 GET /static/css/main.31c0fc41.css.map 200  - OK
+<<<<<<< HEAD
 {"level":"info","message":"GET /static/js/main.a92fab37.js.map 200  - OK"}
 GET /static/js/main.a92fab37.js.map 200  - OK
 {"level":"info","message":"GET /chat 200  644 OK"}
@@ -768,3 +362,7 @@ GET /api/v1/rooms 304  - Not Modified
 GET /api/v1/rooms 304  - Not Modified
 {"level":"info","message":"GET /api/v1/rooms 304  - Not Modified"}
 GET /api/v1/rooms 304  - Not Modified
+=======
+{"level":"info","message":"GET /static/js/main.a5c7a8fd.js.map 200  - OK"}
+GET /static/js/main.a5c7a8fd.js.map 200  - OK
+>>>>>>> dev

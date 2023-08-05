@@ -11,6 +11,7 @@ import Test from './pages/Test';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
+  console.log(process.env);
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>

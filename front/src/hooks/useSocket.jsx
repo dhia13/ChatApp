@@ -18,14 +18,13 @@ const useSocket = () => {
   const prevOnlineUsersRef = useRef(currentOnlineUsers);
   useEffect(() => {
     let socket;
-    let url = 'http://localhost:8000';
-    if (process.env.NODE_ENV.trim() === 'production') {
-      console.log('production');
-      url = 'https://chat-odn3.onrender.com';
-    }
     if (isLogged) {
+      let api = process.env.REACT_APP_API_URL
+        ? process.env.REACT_APP_API_URL
+        : 'http://localhost:8000';
+      console.log(api);
       // Connect to the socket server
-      socket = io(url, {
+      socket = io(api, {
         query: {
           userId: id,
         },
