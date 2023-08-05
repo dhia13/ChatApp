@@ -13,7 +13,7 @@
     "start": "node index.js",
     "init-dev": "npm install && cd front && npm install && set REACT_APP_API_URL=http://localhost:8000 && npm run build",
     "build-dev": "cd front && set REACT_APP_API_URL=http://localhost:8000 && npm run build",
-    "start-react": "cd front && set REACT_APP_API_URL 'http://localhost:8000' && npm start",
+    "start-react": "cd front && npm start",
     "build-production": "npm install && cd front && npm install && set REACT_APP_API_URL='https://chat-odn3.onrender.com' && npm run build"
   },
   "author": "",
