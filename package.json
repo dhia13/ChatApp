@@ -11,12 +11,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "build-dev": "cd front && npm install && npm run build",
-    "install-build": "npm install && npm run build-dev",
-    "test-production": "set NODE_ENV=production && cd front && npm run build",
-    "build-production": "npm install && cd front && npm install && set REACT_APP_API_URL='https://chat-odn3.onrender.com' && npm run build",
-    "startProd": "set NODE_ENV=production && node index.js",
-    "live": "set NODE_ENV=production && npm run build-production && npm run start"
+    "init-dev": "npm install && cd front && npm install && set REACT_APP_API_URL='http://localhost:8000' && npm run build",
+    "build-dev": "cd front && set REACT_APP_API_URL='http://localhost:8000' && npm run build",
+    "start-react": "cd front && set REACT_APP_API_URL 'http://localhost:8000' && npm start",
+    "build-production": "npm install && cd front && npm install && set REACT_APP_API_URL='https://chat-odn3.onrender.com' && npm run build"
   },
   "author": "",
   "license": "ISC",
