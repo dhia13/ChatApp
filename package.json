@@ -12,7 +12,7 @@
     "dev": "nodemon index.js",
     "start": "node index.js",
     "build-production": "cd front && set REACT_APP_API_URL='https://chat-odn3.onrender.com' && npm i && npm install && npm run build",
-    "build-dev": "cd front && set REACT_APP_API_URL='http://localhost:8000',cd front && npm install && npm run build",
+    "build-dev": "cd front && npm install && npm run build",
     "install-build": "npm install && npm run build-dev",
     "production": "set NODE_ENV=production && npm run build && npm run start",
     "startProd": "set NODE_ENV=production && node index.js",

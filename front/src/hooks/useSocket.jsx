@@ -19,8 +19,12 @@ const useSocket = () => {
   useEffect(() => {
     let socket;
     if (isLogged) {
+      let api = process.env.REACT_APP_API_URL
+        ? process.env.REACT_APP_API_URL
+        : 'http://localhost:8000';
       // Connect to the socket server
-      socket = io('http://localhost:8000', {
+      console.log(api);
+      socket = io(api, {
         query: {
           userId: id,
         },
