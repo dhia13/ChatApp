@@ -119,7 +119,7 @@ const NewContact = () => {
                   key={item._id}
                 >
                   <div className="flex justify-center items-center">
-                    <div className="w-[40px]">
+                    <div className="w-[40px] mx-4">
                       {item.img ? (
                         <img
                           src={item.img}
