@@ -11,6 +11,10 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import valid from '../assets/icons/valid.png';
 import invalid from '../assets/icons/invalid.png';
 import api from '../api/axiosInstance';
+import { setInvitesAlert } from '../store/Slices/contactsSlice';
+import { setNotificationAlert } from '../store/Slices/notificationsSlice';
+import { setLogged, setUser } from '../store/Slices/userSlice';
+import { useDispatch } from 'react-redux';
 
 function Register() {
   const [registerStep, setRegisterStep] = useState(0);
@@ -164,6 +168,7 @@ function Register() {
   }, [validName, validUsername]);
   const [success, setSuccess] = useState(false);
   // submit
+  const [loginSuccessData, setLoginSuccessData] = useState({});
   const handleSubmit = async (e) => {
     if (validEmail && validPassword && validConfirmPassword) {
       setLoading(true);
@@ -184,6 +189,7 @@ function Register() {
           setLoading(false);
           setError(false);
           setSuccess(true);
+          setLoginSuccessData(res.data.data);
           localStorage.setItem('userData', JSON.stringify(res.data.data));
         })
         .catch((error) => {
@@ -193,13 +199,44 @@ function Register() {
         });
     }
   };
+  const dispatch = useDispatch();
   useEffect(() => {
     if (success) {
       setTimeout(() => {
+        dispatch(
+          setUser({
+            username: loginSuccessData.username,
+            name: loginSuccessData.name,
+            img: loginSuccessData.img,
+            email: loginSuccessData.email,
+            id: loginSuccessData.id,
+            birthday: loginSuccessData.birthday,
+          })
+        );
+        dispatch(setLogged());
+        if (loginSuccessData.unseenNotificationsCount > 0) {
+          dispatch(
+            setNotificationAlert(loginSuccessData.unseenNotificationsCount)
+          );
+        }
+        if (loginSuccessData.unseenIvitesCount > 0) {
+          dispatch(setInvitesAlert(loginSuccessData.unseenIvitesCount));
+        }
         setRegisterStep(3);
       }, 1000);
     }
-  }, [success]);
+  }, [
+    dispatch,
+    loginSuccessData.birthday,
+    loginSuccessData.email,
+    loginSuccessData.id,
+    loginSuccessData.img,
+    loginSuccessData.name,
+    loginSuccessData.unseenIvitesCount,
+    loginSuccessData.unseenNotificationsCount,
+    loginSuccessData.username,
+    success,
+  ]);
   useEffect(() => {
     if (error) {
       setTimeout(() => {
