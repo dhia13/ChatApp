@@ -18,7 +18,6 @@ const useSocket = () => {
   const prevOnlineUsersRef = useRef(currentOnlineUsers);
   useEffect(() => {
     let socket;
-    console.log(process.env);
     if (isLogged) {
       // Connect to the socket server
       socket = io('http://localhost:8000', {
