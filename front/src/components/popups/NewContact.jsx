@@ -4,6 +4,7 @@ import { GrAdd } from 'react-icons/gr';
 import { useDispatch } from 'react-redux';
 import { fetchInvites, fetchRequests } from '../../store/Slices/contactsSlice';
 import { toast } from 'react-toastify';
+import InitialsAvatar from 'react-initials-avatar';
 
 const NewContact = () => {
   const dispatch = useDispatch();
@@ -118,11 +119,20 @@ const NewContact = () => {
                   key={item._id}
                 >
                   <div className="flex justify-center items-center">
-                    <img
-                      src={item.img}
-                      alt="profile"
-                      className="w-[40px] h-[40px] rounded-full border-gray-500 border mx-4 "
-                    />
+                    <div className="w-[40px]">
+                      {item.img ? (
+                        <img
+                          src={item.img}
+                          alt="profileImg"
+                          className="w-[40px] h-[40px] rounded-full border border-white object-cover"
+                        />
+                      ) : (
+                        <InitialsAvatar
+                          name={item.name}
+                          className="w-[40px] h-[40px] bg-blue-300 rounded-full flex-center"
+                        />
+                      )}
+                    </div>
                     <div className="flex justify-center items-start flex-col">
                       <div className="font-normal">{item.username}</div>
                       <div className="font-thin">{item.name}</div>
