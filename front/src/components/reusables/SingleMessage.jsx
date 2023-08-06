@@ -1,6 +1,7 @@
 import React from 'react';
 import { format } from 'timeago.js';
 import InitialsAvatar from 'react-initials-avatar';
+import { BsCheck2, BsCheck2All } from 'react-icons/bs';
 
 const SingleMessage = ({ message, isMine, user, lastSeen, otherUser }) => {
   const { img, name } = user;
@@ -12,20 +13,17 @@ const SingleMessage = ({ message, isMine, user, lastSeen, otherUser }) => {
           <div className="mt-1 max-w-2/3 pb-1 rounded-md bg-gray-50 shadow-md p-2 flex justify-center items-start flex-col gap-1">
             <p>{content}</p>
             <div className="flex justify-center items-center gap-2">
-              {lastSeen === _id && (
+              {lastSeen === _id ? (
                 <div className="w-[20px]">
-                  {img ? (
-                    <img
-                      src={otherUser.img}
-                      alt="profileImg"
-                      className="w-[20px] h-[20px] rounded-full border-[0.5px] border-black  object-cover"
-                    />
-                  ) : (
-                    <InitialsAvatar
-                      name={otherUser.name}
-                      className="w-[20px] h-[20px] bg-blue-300 rounded-full border-[0.5px] border-black flex-center text-xs"
-                    />
-                  )}
+                  <BsCheck2All className="text-green-500" />
+                </div>
+              ) : message.seen && lastSeen !== _id ? (
+                <div className="w-[20px]">
+                  <BsCheck2All className="text-blue-500" />
+                </div>
+              ) : (
+                <div className="w-[20px]">
+                  <BsCheck2 className="text-gray-500" />
                 </div>
               )}
               <p
@@ -70,7 +68,22 @@ const SingleMessage = ({ message, isMine, user, lastSeen, otherUser }) => {
           </div>
           <div className="mt-1 max-w-2/3 min-w-[100px] pb-1 rounded-md bg-gray-50 shadow-sm p-2">
             <p>{content}</p>
-            <p className="text-xs font-thin">{format(updatedAt)}</p>
+            <div className="flex justify-center items-center gap-2">
+              {lastSeen === _id ? (
+                <div className="w-[20px]">
+                  <BsCheck2All className="text-green-500" />
+                </div>
+              ) : message.seen && lastSeen !== _id ? (
+                <div className="w-[20px]">
+                  <BsCheck2All className="text-blue-500" />
+                </div>
+              ) : (
+                <div className="w-[20px]">
+                  <BsCheck2 className="text-gray-500" />
+                </div>
+              )}
+              <p className="text-xs font-thin">{format(updatedAt)}</p>
+            </div>
           </div>
         </div>
       )}

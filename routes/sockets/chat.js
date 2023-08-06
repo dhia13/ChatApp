@@ -1,6 +1,6 @@
 // routes/socketRoutes.js
 const socketIO = require('socket.io');
-const { User } = require('../../models/User');
+const User = require('../../models/User');
 
 function socketRoutes(server) {
   const io = socketIO(server, {

@@ -1,4 +1,4 @@
-const { User } = require('../../models/User');
+const User = require('../../models/User');
 const { Notification } = require('../../models/notification');
 const { ContactAttempt } = require('../../models/contactAttepmt');
 const { default: mongoose } = require('mongoose');
@@ -373,5 +373,24 @@ router.get('/clearNotifications', async (req, res) => {
     res.status(500).json({ success: false, msg: error, msg });
   }
 });
+const { multerSetup } = require('../../utils/multerSetup');
+const uploadCtrl = require('../../controllers/upload');
+const upload = multerSetup();
 
+router.post('/upload-audio', upload.single('audio'), (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: 'No audio file provided.' });
+    }
+    console.log('got here ');
+    console.log(req.file);
+    // At this point, you can process the uploaded audio file as needed.
+    // For example, you can save it to a database or perform further processing.
+
+    return res.status(200).json({ message: 'Audio uploaded successfully!' });
+  } catch (error) {
+    console.error('Error uploading audio:', error);
+    return res.status(500).json({ message: 'Failed to upload audio.' });
+  }
+});
 module.exports = router;

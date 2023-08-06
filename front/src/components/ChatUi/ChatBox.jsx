@@ -10,6 +10,12 @@ import {
 } from '../../store/Slices/roomsSlice';
 import { LiaPaperPlaneSolid } from 'react-icons/lia';
 import chatBg from '../../assets/images/chatBg2.jpg';
+import MessagingInput from '../reusables/MessagingInput';
+import { useSocket } from '../../HOC/SocketContext';
+import AudioMessage from '../reusables/AudioMessage';
+import IconContainer from '../reusables/IconContainer';
+import { GrEmoji } from 'react-icons/gr';
+
 const ChatBox = () => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState('');
@@ -67,7 +73,6 @@ const ChatBox = () => {
   const handleVisibilityChange = () => {
     setIsOnWindow(!document.hidden);
   };
-
   useEffect(() => {
     document.addEventListener('visibilitychange', handleVisibilityChange);
 
@@ -123,27 +128,36 @@ const ChatBox = () => {
     }
   }, [currentRoomId]);
   // sending a message
-  const handleSendMessage = (e) => {
-    e.preventDefault();
-    setMessage('');
-    api
-      .post(
-        '/newMessage',
-        {
-          message: { owner: user.id, content: message, room: currentRoomId },
-          receiver: secondUser._id,
-        },
-        { withCredentials: true }
-      )
-      .then((res) => {
-        setMessages([...messages, res.data.msg]);
+  const socket = useSocket();
+
+  useEffect(() => {
+    if (socket) {
+      // Event listener for 'messageReceived' event (from the server)
+      socket.on('msgReceived', (newMessage) => {
+        setMessages([...messages, newMessage]);
         if (rooms.length > 0) {
           dispatch(fetchRecentRoomsWitoutLoading(user.id));
         } else {
           dispatch(fetchRecentRooms(user.id));
         }
       });
+
+      // Clean up event listeners on unmount
+      return () => {
+        socket.off('msg');
+        socket.off('messageReceived');
+      };
+    }
+  }, [dispatch, messages, rooms.length, socket, user.id]);
+  const handleSendMessage = (e) => {
+    e.preventDefault();
+    setMessage('');
+    socket.emit('sendMsg', {
+      message: { owner: user.id, content: message, room: currentRoomId },
+      receiver: secondUser._id,
+    });
   };
+  ///
   useEffect(() => {
     if (newMsg && currentRoomId === newMsg.room) {
       setMessages((prevMessages) => [...prevMessages, newMsg]);
@@ -173,7 +187,7 @@ const ChatBox = () => {
         <>
           {loading ? (
             <>
-              <div className="w-full h-[80px] flex justify-center font-bold items-center shadow-sm bg-blue-50">
+              <div className="w-full h-[80px] flex justify-center font-bold items-center  bg-cyan-700">
                 <div className="h-[40px] w-[120px] bg-gray-300 animate-pulse rounded-md"></div>
               </div>
               <div className="flex-center flex-col relative">
@@ -189,34 +203,43 @@ const ChatBox = () => {
                   className="w-full h-[80px] flex justify-center items-center relative"
                   onSubmit={(e) => handleSendMessage(e)}
                 >
-                  <input
-                    className="w-[96%] bg-gray-100 shadow-md h-[60px] border-none outline-none pl-2 rounded-md"
-                    value={message}
-                    type="text"
-                    onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Send a message"
-                  />
-                  {message === '' ? (
-                    <LiaPaperPlaneSolid
-                      className={`absolute right-[45px] top-[30px] text-2xl cursor-pointer hover:text-blue-700 ${
-                        message !== '' && 'text-blue-900'
-                      }`}
-                      onClick={(e) => handleSendMessage(e)}
+                  <div className="w-[80%] h-[60px] mb-[20px] bg-gray-300 items-center rounded-md flex justify-around">
+                    <div className="">
+                      <IconContainer>
+                        <GrEmoji />
+                      </IconContainer>
+                    </div>
+
+                    <input
+                      className="w-[80%] h-[60px] bg-gray-300 border-none outline-none rounded-md text-black placeholder:text-gray-800"
+                      value={message}
+                      type="text"
+                      onChange={(e) => setMessage(e.target.value)}
+                      placeholder="Send a message"
                     />
-                  ) : (
-                    <LiaPaperPlaneSolid
-                      className={`absolute right-[45px] top-[30px] text-2xl cursor-pointer hover:text-blue-700 ${
-                        message !== '' && 'text-blue-900'
-                      }`}
-                      onClick={(e) => handleSendMessage(e)}
-                    />
-                  )}
+                    {message === '' ? (
+                      <LiaPaperPlaneSolid
+                        className={` text-2xl cursor-pointer hover:text-blue-700 ${
+                          message !== '' && 'text-blue-900'
+                        }`}
+                        onClick={(e) => handleSendMessage(e)}
+                      />
+                    ) : (
+                      <LiaPaperPlaneSolid
+                        className={`text-2xl cursor-pointer hover:text-blue-700 ${
+                          message !== '' && 'text-blue-900'
+                        }`}
+                        onClick={(e) => handleSendMessage(e)}
+                      />
+                    )}
+                    <AudioMessage />
+                  </div>
                 </form>
               </div>
             </>
           ) : (
             <>
-              <div className="w-full h-[80px] flex justify-center font-bold items-center shadow-sm bg-blue-50">
+              <div className="w-full h-[80px] flex justify-center font-bold items-center bg-cyan-700">
                 {secondUser?.username.charAt(0).toUpperCase() +
                   secondUser?.username.slice(1)}
               </div>
@@ -242,33 +265,11 @@ const ChatBox = () => {
                       </div>
                     ))}
                 </ChatBoxContainer>
-                <form
-                  className="w-full h-[80px] flex justify-center items-center relative"
-                  onSubmit={(e) => handleSendMessage(e)}
-                >
-                  <input
-                    className="w-[96%] bg-gray-100 shadow-md h-[60px] border-none outline-none pl-2 rounded-md"
-                    value={message}
-                    type="text"
-                    onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Send a message"
-                  />
-                  {message === '' ? (
-                    <LiaPaperPlaneSolid
-                      className={`absolute right-[45px] top-[30px] text-2xl cursor-pointer hover:text-blue-700 ${
-                        message !== '' && 'text-blue-900'
-                      }`}
-                      onClick={(e) => handleSendMessage(e)}
-                    />
-                  ) : (
-                    <LiaPaperPlaneSolid
-                      className={`absolute right-[45px] top-[30px] text-2xl cursor-pointer hover:text-blue-700 ${
-                        message !== '' && 'text-blue-900'
-                      }`}
-                      onClick={(e) => handleSendMessage(e)}
-                    />
-                  )}
-                </form>
+                <MessagingInput
+                  message={message}
+                  setMessage={setMessage}
+                  handleSendMessage={handleSendMessage}
+                />
               </div>
             </>
           )}

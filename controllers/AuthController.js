@@ -1,4 +1,4 @@
-const { User } = require('../models/User');
+const User = require('../models/User');
 const sendMail = require('../utils/mailer.js');
 const { CLIENT_URL } = process.env;
 const { generateToken, verifyToken } = require('../utils/jwt.js');

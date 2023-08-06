@@ -1,38 +1,49 @@
-import { useEffect, useRef } from 'react';
-import io from 'socket.io-client';
+// SocketContext.js
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import io from 'socket.io-client';
 import {
   fetchContactsWitouLoading,
   newInvite,
   setOnlineUsers,
 } from '../store/Slices/contactsSlice';
-import { addNotification } from '../store/Slices/notificationsSlice';
 import { toast } from 'react-toastify';
+import { addNotification } from '../store/Slices/notificationsSlice';
 import {
   fetchRecentRoomsWitoutLoading,
   setMessagesToSeen,
   setNewMsg,
 } from '../store/Slices/roomsSlice';
 
-const useSocket = () => {
+const SocketContext = createContext();
+
+const SocketProvider = ({ children }) => {
+  const [socket, setSocket] = useState(null);
   const { isLogged, id } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const currentOnlineUsers = useSelector((state) => state.contacts.onlineUsers);
   const currentRoom = useSelector((state) => state.rooms.currentRoomId);
   const prevOnlineUsersRef = useRef(currentOnlineUsers);
   useEffect(() => {
-    let socket;
-    if (isLogged) {
-      socket = io(process.env.REACT_APP_API_URL, {
+    // Initialize your socket connection here
+    if (isLogged && id) {
+      const newSocket = io(process.env.REACT_APP_API_URL, {
         query: {
           userId: id,
         },
       });
-      socket.on('newMsg', (data) => {
+      setSocket(newSocket);
+      newSocket.on('newMsg', (data) => {
         dispatch(setNewMsg(data));
       });
-      socket.on('connection');
-      socket.on('seen', (data) => {
+      newSocket.on('connection');
+      newSocket.on('seen', (data) => {
         console.log('msg seen');
         console.log({ messagesSeen: data });
         console.log(data.roomId, currentRoom);
@@ -42,7 +53,7 @@ const useSocket = () => {
         }
         dispatch(fetchRecentRoomsWitoutLoading());
       });
-      socket.on('isOnline', (data) => {
+      newSocket.on('isOnline', (data) => {
         const prevOnlineUsers = prevOnlineUsersRef.current;
         if (data.online && !prevOnlineUsers.includes(data.id)) {
           dispatch(setOnlineUsers([...prevOnlineUsers, data.id]));
@@ -52,7 +63,7 @@ const useSocket = () => {
           );
         }
       });
-      socket.on('invite', () => {
+      newSocket.on('invite', () => {
         dispatch(newInvite());
         const notify = () =>
           toast.success('New Invitation', {
@@ -67,7 +78,7 @@ const useSocket = () => {
           });
         notify();
       });
-      socket.on('notification', (data) => {
+      newSocket.on('notification', (data) => {
         if (data?.type === 'inviteAccepted') {
           dispatch(addNotification());
           const notify = () =>
@@ -88,15 +99,19 @@ const useSocket = () => {
           dispatch(fetchContactsWitouLoading());
         }
       });
+      return () => {
+        newSocket.disconnect();
+      };
     }
-
-    // Cleanup the socket connection when the component unmounts
-    return () => {
-      if (socket) {
-        socket.disconnect();
-      }
-    };
   }, [currentRoom, dispatch, id, isLogged]);
+
+  return (
+    <SocketContext.Provider value={socket}>{children}</SocketContext.Provider>
+  );
 };
 
-export default useSocket;
+const useSocket = () => {
+  return useContext(SocketContext);
+};
+
+export { SocketProvider, useSocket };

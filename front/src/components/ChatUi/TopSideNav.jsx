@@ -47,7 +47,7 @@ const TopSideNav = () => {
   return (
     <>
       <div
-        className={`flex justify-center items-center w-full relative h-[80px] bg-blue-50 shadow-sm`}
+        className={`flex justify-center items-center w-full relative h-[80px] bg-cyan-700`}
       >
         {/* user name + icon */}
         <div

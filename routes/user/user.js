@@ -1,5 +1,5 @@
 const userCtrl = require('../../controllers/user');
-const { User } = require('../../models/User');
+const User = require('../../models/User');
 
 const router = require('express').Router();
 //register

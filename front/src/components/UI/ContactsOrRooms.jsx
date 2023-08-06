@@ -12,7 +12,7 @@ const ContactsOrRooms = () => {
   const { isRecent, editContacts } = useSelector((state) => state.ui);
   const dispatch = useDispatch();
   return (
-    <div className="w-full h-[30px] flex justify-between my-4 items-center">
+    <div className="w-full h-[30px] flex justify-between my-4 items-center bg-cyan-500">
       <div className="flex justify-center items-center ml-4">
         <div
           onClick={() => dispatch(toggleIsRecent(true))}

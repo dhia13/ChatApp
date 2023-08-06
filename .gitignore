@@ -5,3 +5,4 @@ node_modules
 .prettier.config.js
 /logs
 /ToDo.md
+/storage

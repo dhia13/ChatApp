@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(socketMiddleware);
 app.use(AuthMiddleware);
 app.use(helmet());
-app.use(compression());
+// app.use(compression());
 app.use(express.urlencoded({ extended: true }));
 app.use(createLogMiddleware(process.env.WRITETOFILE));
 

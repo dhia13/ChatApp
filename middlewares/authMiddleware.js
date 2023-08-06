@@ -1,4 +1,4 @@
-const { User } = require('../models/User');
+const User = require('../models/User');
 const { verifyToken } = require('../utils/jwt');
 const { logger } = require('../utils/logger');
 
@@ -16,6 +16,7 @@ async function AuthMiddleware(req, res, next) {
     }
     // Route that requires Authentication
     const requiresAuth = [
+      '/api/v1/upload-audio',
       '/api/v1/findChatRoom',
       '/api/v1/getMessages',
       '/api/v1/initData',
@@ -38,7 +39,6 @@ async function AuthMiddleware(req, res, next) {
     ];
 
     // If the route requires authentication but the user is not authenticated, return unauthorized
-    console.log(req.url);
     if (requiresAuth.includes(req.url) && !req.user) {
       return res.status(401).json({ message: 'Unauthorized' });
     }

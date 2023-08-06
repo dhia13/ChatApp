@@ -10,15 +10,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import HiddenMenus from '../components/popups/HiddenMenus';
 import Loading from '../components/reusables/Loading/Loading';
 import { ToastContainer } from 'react-toastify';
-import useSocket from '../hooks/useSocket';
 import Profile from '../components/ChatUi/Profile';
-
+import { SocketProvider } from '../HOC/SocketContext';
 const Chat = () => {
   const navigate = useNavigate();
   useUser();
   const dispatch = useDispatch();
   const { isLogged } = useSelector((state) => state.user);
-  useSocket();
   useEffect(() => {
     if (isLogged) {
       setLoading(false);
@@ -33,28 +31,30 @@ const Chat = () => {
     return <Loading />;
   }
   return (
-    <div className="w-screen h-screen flex justify-start items-start overflow-hidden relative">
-      <ToastContainer />
-      <HiddenMenus />
-      {/* left nav */}
-      <div className="h-screen w-[400px] flex justify-start items-start shadow-cyan-400 shadow-sm flex-col">
-        <TopSideNav />
-        <ContactsOrRooms />
-        {/* recent chats list */}
-        {!isRecent ? (
-          <Contacts setCurrentChat={setCurrentChat} />
-        ) : (
-          <RecentRooms setCurrentChat={setCurrentChat} />
-        )}
+    <SocketProvider>
+      <div className="w-screen h-screen flex justify-start items-start overflow-hidden relative bg-cyan-500">
+        <ToastContainer />
+        <HiddenMenus />
+        {/* left nav */}
+        <div className="h-screen w-[400px] flex justify-start items-start shadow-cyan-400 shadow-sm flex-col">
+          <TopSideNav />
+          <ContactsOrRooms />
+          {/* recent chats list */}
+          {!isRecent ? (
+            <Contacts setCurrentChat={setCurrentChat} />
+          ) : (
+            <RecentRooms setCurrentChat={setCurrentChat} />
+          )}
+        </div>
+        {/* Chat box */}
+        <div
+          className={`w-[calc(100%-290px)] transition-all duration-200 h-screen`}
+        >
+          {current === 'chat' && <ChatBox currentChat={currentChat} />}
+          {current === 'profile' && <Profile />}
+        </div>
       </div>
-      {/* Chat box */}
-      <div
-        className={`w-[calc(100%-290px)] transition-all duration-200 h-screen`}
-      >
-        {current === 'chat' && <ChatBox currentChat={currentChat} />}
-        {current === 'profile' && <Profile />}
-      </div>
-    </div>
+    </SocketProvider>
   );
 };
 

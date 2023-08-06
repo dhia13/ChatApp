@@ -21,7 +21,7 @@ const Contacts = () => {
       loading={loading}
       loadingNumber={contactsList.length === 0 ? 7 : contactsList.length}
     >
-      <div className="w-full h-full justify-start items-center flex flex-col gap-2">
+      <div className="w-full h-full justify-start items-center flex flex-col gap-2 bg-cyan-500">
         {contactsList?.length > 0 ? (
           contactsList.map((contact) => (
             <SingleContact contact={contact} key={contact.id} />

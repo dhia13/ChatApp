@@ -10,13 +10,13 @@ const ListRender = ({ loading, children, loadingNumber }) => {
     );
 
     return (
-      <div className="h-[calc(100%-142px)] w-full">
+      <div className="h-[calc(100%-142px)] w-full bg-cyan-500">
         <ChatMenu>{loadingContacts}</ChatMenu>
       </div>
     );
   }
   return (
-    <div className="h-[calc(100%-142px)]  w-full flex-col">
+    <div className="h-[calc(100%-142px)]  w-full flex-col bg-cyan-500">
       <ChatMenu>{children}</ChatMenu>
     </div>
   );
