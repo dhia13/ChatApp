@@ -23,7 +23,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['rooms'], // Exclude the 'rooms' slice from being persisted
+  blacklist: ['rooms', 'calls'], // Exclude the 'rooms' slice from being persisted
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

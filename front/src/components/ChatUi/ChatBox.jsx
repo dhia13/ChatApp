@@ -21,7 +21,7 @@ import { AiOutlineVideoCamera } from 'react-icons/ai';
 const ChatBox = () => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState('');
-  const { socket } = useSocket();
+  const { socket, callUser } = useSocket();
   const scrollRef = useRef();
   const { currentRoomId, rooms, newMsg, messagesToSeen } = useSelector(
     (state) => state.rooms
@@ -248,10 +248,14 @@ const ChatBox = () => {
                     secondUser?.username.slice(1)}
                 </h1>
                 <div className="w-[100px] h-full flex justify-center items-center self-end">
-                  <IconContainer handleClick={audioCall}>
+                  <IconContainer
+                    handleClick={() => callUser(secondUser, 'audio')}
+                  >
                     <PiPhoneCallBold />
                   </IconContainer>
-                  <IconContainer handleClick={videoCall}>
+                  <IconContainer
+                    handleClick={() => callUser(secondUser, 'video')}
+                  >
                     <AiOutlineVideoCamera />
                   </IconContainer>
                 </div>

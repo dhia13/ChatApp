@@ -6,7 +6,6 @@ import {
   toggleNotifications,
   toggleUserMenu,
 } from '../../store/Slices/uiSlice';
-import NewContact from './NewContact';
 import OutGoingCall from '../Calls/OutGoingCall';
 import IncomingCall from '../Calls/IncomingCall';
 
@@ -15,12 +14,7 @@ const HiddenMenus = () => {
   const { addChat, addContact, userMenu, notifications, invites } = useSelector(
     (state) => state.ui
   );
-  const incomingCall = useSelector(
-    (state) => state.calls.incomingCall.incomingCall
-  );
-  const outGoingCall = useSelector(
-    (state) => state.calls.outGoingCall.outGoingCall
-  );
+  const callType = useSelector((state) => state.calls.callType);
   return (
     <>
       {userMenu && (
@@ -53,9 +47,8 @@ const HiddenMenus = () => {
           onClick={() => dispatch(toggleAddContact())}
         ></div>
       )}
-      {addContact && <NewContact />}
-      {outGoingCall && <OutGoingCall />}
-      {incomingCall && <IncomingCall />}
+      {callType === 'outGoing' && <OutGoingCall />}
+      {callType === 'incoming' && <IncomingCall />}
     </>
   );
 };
