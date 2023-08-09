@@ -17,7 +17,7 @@ import ContactAttempt from '../popups/ContactAttempt';
 import { markInviteAsSeen } from '../../store/Slices/contactsSlice';
 const TopSideNav = () => {
   const dispatch = useDispatch();
-  const { username, img, email, name } = useSelector((state) => state.user);
+  const { username, img, email, name, id } = useSelector((state) => state.user);
   const { userMenu, notifications, invites } = useSelector((state) => state.ui);
   const { unseenNotificationsCount, isUnseen } = useSelector(
     (state) => state.notifications
@@ -71,6 +71,7 @@ const TopSideNav = () => {
           <div className="flex justify-start items-start flex-col">
             <div className="font-medium mx-4">{username}</div>
             <div className="font-normal text-sm mx-4">{email}</div>
+            <div className="font-normal text-sm mx-4">{id}</div>
           </div>
         </div>
         {/* notifications + invitations + open and close */}

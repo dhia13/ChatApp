@@ -51,7 +51,10 @@ const NotificationMenu = () => {
       ) : (
         <ScrollDiv className="absolute top-0 right-0 overflow-auto w-full h-[calc(100%-40px)]">
           {notificationsList.map((notification) => (
-            <div className="w-full h-[60px] flex border-b border-gray-200">
+            <div
+              className="w-full h-[60px] flex border-b border-gray-200"
+              key={notification.id}
+            >
               <div className="w-[60px] h-[60px]  flex-center">
                 <InitialsAvatar
                   name={notification.from.name}

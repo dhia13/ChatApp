@@ -15,6 +15,46 @@ function setupSocketServer(server) {
       console.log('msg');
       SocketController.transferMessage(socket, data, socketMap);
     });
+    socket.on('test', () => {
+      socket.broadcast.emit('test');
+    });
+    // call handler
+    socket.on('callUser', (data) => {
+      const calle = socketMap.get(data.to.id);
+      console.log(data);
+      console.log('sending ring to ', data.to.id);
+      if (calle) {
+        console.log('got here');
+        try {
+          calle.emit('ringUser', data);
+        } catch (error) {
+          console.error('Error emitting callUser:', error);
+        }
+      } else {
+        console.log('user not connected');
+      }
+    });
+    socket.on('ringing', (data) => {
+      console.log('ringing', data);
+      const to = socketMap.get(data);
+      if (to) {
+        to.emit('isRinging');
+      }
+    });
+    socket.on('answerCall', (data) => {
+      const SEND = socketMap.get(data.to.id);
+      if (SEND) {
+        SEND.emit('callAccepted', data.signal);
+      }
+    });
+    socket.on('endCall', ({ id }) => {
+      const send = socketMap.get(id);
+      if (send) {
+        send.emit('end-call');
+      }
+      console.log('end-call');
+    });
+    //
     socket.on('disconnect', async () => {
       SocketController.disconnect(socket, socketMap);
     });

@@ -59,7 +59,7 @@ const MessagingInput = ({ message, setMessage, handleSendMessage }) => {
             onClick={(e) => handleSendMessage(e)}
           />
         )}
-        {/* <AudioMessage /> */}
+        <AudioMessage />
       </div>
     </form>
   );

@@ -15,10 +15,13 @@ import { useSocket } from '../../HOC/SocketContext';
 import AudioMessage from '../reusables/AudioMessage';
 import IconContainer from '../reusables/IconContainer';
 import { GrEmoji } from 'react-icons/gr';
+import { PiPhoneCallBold } from 'react-icons/pi';
+import { AiOutlineVideoCamera } from 'react-icons/ai';
 
 const ChatBox = () => {
   const dispatch = useDispatch();
   const [message, setMessage] = useState('');
+  const { socket, callUser } = useSocket();
   const scrollRef = useRef();
   const { currentRoomId, rooms, newMsg, messagesToSeen } = useSelector(
     (state) => state.rooms
@@ -128,8 +131,6 @@ const ChatBox = () => {
     }
   }, [currentRoomId]);
   // sending a message
-  const socket = useSocket();
-
   useEffect(() => {
     if (socket) {
       // Event listener for 'messageReceived' event (from the server)
@@ -161,11 +162,7 @@ const ChatBox = () => {
   useEffect(() => {
     if (newMsg && currentRoomId === newMsg.room) {
       setMessages((prevMessages) => [...prevMessages, newMsg]);
-    }
-    if (rooms.length > 0) {
       dispatch(fetchRecentRoomsWitoutLoading());
-    } else {
-      dispatch(fetchRecentRooms());
     }
   }, [currentRoomId, dispatch, newMsg, rooms.length]);
 
@@ -177,6 +174,12 @@ const ChatBox = () => {
       scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages, loaded, loading]);
+  const videoCall = () => {
+    console.log('videoCall');
+  };
+  const audioCall = () => {
+    console.log('audioCall');
+  };
   return (
     <>
       {currentRoomId === '' ? (
@@ -205,7 +208,7 @@ const ChatBox = () => {
                 >
                   <div className="w-[80%] h-[60px] mb-[20px] bg-gray-300 items-center rounded-md flex justify-around">
                     <div className="">
-                      <IconContainer>
+                      <IconContainer handleClick={() => console.log('loading')}>
                         <GrEmoji />
                       </IconContainer>
                     </div>
@@ -240,8 +243,22 @@ const ChatBox = () => {
           ) : (
             <>
               <div className="w-full h-[80px] flex justify-center font-bold items-center bg-cyan-700">
-                {secondUser?.username.charAt(0).toUpperCase() +
-                  secondUser?.username.slice(1)}
+                <h1>
+                  {secondUser?.username.charAt(0).toUpperCase() +
+                    secondUser?.username.slice(1)}
+                </h1>
+                <div className="w-[100px] h-full flex justify-center items-center self-end">
+                  <IconContainer
+                    handleClick={() => callUser(secondUser, 'audio')}
+                  >
+                    <PiPhoneCallBold />
+                  </IconContainer>
+                  <IconContainer
+                    handleClick={() => callUser(secondUser, 'video')}
+                  >
+                    <AiOutlineVideoCamera />
+                  </IconContainer>
+                </div>
               </div>
               <div className="flex-center flex-col relative">
                 <div className="absolute top-0 left-0 bg-gray-200 w-full h-full ">
