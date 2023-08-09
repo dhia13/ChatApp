@@ -4,6 +4,7 @@ import uiReducer from './Slices/uiSlice';
 import contactsReducer from './Slices/contactsSlice';
 import roomsReducer from './Slices/roomsSlice';
 import notiReducer from './Slices/notificationsSlice';
+import callsSlice from './Slices/callsSlice';
 import { combineReducers } from 'redux';
 
 import storage from 'redux-persist/lib/storage';
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   contacts: contactsReducer,
   rooms: roomsReducer,
   notifications: notiReducer,
+  calls: callsSlice,
 });
 
 const persistConfig = {

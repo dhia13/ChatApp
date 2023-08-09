@@ -30,25 +30,22 @@ const SocketProvider = ({ children }) => {
   const currentOnlineUsers = useSelector((state) => state.contacts.onlineUsers);
   const currentRoom = useSelector((state) => state.rooms.currentRoomId);
   const prevOnlineUsersRef = useRef(currentOnlineUsers);
+  // socket
   useEffect(() => {
+    const newSocket = io(process.env.REACT_APP_API_URL, {
+      query: {
+        userId: id,
+      },
+    });
     // Initialize your socket connection here
     if (isLogged && id) {
-      const newSocket = io(process.env.REACT_APP_API_URL, {
-        query: {
-          userId: id,
-        },
-      });
       setSocket(newSocket);
       newSocket.on('newMsg', (data) => {
         dispatch(setNewMsg(data));
       });
       newSocket.on('connection');
       newSocket.on('seen', (data) => {
-        console.log('msg seen');
-        console.log({ messagesSeen: data });
-        console.log(data.roomId, currentRoom);
         if (data.roomId === currentRoom) {
-          console.log('set messages to seen');
           dispatch(setMessagesToSeen(data.messages));
         }
         dispatch(fetchRecentRoomsWitoutLoading());
@@ -103,10 +100,17 @@ const SocketProvider = ({ children }) => {
         newSocket.disconnect();
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentRoom, dispatch, id, isLogged]);
 
   return (
-    <SocketContext.Provider value={socket}>{children}</SocketContext.Provider>
+    <SocketContext.Provider
+      value={{
+        socket,
+      }}
+    >
+      {children}
+    </SocketContext.Provider>
   );
 };
 

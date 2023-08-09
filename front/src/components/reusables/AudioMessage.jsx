@@ -69,15 +69,19 @@ const AudioMessage = () => {
 
   return (
     <>
-      <IconContainer className={` text-2xl cursor-pointer hover:text-blue-700`}>
-        {recording === 'idle' ? (
-          <BsFillMicFill onClick={startRecording} />
-        ) : recording === 'recording' ? (
-          <BsFillMicFill onClick={stopRecording} className="text-red-600" />
-        ) : (
-          <AiOutlineSend className="text-green-500" onClick={handleSaveAudio} />
-        )}
-      </IconContainer>
+      {recording === 'idle' ? (
+        <IconContainer handleClick={startRecording}>
+          <BsFillMicFill />
+        </IconContainer>
+      ) : recording === 'recording' ? (
+        <IconContainer handleClick={stopRecording}>
+          <BsFillMicFill className="text-red-600" />
+        </IconContainer>
+      ) : (
+        <IconContainer handleClick={handleSaveAudio}>
+          <AiOutlineSend className="text-green-500" />
+        </IconContainer>
+      )}
     </>
   );
 };

@@ -44,21 +44,14 @@ const SocketController = {
       seen: false,
     });
     newMessage.save();
-    const roomUpdate = await Room.findByIdAndUpdate(
-      data.message.room,
-      {
-        $push: { messages: newMessage._id },
-      },
-      { new: true }
-    );
-    console.log(roomUpdate);
+    await Room.findByIdAndUpdate(data.message.room, {
+      $push: { messages: newMessage._id },
+    });
     const receiverSocket = socketMap.get(data.receiver);
     if (receiverSocket) {
       receiverSocket.emit('newMsg', newMessage);
-      console.log('msg sent');
     }
     const senderSocket = socket;
-    console.log(senderSocket);
     senderSocket.emit('msgReceived', newMessage);
   },
 };
@@ -73,9 +66,6 @@ const emitOnlineStatusToContacts = async (
       const contactIdString = contactId.toString();
       const contactSocket = socketMap.get(contactIdString);
       if (contactSocket) {
-        console.log(
-          `user with id ${userId} is online sending status to ${contactId} via ${contactSocket.id} socket`
-        );
         contactSocket.emit('isOnline', { id: userId, online: isOnline });
       }
     }

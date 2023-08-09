@@ -12,22 +12,21 @@ function setupSocketServer(server) {
   io.on('connection', async (socket) => {
     SocketController.handShake(socket, socketMap);
     socket.on('sendMsg', async (data) => {
-      console.log('msg');
       SocketController.transferMessage(socket, data, socketMap);
     });
     socket.on('disconnect', async () => {
       SocketController.disconnect(socket, socketMap);
     });
   });
-
-  // Custom middleware to pass the io object to routes
-  function socketMiddleware(req, res, next) {
-    req.io = io;
-    req.socketMap = socketMap;
-    next();
-  }
-
-  return socketMiddleware;
 }
+
+// Custom middleware to pass the io object to routes
+function socketMiddleware(req, res, next) {
+  req.io = io;
+  req.socketMap = socketMap;
+  next();
+}
+
+return socketMiddleware;
 
 module.exports = setupSocketServer;
