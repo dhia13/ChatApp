@@ -8,6 +8,8 @@ import {
 } from '../../store/Slices/uiSlice';
 import OutGoingCall from '../Calls/OutGoingCall';
 import IncomingCall from '../Calls/IncomingCall';
+import AddNew from './AddNew';
+import NewContact from './NewContact';
 
 const HiddenMenus = () => {
   const dispatch = useDispatch();
@@ -49,6 +51,7 @@ const HiddenMenus = () => {
       )}
       {callType === 'outGoing' && <OutGoingCall />}
       {callType === 'incoming' && <IncomingCall />}
+      {addContact && <NewContact />}
     </>
   );
 };

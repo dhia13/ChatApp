@@ -174,12 +174,6 @@ const ChatBox = () => {
       scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages, loaded, loading]);
-  const videoCall = () => {
-    console.log('videoCall');
-  };
-  const audioCall = () => {
-    console.log('audioCall');
-  };
   return (
     <>
       {currentRoomId === '' ? (
