@@ -15,10 +15,13 @@ import NotificationMenu from '../popups/notifications/NotificationMenu';
 import UserMenu from '../popups/UserMenu';
 import ContactAttempt from '../popups/ContactAttempt';
 import { markInviteAsSeen } from '../../store/Slices/contactsSlice';
+import NewContact from '../popups/NewContact';
 const TopSideNav = () => {
   const dispatch = useDispatch();
   const { username, img, email, name, id } = useSelector((state) => state.user);
-  const { userMenu, notifications, invites } = useSelector((state) => state.ui);
+  const { userMenu, notifications, invites, addContact } = useSelector(
+    (state) => state.ui
+  );
   const { unseenNotificationsCount, isUnseen } = useSelector(
     (state) => state.notifications
   );
@@ -106,6 +109,7 @@ const TopSideNav = () => {
       {userMenu && <UserMenu />}
       {notifications && <NotificationMenu />}
       {invites && <ContactAttempt />}
+      {addContact && <NewContact />}
     </>
   );
 };
